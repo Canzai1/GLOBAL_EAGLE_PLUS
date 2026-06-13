@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>GLOBAL EAGLE PLUS - 一站式无人机制造商</title>
+<script src="js/css.js"></script>
+<script>
+tailwind.config={theme:{extend:{colors:{navy:'#0A2E5C',navyLight:'#1A5CB0',dark:'#0F1724',textDark:'#1A1A2E',textGray:'#6B7280',lightBg:'#F5F7FA'},fontFamily:{sans:['PingFang SC','Hiragino Sans GB','Microsoft YaHei','ui-sans-serif','system-ui','sans-serif']}}}}
+</script>
+<style>
+html{scroll-behavior:smooth}
+.flip-card{perspective:1000px}
+.flip-card-inner{position:relative;width:100%;height:100%;transition:transform .6s ease-in-out;transform-style:preserve-3d}
+.flip-card:hover .flip-card-inner{transform:rotateY(180deg)}
+.flip-card-front,.flip-card-back{position:absolute;inset:0;backface-visibility:hidden;border-radius:12px}
+.flip-card-back{transform:rotateY(180deg)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.animate-fade-up{animation:fadeUp .6s ease forwards}
+	 :root {
+            --fab-size: 54px;
+            --fab-bg: linear-gradient(135deg, #4f6ef7, #6c5ce7);
+            --fab-shadow: 0 6px 20px rgba(76, 90, 220, 0.4);
+            --fab-shadow-hover: 0 10px 28px rgba(76, 90, 220, 0.55);
+            --transition-speed: 0.25s;
+        }
+	 /* ========== 悬浮按钮容器 DIV ========== */
+        #translate {
+/*			*/
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            z-index: 9999;
+            width: var(--fab-size);
+            height: var(--fab-size);
+            border-radius: 50%;
+            background: var(--fab-bg);
+            box-shadow: var(--fab-shadow);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition:
+                transform var(--transition-speed) cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow var(--transition-speed) ease,
+                border-radius var(--transition-speed) ease;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+            /* 伪元素：地球图标 */
+            /* 当select展开时，div也扩展为面板容器 */
+        }
+
+        /* 地球图标 - 使用伪元素 */
+        #translate::before {
+            content: '🌐';
+            font-size: 26px;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 1;
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+                opacity 0.2s ease;
+            filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.15));
+        }
+
+        /* 按钮右下角小圆点指示器 - 使用伪元素 */
+        #translate::after {
+            content: '';
+            position: absolute;
+            bottom: 6px;
+            right: 6px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #2ed573;
+            border: 2px solid #fff;
+            z-index: 2;
+            pointer-events: none;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, opacity 0.25s ease;
+        }
+
+        /* hover效果 */
+        #translate:hover {
+            transform: scale(1.08);
+            box-shadow: var(--fab-shadow-hover);
+        }
+
+        #translate:hover::before {
+            transform: rotate(-15deg) scale(1.05);
+        }
+
+        /* 点击时的缩放反馈 */
+        #translate:active {
+            transform: scale(0.94);
+            transition: transform 0.12s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        /* ========== SELECT 元素样式 ========== */
+        #translate select {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 3;
+            cursor: pointer;
+            /* 默认状态：透明覆盖在圆形按钮上 */
+            opacity: 0;
+            -webkit-appearance: none;
+            appearance: none;
+            border: none;
+            outline: none;
+            background: transparent;
+            font-family: inherit;
+            font-size: 15px;
+            color: #1a1a2e;
+            border-radius: 50%;
+            transition:
+                opacity 0.2s ease,
+                border-radius 0.25s ease,
+                width 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+                height 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+                background 0.25s ease,
+                box-shadow 0.25s ease,
+                padding 0.25s ease;
+            /* 关键：让select在size=1时完全不可见，但保持可交互 */
+        }
+
+        /* ========== SELECT 展开状态（通过JS添加类名触发） ========== */
+        #translate.select-expanded {
+            /* div容器在select展开时变为矩形面板 */
+            border-radius: 16px;
+            width: 185px;
+            height: auto;
+            background: transparent;
+            box-shadow: none;
+            cursor: default;
+            transform: none;
+        }
+
+        #translate.select-expanded:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        #translate.select-expanded::before {
+            /* 隐藏地球图标 */
+            opacity: 0;
+            transform: scale(0.5) rotate(-30deg);
+            pointer-events: none;
+        }
+
+        #translate.select-expanded::after {
+            /* 隐藏绿色指示点 */
+            opacity: 0;
+            transform: scale(0);
+        }
+
+        /* select展开时的样式 */
+        #translate.select-expanded select {
+            opacity: 1;
+            border-radius: 16px;
+            width: 185px;
+            height: auto;
+            /* 半透明磨砂背景 */
+            background: rgba(255, 255, 255, 0.78);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            /* 阴影 */
+            box-shadow:
+                0 8px 32px rgba(0, 0, 0, 0.14),
+                0 2px 8px rgba(0, 0, 0, 0.08),
+                inset 0 1px 0 rgba(255, 255, 255, 0.6);
+            padding: 8px 0;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            /* 底部锚点 - 指向按钮位置 */
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            left: auto;
+            top: auto;
+            cursor: pointer;
+            outline: none;
+        }
+
+        /* ========== OPTION 选项样式 ========== */
+        #translate.select-expanded select option {
+            padding: 11px 18px;
+            font-size: 14.5px;
+            font-family: inherit;
+            cursor: pointer;
+            background: transparent;
+            color: #2d2d3a;
+            transition: background 0.15s ease, color 0.15s ease;
+            /* 分割线 */
+            border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+            letter-spacing: 0.3px;
+            white-space: nowrap;
+            /* 确保option之间有明显分隔 */
+            margin: 0;
+            outline: none;
+        }
+
+        /* 最后一个选项没有分割线 */
+        #translate.select-expanded select option:last-child {
+            border-bottom: none;
+        }
+
+        /* option悬停状态 */
+        #translate.select-expanded select option:hover {
+            background: rgba(79, 110, 247, 0.1);
+            color: #1a1a2e;
+        }
+
+        /* option选中状态 */
+        #translate.select-expanded select option:checked {
+            background: rgba(79, 110, 247, 0.13);
+            color: #4f6ef7;
+            font-weight: 600;
+        }
+
+        /* ========== 响应式：小屏幕适配 ========== */
+        @media (max-width: 480px) {
+            #translate {
+                bottom: 20px;
+                right: 20px;
+                width: 48px;
+                height: 48px;
+            }
+
+            #translate::before {
+                font-size: 22px;
+            }
+
+            #translate::after {
+                width: 8px;
+                height: 8px;
+                bottom: 4px;
+                right: 4px;
+            }
+
+            #translate.select-expanded {
+                width: 170px;
+                border-radius: 14px;
+            }
+
+            #translate.select-expanded select {
+                width: 170px;
+                border-radius: 14px;
+                padding: 6px 0;
+            }
+
+            #translate.select-expanded select option {
+                padding: 10px 15px;
+                font-size: 13.5px;
+            }
+
+            #translate {
+                --fab-size: 48px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            #translate {
+                bottom: 16px;
+                right: 16px;
+                width: 42px;
+                height: 42px;
+                --fab-size: 42px;
+            }
+
+            #translate::before {
+                font-size: 20px;
+            }
+
+            #translate.select-expanded {
+                width: 155px;
+                border-radius: 12px;
+            }
+
+            #translate.select-expanded select {
+                width: 155px;
+                border-radius: 12px;
+                padding: 5px 0;
+            }
+
+            #translate.select-expanded select option {
+                padding: 9px 13px;
+                font-size: 13px;
+            }
+        }
+
+        /* ========== 暗色模式适配 ========== */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: #1a1a2e;
+                color: #ddd;
+            }
+
+            .page-content h1 {
+                color: #e8e8f0;
+            }
+
+            .page-content p {
+                color: #bbb;
+            }
+
+            .page-content .card {
+                background: #252540;
+                color: #ccc;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            }
+
+            .page-content .card h3 {
+                color: #e0e0ec;
+            }
+
+            .page-content .card p {
+                color: #aaa;
+            }
+
+            .page-content .card:hover {
+                box-shadow: 0 6px 22px rgba(0, 0, 0, 0.35);
+            }
+
+            #translate.select-expanded select {
+                background: rgba(40, 40, 60, 0.82);
+                backdrop-filter: blur(18px);
+                -webkit-backdrop-filter: blur(18px);
+                border: 1px solid rgba(255, 255, 255, 0.12);
+                box-shadow:
+                    0 8px 32px rgba(0, 0, 0, 0.35),
+                    0 2px 8px rgba(0, 0, 0, 0.2),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+                color: #e0e0ec;
+            }
+
+            #translate.select-expanded select option {
+                color: #d5d5e5;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            }
+
+            #translate.select-expanded select option:hover {
+                background: rgba(120, 140, 250, 0.15);
+            }
+
+            #translate.select-expanded select option:checked {
+                background: rgba(120, 140, 250, 0.2);
+                color: #a0b4ff;
+            }
+
+            #translate::after {
+                border-color: #2d2d45;
+            }
+        }
+
+        /* ========== 减少动画偏好 ========== */
+        @media (prefers-reduced-motion: reduce) {
+            #translate,
+            #translate::before,
+            #translate::after,
+            #translate select,
+            #translate.select-expanded select,
+            #translate.select-expanded select option {
+                transition-duration: 0.01ms !important;
+            }
+        }
+</style>
+</head>
+<body class="font-sans text-textDark">
+
+<!-- Navbar -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-gradient-to-r from-navy to-[#1A4A8A]">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex h-16 items-center justify-between">
+      <a href="index.html" class="flex-shrink-0">
+        <span class="text-xl sm:text-2xl font-bold tracking-[0.15em] text-white">GLOBAL EAGLE PLUS</span>
+      </a>
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="index.html" class="text-sm font-medium text-white/90 hover:text-white transition-colors">首页</a>
+        <a href="#products" class="text-sm font-medium text-white/90 hover:text-white transition-colors">产品</a>
+        <a href="#about" class="text-sm font-medium text-white/90 hover:text-white transition-colors">关于我们</a>
+        <a href="#advantages" class="text-sm font-medium text-white/90 hover:text-white transition-colors">新闻</a>
+        <a href="#contact" class="text-sm font-medium text-white/90 hover:text-white transition-colors">联系我们</a>
+      </div>
+      <button id="mobileMenuBtn" class="text-white md:hidden" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </div>
+  <div id="mobileMenu" class="hidden border-t border-white/10 bg-navy md:hidden">
+    <div class="px-4 py-3 space-y-1">
+      <a href="index.html" class="block px-3 py-2 text-sm font-medium text-white/90 hover:bg-white/10 rounded" onclick="document.getElementById('mobileMenu').classList.add('hidden')">首页</a>
+      <a href="#products" class="block px-3 py-2 text-sm font-medium text-white/90 hover:bg-white/10 rounded" onclick="document.getElementById('mobileMenu').classList.add('hidden')">产品</a>
+      <a href="#about" class="block px-3 py-2 text-sm font-medium text-white/90 hover:bg-white/10 rounded" onclick="document.getElementById('mobileMenu').classList.add('hidden')">关于我们</a>
+      <a href="#advantages" class="block px-3 py-2 text-sm font-medium text-white/90 hover:bg-white/10 rounded" onclick="document.getElementById('mobileMenu').classList.add('hidden')">新闻</a>
+      <a href="#contact" class="block px-3 py-2 text-sm font-medium text-white/90 hover:bg-white/10 rounded" onclick="document.getElementById('mobileMenu').classList.add('hidden')">联系我们</a>
+    </div>
+  </div>
+</nav>
+
+
+<!-- Products -->
+<section id="products" class="bg-lightBg py-16 sm:py-24">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="mb-10 sm:mb-14 flex flex-col items-center text-center">
+      <span class="mb-3 inline-block rounded-full bg-navy/10 px-4 py-1 text-xs font-semibold tracking-wider text-navy">更多无人机产品</span>
+      <h2 class="mb-4 text-2xl sm:text-4xl font-bold text-textDark">更多无人机产品</h2>
+      <p class="max-w-2xl text-sm leading-6 text-textGray">公司专注于工业飞行器设计服务、复合材料飞行平台生产销售和服务，如复合材料无人机机架、PNP、飞行平台、无人机零配件生产制造、定制类无人机产品等</p>
+      <div class="mt-6 flex items-center gap-1.5">
+        <span class="h-1 w-8 rounded-full bg-navy"></span>
+        <span class="h-1 w-2 rounded-full bg-navyLight"></span>
+        <span class="h-1 w-1 rounded-full bg-navyLight/40"></span>
+      </div>
+    </div>
+<!--	  第一个-->
+    <div class="grid grid-cols-2 gap-3 sm:gap-7">
+      <a href="./vtol/index.html" class="group relative overflow-hidden rounded-xl sm:rounded-2xl bg-white shadow-sm hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
+        <div class="relative aspect-square w-full overflow-hidden">
+          <img src="images/T1.jpg" alt="垂直起降复合翼无人机" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"/>
+          <span class="absolute left-3 top-3 sm:left-4 sm:top-4 rounded-md bg-navy/80 px-2.5 py-1 text-[10px] sm:text-xs font-medium tracking-wider text-white backdrop-blur-sm">VTOL</span>
+        </div>
+        <div class="flex items-center justify-between px-3 py-3 sm:px-5 sm:py-4">
+          <div class="min-w-0 flex-1">
+            <h3 class="truncate text-xs sm:text-base font-semibold text-textDark group-hover:text-navy transition-colors">垂直起降复合翼无人机</h3>
+            <p class="mt-0.5 truncate text-[10px] sm:text-xs text-textGray">融合多旋翼垂直起降与固定翼长航时优势</p>
+          </div>
+          <span class="ml-2 sm:ml-3 flex h-7 w-7 sm:h-8 sm:w-8 flex-shrink-0 items-center justify-center rounded-full bg-navy/5 text-navy transition-all group-hover:bg-navy group-hover:text-white">
+            <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </span>
+        </div>
+      </a>
+      <a href="./vtol/index2.html" class="group relative overflow-hidden rounded-xl sm:rounded-2xl bg-white shadow-sm hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
+        <div class="relative aspect-square w-full overflow-hidden">
+          <img src="images/T2.jpg" alt=""/>
+          <span class="absolute left-3 top-3 sm:left-4 sm:top-4 rounded-md bg-navy/80 px-2.5 py-1 text-[10px] sm:text-xs font-medium tracking-wider text-white backdrop-blur-sm">HEXACOPTER</span>
+        </div>
+        <div class="flex items-center justify-between px-3 py-3 sm:px-5 sm:py-4">
+          <div class="min-w-0 flex-1">
+            <h3 class="truncate text-xs sm:text-base font-semibold text-textDark group-hover:text-navy transition-colors">六旋翼工业无人机</h3>
+            <p class="mt-0.5 truncate text-[10px] sm:text-xs text-textGray">强大载荷能力与飞行稳定性，多场景适配</p>
+          </div>
+          <span class="ml-2 sm:ml-3 flex h-7 w-7 sm:h-8 sm:w-8 flex-shrink-0 items-center justify-center rounded-full bg-navy/5 text-navy transition-all group-hover:bg-navy group-hover:text-white">
+            <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </span>
+        </div>
+      </a>
+      <a href="./vtol/index3.html" class="group relative overflow-hidden rounded-xl sm:rounded-2xl bg-white shadow-sm hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
+        <div class="relative aspect-square w-full overflow-hidden">
+          <img src="images/T3.jpg" alt=""/>
+          <span class="absolute left-3 top-3 sm:left-4 sm:top-4 rounded-md bg-navy/80 px-2.5 py-1 text-[10px] sm:text-xs font-medium tracking-wider text-white backdrop-blur-sm">VTOL-S</span>
+        </div>
+        <div class="flex items-center justify-between px-3 py-3 sm:px-5 sm:py-4">
+          <div class="min-w-0 flex-1">
+            <h3 class="truncate text-xs sm:text-base font-semibold text-textDark group-hover:text-navy transition-colors">复合翼无人机（侧视）</h3>
+            <p class="mt-0.5 truncate text-[10px] sm:text-xs text-textGray">流线型气动布局，复合材料一体成型</p>
+          </div>
+          <span class="ml-2 sm:ml-3 flex h-7 w-7 sm:h-8 sm:w-8 flex-shrink-0 items-center justify-center rounded-full bg-navy/5 text-navy transition-all group-hover:bg-navy group-hover:text-white">
+            <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </span>
+        </div>
+      </a>
+      <a href="./vtol/index4.html" class="group relative overflow-hidden rounded-xl sm:rounded-2xl bg-white shadow-sm hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
+        <div class="relative aspect-square w-full overflow-hidden">
+          <img src="images/T4.jpg" alt=""/>
+          <span class="absolute left-3 top-3 sm:left-4 sm:top-4 rounded-md bg-navy/80 px-2.5 py-1 text-[10px] sm:text-xs font-medium tracking-wider text-white backdrop-blur-sm">HEXA-D</span>
+        </div>
+        <div class="flex items-center justify-between px-3 py-3 sm:px-5 sm:py-4">
+          <div class="min-w-0 flex-1">
+            <h3 class="truncate text-xs sm:text-base font-semibold text-textDark group-hover:text-navy transition-colors">六旋翼无人机（详视）</h3>
+            <p class="mt-0.5 truncate text-[10px] sm:text-xs text-textGray">模块化快拆设计，碳纤维复合材料机身</p>
+          </div>
+          <span class="ml-2 sm:ml-3 flex h-7 w-7 sm:h-8 sm:w-8 flex-shrink-0 items-center justify-center rounded-full bg-navy/5 text-navy transition-all group-hover:bg-navy group-hover:text-white">
+            <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </span>
+        </div>
+      </a>
+		<a href="./vtol/index.html" class="group relative overflow-hidden rounded-xl sm:rounded-2xl bg-white shadow-sm hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
+        <div class="relative aspect-square w-full overflow-hidden">
+          <img src="images/T1.jpg" alt="垂直起降复合翼无人机" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"/>
+          <span class="absolute left-3 top-3 sm:left-4 sm:top-4 rounded-md bg-navy/80 px-2.5 py-1 text-[10px] sm:text-xs font-medium tracking-wider text-white backdrop-blur-sm">VTOL</span>
+        </div>
+        <div class="flex items-center justify-between px-3 py-3 sm:px-5 sm:py-4">
+          <div class="min-w-0 flex-1">
+            <h3 class="truncate text-xs sm:text-base font-semibold text-textDark group-hover:text-navy transition-colors">垂直起降复合翼无人机</h3>
+            <p class="mt-0.5 truncate text-[10px] sm:text-xs text-textGray">融合多旋翼垂直起降与固定翼长航时优势</p>
+          </div>
+          <span class="ml-2 sm:ml-3 flex h-7 w-7 sm:h-8 sm:w-8 flex-shrink-0 items-center justify-center rounded-full bg-navy/5 text-navy transition-all group-hover:bg-navy group-hover:text-white">
+            <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </span>
+        </div>
+      </a>
+      <a href="./vtol/index2.html" class="group relative overflow-hidden rounded-xl sm:rounded-2xl bg-white shadow-sm hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
+        <div class="relative aspect-square w-full overflow-hidden">
+          <img src="images/T2.jpg" alt=""/>
+          <span class="absolute left-3 top-3 sm:left-4 sm:top-4 rounded-md bg-navy/80 px-2.5 py-1 text-[10px] sm:text-xs font-medium tracking-wider text-white backdrop-blur-sm">HEXACOPTER</span>
+        </div>
+        <div class="flex items-center justify-between px-3 py-3 sm:px-5 sm:py-4">
+          <div class="min-w-0 flex-1">
+            <h3 class="truncate text-xs sm:text-base font-semibold text-textDark group-hover:text-navy transition-colors">六旋翼工业无人机</h3>
+            <p class="mt-0.5 truncate text-[10px] sm:text-xs text-textGray">强大载荷能力与飞行稳定性，多场景适配</p>
+          </div>
+          <span class="ml-2 sm:ml-3 flex h-7 w-7 sm:h-8 sm:w-8 flex-shrink-0 items-center justify-center rounded-full bg-navy/5 text-navy transition-all group-hover:bg-navy group-hover:text-white">
+            <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </span>
+        </div>
+      </a>
+      <a href="./vtol/index3.html" class="group relative overflow-hidden rounded-xl sm:rounded-2xl bg-white shadow-sm hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
+        <div class="relative aspect-square w-full overflow-hidden">
+          <img src="images/T3.jpg" alt=""/>
+          <span class="absolute left-3 top-3 sm:left-4 sm:top-4 rounded-md bg-navy/80 px-2.5 py-1 text-[10px] sm:text-xs font-medium tracking-wider text-white backdrop-blur-sm">VTOL-S</span>
+        </div>
+        <div class="flex items-center justify-between px-3 py-3 sm:px-5 sm:py-4">
+          <div class="min-w-0 flex-1">
+            <h3 class="truncate text-xs sm:text-base font-semibold text-textDark group-hover:text-navy transition-colors">复合翼无人机（侧视）</h3>
+            <p class="mt-0.5 truncate text-[10px] sm:text-xs text-textGray">流线型气动布局，复合材料一体成型</p>
+          </div>
+          <span class="ml-2 sm:ml-3 flex h-7 w-7 sm:h-8 sm:w-8 flex-shrink-0 items-center justify-center rounded-full bg-navy/5 text-navy transition-all group-hover:bg-navy group-hover:text-white">
+            <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </span>
+        </div>
+      </a>
+      <a href="./vtol/index4.html" class="group relative overflow-hidden rounded-xl sm:rounded-2xl bg-white shadow-sm hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
+        <div class="relative aspect-square w-full overflow-hidden">
+          <img src="images/T4.jpg" alt=""/>
+          <span class="absolute left-3 top-3 sm:left-4 sm:top-4 rounded-md bg-navy/80 px-2.5 py-1 text-[10px] sm:text-xs font-medium tracking-wider text-white backdrop-blur-sm">HEXA-D</span>
+        </div>
+        <div class="flex items-center justify-between px-3 py-3 sm:px-5 sm:py-4">
+          <div class="min-w-0 flex-1">
+            <h3 class="truncate text-xs sm:text-base font-semibold text-textDark group-hover:text-navy transition-colors">六旋翼无人机（详视）</h3>
+            <p class="mt-0.5 truncate text-[10px] sm:text-xs text-textGray">模块化快拆设计，碳纤维复合材料机身</p>
+          </div>
+          <span class="ml-2 sm:ml-3 flex h-7 w-7 sm:h-8 sm:w-8 flex-shrink-0 items-center justify-center rounded-full bg-navy/5 text-navy transition-all group-hover:bg-navy group-hover:text-white">
+            <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </span>
+        </div>
+      </a>
+		<a href="./vtol/index.html" class="group relative overflow-hidden rounded-xl sm:rounded-2xl bg-white shadow-sm hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
+        <div class="relative aspect-square w-full overflow-hidden">
+          <img src="images/T1.jpg" alt="垂直起降复合翼无人机" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"/>
+          <span class="absolute left-3 top-3 sm:left-4 sm:top-4 rounded-md bg-navy/80 px-2.5 py-1 text-[10px] sm:text-xs font-medium tracking-wider text-white backdrop-blur-sm">VTOL</span>
+        </div>
+        <div class="flex items-center justify-between px-3 py-3 sm:px-5 sm:py-4">
+          <div class="min-w-0 flex-1">
+            <h3 class="truncate text-xs sm:text-base font-semibold text-textDark group-hover:text-navy transition-colors">垂直起降复合翼无人机</h3>
+            <p class="mt-0.5 truncate text-[10px] sm:text-xs text-textGray">融合多旋翼垂直起降与固定翼长航时优势</p>
+          </div>
+          <span class="ml-2 sm:ml-3 flex h-7 w-7 sm:h-8 sm:w-8 flex-shrink-0 items-center justify-center rounded-full bg-navy/5 text-navy transition-all group-hover:bg-navy group-hover:text-white">
+            <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </span>
+        </div>
+      </a>
+      <a href="./vtol/index2.html" class="group relative overflow-hidden rounded-xl sm:rounded-2xl bg-white shadow-sm hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
+        <div class="relative aspect-square w-full overflow-hidden">
+          <img src="images/T2.jpg" alt=""/>
+			
+          <span class="absolute left-3 top-3 sm:left-4 sm:top-4 rounded-md bg-navy/80 px-2.5 py-1 text-[10px] sm:text-xs font-medium tracking-wider text-white backdrop-blur-sm">HEXACOPTER</span>
+        </div>
+        <div class="flex items-center justify-between px-3 py-3 sm:px-5 sm:py-4">
+          <div class="min-w-0 flex-1">
+            <h3 class="truncate text-xs sm:text-base font-semibold text-textDark group-hover:text-navy transition-colors">六旋翼工业无人机</h3>
+            <p class="mt-0.5 truncate text-[10px] sm:text-xs text-textGray">强大载荷能力与飞行稳定性，多场景适配</p>
+          </div>
+          <span class="ml-2 sm:ml-3 flex h-7 w-7 sm:h-8 sm:w-8 flex-shrink-0 items-center justify-center rounded-full bg-navy/5 text-navy transition-all group-hover:bg-navy group-hover:text-white">
+            <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </span>
+        </div>
+      </a>
+      <a href="./vtol/index3.html" class="group relative overflow-hidden rounded-xl sm:rounded-2xl bg-white shadow-sm hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
+        <div class="relative aspect-square w-full overflow-hidden">
+          <img src="images/T3.jpg" alt=""/>
+          <span class="absolute left-3 top-3 sm:left-4 sm:top-4 rounded-md bg-navy/80 px-2.5 py-1 text-[10px] sm:text-xs font-medium tracking-wider text-white backdrop-blur-sm">VTOL-S</span>
+        </div>
+        <div class="flex items-center justify-between px-3 py-3 sm:px-5 sm:py-4">
+          <div class="min-w-0 flex-1">
+            <h3 class="truncate text-xs sm:text-base font-semibold text-textDark group-hover:text-navy transition-colors">复合翼无人机（侧视）</h3>
+            <p class="mt-0.5 truncate text-[10px] sm:text-xs text-textGray">流线型气动布局，复合材料一体成型</p>
+          </div>
+          <span class="ml-2 sm:ml-3 flex h-7 w-7 sm:h-8 sm:w-8 flex-shrink-0 items-center justify-center rounded-full bg-navy/5 text-navy transition-all group-hover:bg-navy group-hover:text-white">
+            <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </span>
+        </div>
+      </a>
+      <a href="./vtol/index4.html" class="group relative overflow-hidden rounded-xl sm:rounded-2xl bg-white shadow-sm hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
+        <div class="relative aspect-square w-full overflow-hidden">
+          <img src="images/T4.jpg" alt=""/>
+          <span class="absolute left-3 top-3 sm:left-4 sm:top-4 rounded-md bg-navy/80 px-2.5 py-1 text-[10px] sm:text-xs font-medium tracking-wider text-white backdrop-blur-sm">HEXA-D</span>
+        </div>
+        <div class="flex items-center justify-between px-3 py-3 sm:px-5 sm:py-4">
+          <div class="min-w-0 flex-1">
+            <h3 class="truncate text-xs sm:text-base font-semibold text-textDark group-hover:text-navy transition-colors">六旋翼无人机（详视）</h3>
+            <p class="mt-0.5 truncate text-[10px] sm:text-xs text-textGray">模块化快拆设计，碳纤维复合材料机身</p>
+          </div>
+          <span class="ml-2 sm:ml-3 flex h-7 w-7 sm:h-8 sm:w-8 flex-shrink-0 items-center justify-center rounded-full bg-navy/5 text-navy transition-all group-hover:bg-navy group-hover:text-white">
+            <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </span>
+        </div>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- Footer -->
+<footer id="contact" class="bg-dark pt-12 sm:pt-16 pb-8">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid gap-10 lg:grid-cols-3">
+      <div>
+        <span class="mb-4 block text-lg sm:text-2xl font-bold tracking-[0.15em] text-white">GLOBAL EAGLE PLUS</span>
+        <p class="mb-6 text-sm leading-6 text-white/60">公司专注于工业飞行器设计服务、复合材料飞行平台生产销售和服务</p>
+        <h4 class="mb-4 text-sm font-semibold text-white">快速链接</h4>
+        <ul class="space-y-2">
+          <li><a href="index.html" class="text-sm text-white/50 hover:text-white transition-colors">首页</a></li>
+          <li><a href="#products" class="text-sm text-white/50 hover:text-white transition-colors">产品</a></li>
+          <li><a href="#about" class="text-sm text-white/50 hover:text-white transition-colors">关于我们</a></li>
+          <li><a href="#advantages" class="text-sm text-white/50 hover:text-white transition-colors">新闻</a></li>
+          <li><a href="#contact" class="text-sm text-white/50 hover:text-white transition-colors">联系我们</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="mb-6 text-sm font-semibold text-white">联系我们</h4>
+        <div class="space-y-4 text-sm text-white/60">
+          <div>
+            <p class="font-medium text-white/80">深圳市GLOBAL EAGLE PLUS技术有限公司</p>
+            <p class="mt-1">深圳市光明区鑫瑞科科技园B栋</p>
+          </div>
+          <div>
+            <p class="font-medium text-white/80">GLOBAL EAGLE PLUS（赣州）技术有限公司</p>
+            <p class="mt-1">江西省赣州市南康区龙回镇赣州低空经济产业园129-130栋</p>
+          </div>
+          <p>18824415502</p>
+          <p>FKJF-888@163.COM</p>
+        </div>
+      </div>
+      <div>
+        <h4 class="mb-6 text-sm font-semibold text-white">关注我们</h4>
+        <ul class="space-y-2">
+          <li class="text-sm text-white/50">新浪微博</li>
+          <li class="text-sm text-white/50">Youku</li>
+          <li class="text-sm text-white/50">微信公众号</li>
+          <li class="text-sm text-white/50">抖音</li>
+        </ul>
+        <div class="mt-6 flex h-24 w-24 items-center justify-center rounded-lg bg-white/10">
+          <span class="text-xs text-white/50">微信二维码</span>
+        </div>
+      </div>
+    </div>
+    <div class="mt-12 border-t border-white/10 pt-6 text-center text-xs text-white/30">
+      版权所有©2025 GLOBAL EAGLE PLUS（赣州）技术有限公司 粤ICP备17122991号-2 版权所有 网站地图 隐私政策
+    </div>
+  </div>
+</footer>
+
+	
+	
+	<script src="https://cdn.staticfile.net/translate.js/3.18.66/translate.js"></script>
+
+<script>
+    // 页面加载时，先从 localStorage 读取上次保存的语言
+    let savedLang = localStorage.getItem('my_site_language');
+    if (savedLang && savedLang !== 'chinese_simplified') {
+        // 如果有保存的语言且不是中文，提前设置目标语言（必须在 translate.execute() 之前设置）
+        translate.language.setLanguageTo(savedLang);
+    }
+
+    // 设置网站原始语言为简体中文
+    translate.language.setLocal('chinese_simplified');
+    // 设置翻译服务通道（可选）
+    translate.service.use('client.edge');
+    // 启动翻译，官方会自动在页面上生成下拉菜单
+    translate.execute();
+
+    // 监听官方生成的下拉菜单的 change 事件，以便在用户切换语言时保存选择
+    // 由于 translate.js 生成下拉菜单需要一点时间，所以我们使用 MutationObserver 或 setTimeout 等待元素出现
+    setTimeout(() => {
+        let select = document.getElementById('translate-select');
+        if (select) {
+            // 如果有保存的语言，同步下拉菜单的选中项
+            if (savedLang) {
+                let option = select.querySelector(`option[value="${savedLang}"]`);
+                if (option) option.selected = true;
+            }
+            // 监听 change 事件
+            select.addEventListener('change', function(e) {
+                let selectedLang = e.target.value;
+                localStorage.setItem('my_site_language', selectedLang);
+            });
+        }
+    }, 500); // 延迟 500 毫秒等待元素生成，可根据实际情况调整
+</script>
+	
+	
+	
+	
+	
+	
+	
+	
+<script>
+// Navbar scroll effect
+window.addEventListener('scroll',function(){
+  var nb=document.getElementById('navbar');
+  if(window.scrollY>20){nb.style.background='rgba(10,46,92,.95)';nb.style.boxShadow='0 4px 20px rgba(0,0,0,.15)';nb.style.backdropFilter='blur(12px)'}
+  else{nb.style.background='linear-gradient(to right,#0A2E5C,#1A4A8A)';nb.style.boxShadow='none';nb.style.backdropFilter='none'}
+});
+
+// Carousel
+var cur=0,total=3,autoTimer;
+var track=document.getElementById('carouselTrack');
+var dots=document.getElementById('carouselDots').children;
+function upd(){track.style.transform='translateX(-'+cur*100+'%)';for(var i=0;i<dots.length;i++){if(i===cur){dots[i].className='h-2.5 w-8 rounded-full bg-white transition-all'}else{dots[i].className='h-2.5 w-2.5 rounded-full bg-white/50 hover:bg-white/70 transition-all'}}}
+function carouselNext(){cur=(cur+1)%total;upd();resetAuto()}
+function carouselPrev(){cur=(cur-1+total)%total;upd();resetAuto()}
+function carouselGo(i){cur=i;upd();resetAuto()}
+function resetAuto(){clearInterval(autoTimer);autoTimer=setInterval(carouselNext,5000)}
+autoTimer=setInterval(carouselNext,5000);
+
+// Touch swipe for carousel
+var touchStartX=0,touchEndX=0;
+track.addEventListener('touchstart',function(e){touchStartX=e.changedTouches[0].screenX},false);
+track.addEventListener('touchend',function(e){touchEndX=e.changedTouches[0].screenX;if(touchStartX-touchEndX>50)carouselNext();if(touchEndX-touchStartX>50)carouselPrev()},false);
+
+// Stats animation
+var statsAnimated=false;
+var statsObs=new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){
+    if(entry.isIntersecting&&!statsAnimated){
+      statsAnimated=true;
+      document.querySelectorAll('#statsGrid [data-target]').forEach(function(el){
+        var target=parseInt(el.dataset.target),suffix=el.dataset.suffix,fmt=el.dataset.format==='true';
+        var dur=2000,steps=60,inc=target/steps,cur=0;
+        var timer=setInterval(function(){
+          cur+=inc;if(cur>=target){cur=target;clearInterval(timer)}
+          el.textContent=(fmt?Math.floor(cur).toLocaleString():Math.floor(cur))+suffix;
+        },dur/steps);
+      });
+    }
+  });
+},{threshold:0.5});
+statsObs.observe(document.getElementById('statsGrid'));
+</script>
+</body>
+</html>
