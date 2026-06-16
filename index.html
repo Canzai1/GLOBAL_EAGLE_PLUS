@@ -1,43 +1,826 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>TeJieWen TJW 无人机科技 | 农业喷洒无人机与工业无人机展示</title>
-<meta name="description" content="TJW无人机科技展示农业喷洒无人机、垂直起降无人机、测绘无人机、巡检无人机、OEM/ODM定制和生产线服务。" />
+	<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="description" content="TeJieWen提供工业级无人机设计、复合材料飞行平台生产、无人机零配件制造、定制化无人机解决方案与售后服务。"/>
+<meta name="keywords" content="TeJieWen,TJW,工业无人机,复合翼无人机,六旋翼无人机,无人机制造商,无人机定制,低空经济"/>
+<meta name="robots" content="index,follow"/>
+<meta name="theme-color" content="#0A2E5C"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="TeJieWen"/>
+<meta property="og:title" content="TeJieWen - 工业级无人机解决方案"/>
+<meta property="og:description" content="一站式工业无人机制造商，覆盖设计、复合材料平台、生产调试与售后服务。"/>
+<meta property="og:image" content="BgImages/tjw-home-hero.png"/>
+<title>TeJieWen - 工业级无人机解决方案与制造服务</title>
+<link rel="icon" type="image/png" href="images/tjw-logo.png"/>
+<link rel="preload" as="image" href="./BgImages/tjw-home-hero.png"/>
+<script src="js/css.js"></script>
+<script>
+tailwind.config={theme:{extend:{colors:{navy:'#0A2E5C',navyLight:'#1A5CB0',dark:'#0F1724',textDark:'#1A1A2E',textGray:'#6B7280',lightBg:'#F5F7FA'},fontFamily:{sans:['PingFang SC','Hiragino Sans GB','Microsoft YaHei','ui-sans-serif','system-ui','sans-serif']}}}}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "TeJieWen",
+  "alternateName": "TJW",
+  "description": "工业级无人机设计、制造、定制与售后服务商。",
+  "telephone": "18824415502",
+  "email": "FKJF-888@163.COM",
+  "address": [
+    {
+      "@type": "PostalAddress",
+      "addressLocality": "深圳市光明区",
+      "streetAddress": "鑫瑞科科技园B栋",
+      "addressCountry": "CN"
+    },
+    {
+      "@type": "PostalAddress",
+      "addressLocality": "江西省赣州市南康区",
+      "streetAddress": "龙回镇赣州低空经济产业园129-130栋",
+      "addressCountry": "CN"
+    }
+  ]
+}
+</script>
+<!--		<script src="https://cdn.staticfile.net/translate.js/3.18.66/translate.js"></script>-->
+
+
 <style>
-:root{--navy:#082A5A;--deep:#06162E;--blue:#0B66C3;--cyan:#67E8F9;--text:#162033;--muted:#64748B;--light:#F5F8FC;--line:#DDE8F5;--shadow:0 18px 48px rgba(14,42,84,.12)}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,"Microsoft YaHei","PingFang SC",sans-serif;color:var(--text);background:#fff}a{text-decoration:none;color:inherit}img{display:block;max-width:100%}.container{width:min(1200px,calc(100% - 32px));margin:0 auto}
-.topbar{background:var(--deep);color:rgba(255,255,255,.76);font-size:13px}.topbar .container{min-height:38px;display:flex;align-items:center;justify-content:space-between;gap:18px}.header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}.nav{height:82px;display:flex;align-items:center;justify-content:space-between}.brand{display:flex;align-items:center;gap:14px}.brand-logo{width:58px;height:58px;border-radius:16px;border:1px solid var(--line);background:#fff;object-fit:contain}.brand strong{display:block;color:var(--navy);font-size:26px;letter-spacing:.12em;line-height:1}.brand span{display:block;margin-top:6px;color:var(--muted);font-size:12px;letter-spacing:.12em;text-transform:uppercase}.nav-links{display:flex;align-items:center;gap:24px;color:#334155;font-size:14px;font-weight:700}.nav-links a:hover{color:var(--blue)}.nav-cta{padding:11px 18px;border-radius:999px;background:var(--navy);color:#fff!important}.menu-btn{display:none;border:0;background:none;font-size:30px;color:var(--navy)}
-.hero{position:relative;min-height:720px;display:flex;align-items:center;overflow:hidden;background:#071F42}.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(3,20,45,.92),rgba(3,20,45,.72) 45%,rgba(3,20,45,.18) 78%,rgba(3,20,45,.05)),linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.2))}.hero-content{position:relative;z-index:2;max-width:820px;padding:90px 0 118px}.kicker{display:inline-flex;align-items:center;gap:10px;color:#8BE7FF;font-size:13px;font-weight:900;letter-spacing:.12em;text-transform:uppercase}.kicker:before{content:"";width:9px;height:9px;border-radius:50%;background:var(--cyan);box-shadow:0 0 18px var(--cyan)}.hero h1{margin:24px 0 22px;color:#fff;font-size:clamp(42px,5.7vw,72px);line-height:1.05;letter-spacing:-.045em}.hero h1 span{color:#8BE7FF}.hero p{margin:0;max-width:720px;color:#D8E8FF;font-size:19px;line-height:1.8}.hero-tags{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}.hero-tag{padding:12px 17px;border-radius:999px;background:#fff;color:var(--navy);font-size:14px;font-weight:800}.hero-side{position:absolute;right:calc((100% - min(1200px,calc(100% - 32px)))/2);bottom:64px;z-index:3;width:360px;padding:26px;border-radius:28px;background:rgba(255,255,255,.92);backdrop-filter:blur(18px);box-shadow:var(--shadow)}.hero-side h3{margin:0 0 14px;color:var(--navy);font-size:22px}.hero-side ul{margin:0;padding:0;list-style:none}.hero-side li{display:flex;justify-content:space-between;gap:18px;padding:12px 0;border-bottom:1px solid var(--line);font-size:14px;color:#475569}.hero-side li:last-child{border-bottom:0}.hero-side b{color:var(--blue)}
-.stats{position:relative;z-index:4;margin-top:-54px}.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.stat{padding:25px 22px;border-radius:24px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow)}.stat strong{display:block;color:var(--navy);font-size:23px}.stat span{display:block;margin-top:8px;color:var(--muted);font-size:14px;line-height:1.5}section{padding:92px 0}.section-head{max-width:860px;margin-bottom:46px}.section-label{display:inline-block;color:var(--blue);font-size:13px;font-weight:900;letter-spacing:.12em;text-transform:uppercase}.section-head h2{margin:14px 0 14px;color:#111827;font-size:clamp(30px,4vw,44px);line-height:1.15;letter-spacing:-.03em}.section-head p{margin:0;color:var(--muted);font-size:16px;line-height:1.8}
-.products{background:var(--light)}.product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}.product-card{background:#fff;border:1px solid var(--line);border-radius:26px;overflow:hidden;box-shadow:0 12px 30px rgba(14,42,84,.07);transition:.25s}.product-card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}.product-img{height:250px;background:#EAF5FF;overflow:hidden;position:relative}.product-img img{width:100%;height:100%;object-fit:cover;transition:.45s}.product-card:hover .product-img img{transform:scale(1.05)}.product-badge{position:absolute;left:18px;top:18px;padding:8px 12px;border-radius:999px;background:rgba(8,42,90,.82);color:#fff;font-size:12px;font-weight:900;letter-spacing:.09em;backdrop-filter:blur(8px)}.product-body{padding:26px}.product-type{display:inline-block;margin-bottom:12px;padding:6px 12px;border-radius:999px;background:#EAF5FF;color:var(--blue);font-size:12px;font-weight:900;letter-spacing:.08em}.product-body h3{margin:0 0 10px;color:#111827;font-size:22px}.product-body p{margin:0 0 18px;color:var(--muted);line-height:1.75;font-size:15px}.specs{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.spec{padding:10px;border-radius:14px;background:#F5F8FC;border:1px solid #E7EEF7}.spec small{display:block;color:#7C8BA0;font-size:11px}.spec b{display:block;margin-top:4px;color:var(--navy);font-size:13px}
-.featured{background:#fff}.featured-wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:38px;align-items:center}.featured-gallery{display:grid;grid-template-columns:1fr 1fr;gap:16px}.gallery-img{min-height:250px;border-radius:26px;overflow:hidden;background:#EAF5FF;box-shadow:0 14px 34px rgba(14,42,84,.08)}.gallery-img.large{grid-column:span 2;min-height:360px}.gallery-img img{width:100%;height:100%;object-fit:cover}.feature-panel{padding:36px;border-radius:30px;background:linear-gradient(135deg,#062B5F,#0B5CB8);color:#fff;box-shadow:var(--shadow)}.feature-panel h2{margin:0 0 14px;font-size:38px;line-height:1.15;letter-spacing:-.03em}.feature-panel p{margin:0 0 26px;color:#D8E8FF;line-height:1.85}.feature-list{display:grid;gap:12px}.feature-list div{padding:14px 16px;border-radius:18px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);font-weight:800}
-.applications{background:var(--light)}.application-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}.application-card{padding:26px;border-radius:24px;background:#fff;border:1px solid var(--line);box-shadow:0 10px 28px rgba(14,42,84,.06)}.application-card .num{width:54px;height:54px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;border-radius:18px;background:#EAF5FF;color:var(--blue);font-weight:900}.application-card h3{margin:0 0 10px;color:#111827;font-size:20px}.application-card p{margin:0;color:var(--muted);line-height:1.7;font-size:15px}
-.oem{position:relative;overflow:hidden;background:linear-gradient(135deg,#061A38,#0B5CB8);color:#fff}.oem:before{content:"";position:absolute;right:-180px;top:-180px;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle,rgba(103,232,249,.24),transparent 65%)}.oem .container{position:relative}.oem .section-label{color:#8BE7FF}.oem .section-head h2{color:#fff}.oem .section-head p{color:#D8E8FF}.oem-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}.oem-card{padding:34px;border-radius:28px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(10px)}.oem-card h3{margin:0 0 18px;color:#fff;font-size:28px}.oem-card ul{list-style:none;margin:0;padding:0}.oem-card li{position:relative;padding:13px 0 13px 30px;color:#D8E8FF;border-bottom:1px solid rgba(255,255,255,.12)}.oem-card li:last-child{border-bottom:0}.oem-card li:before{content:"✓";position:absolute;left:0;color:#8BE7FF;font-weight:900}
-.production{background:#fff}.flow-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.flow-step{padding:28px 24px;border-radius:24px;background:var(--light);border:1px solid var(--line)}.flow-step b{display:inline-block;margin-bottom:14px;color:var(--blue);font-size:13px;letter-spacing:.14em}.flow-step h3{margin:0 0 10px;color:#111827}.flow-step p{margin:0;color:var(--muted);line-height:1.7;font-size:15px}.about{background:#F5F8FC}.about-card{display:grid;grid-template-columns:320px 1fr;gap:48px;align-items:center;padding:46px;border-radius:34px;background:#0B2342;color:#fff}.about-logo-box{padding:34px;border-radius:30px;background:#fff}.about-card h2{margin:0 0 16px;font-size:40px;letter-spacing:-.03em}.about-card p{margin:0 0 18px;color:#D8E8FF;line-height:1.85}.about-badges{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}.about-badge{padding:10px 14px;border-radius:999px;background:rgba(255,255,255,.12);color:#fff;font-size:13px;font-weight:800}.footer{background:#06162E;color:rgba(255,255,255,.68);padding:30px 0}.footer .container{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
-@media(max-width:1050px){.nav-links{display:none}.menu-btn{display:block}.nav-links.open{position:absolute;top:82px;left:16px;right:16px;display:flex;flex-direction:column;align-items:flex-start;padding:22px;border-radius:22px;background:#fff;box-shadow:var(--shadow)}.hero-side{display:none}.stats-grid,.product-grid,.application-grid,.flow-grid{grid-template-columns:repeat(2,1fr)}.featured-wrap,.about-card{grid-template-columns:1fr}}@media(max-width:640px){.topbar{display:none}.nav{height:72px}.brand-logo{width:48px;height:48px}.brand strong{font-size:22px}.brand span{font-size:10px}.hero{min-height:640px}.hero-content{padding:72px 0 86px}.hero h1{font-size:42px}.stats-grid,.product-grid,.application-grid,.oem-grid,.flow-grid{grid-template-columns:1fr}.featured-gallery{grid-template-columns:1fr}.gallery-img.large{grid-column:auto}section{padding:72px 0}.about-card{padding:28px}}
+html{scroll-behavior:smooth}
+.tjw-hero-bg{background-color:#f8fbff;background-image:url('./BgImages/tjw-home-hero.png');background-position:center;background-repeat:no-repeat;background-size:min(90vw,1500px) auto}
+@media (max-width:640px){.tjw-hero-bg{background-position:center 42%;background-size:auto 58vh}}
+.flip-card{perspective:1000px}
+.flip-card-inner{position:relative;width:100%;height:100%;transition:transform .6s ease-in-out;transform-style:preserve-3d}
+.flip-card:hover .flip-card-inner{transform:rotateY(180deg)}
+.flip-card-front,.flip-card-back{position:absolute;inset:0;backface-visibility:hidden;border-radius:12px}
+.flip-card-back{transform:rotateY(180deg)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.animate-fade-up{animation:fadeUp .6s ease forwards}
+	:root {
+            --fab-size: 54px;
+            --fab-bg: linear-gradient(135deg, #4f6ef7, #6c5ce7);
+            --fab-shadow: 0 6px 20px rgba(76, 90, 220, 0.4);
+            --fab-shadow-hover: 0 10px 28px rgba(76, 90, 220, 0.55);
+            --transition-speed: 0.25s;
+        }
+	 /* ========== 悬浮按钮容器 DIV ========== */
+        #translate {
+/*			*/
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            z-index: 9999;
+            width: var(--fab-size);
+            height: var(--fab-size);
+            border-radius: 50%;
+            background: var(--fab-bg);
+            box-shadow: var(--fab-shadow);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition:
+                transform var(--transition-speed) cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow var(--transition-speed) ease,
+                border-radius var(--transition-speed) ease;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+            /* 伪元素：地球图标 */
+            /* 当select展开时，div也扩展为面板容器 */
+        }
+
+        /* 地球图标 - 使用伪元素 */
+        #translate::before {
+            content: '🌐';
+            font-size: 26px;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 1;
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+                opacity 0.2s ease;
+            filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.15));
+        }
+
+        /* 按钮右下角小圆点指示器 - 使用伪元素 */
+        #translate::after {
+            content: '';
+            position: absolute;
+            bottom: 6px;
+            right: 6px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #2ed573;
+            border: 2px solid #fff;
+            z-index: 2;
+            pointer-events: none;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, opacity 0.25s ease;
+        }
+
+        /* hover效果 */
+        #translate:hover {
+            transform: scale(1.08);
+            box-shadow: var(--fab-shadow-hover);
+        }
+
+        #translate:hover::before {
+            transform: rotate(-15deg) scale(1.05);
+        }
+
+        /* 点击时的缩放反馈 */
+        #translate:active {
+            transform: scale(0.94);
+            transition: transform 0.12s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        /* ========== SELECT 元素样式 ========== */
+        #translate select {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 3;
+            cursor: pointer;
+            /* 默认状态：透明覆盖在圆形按钮上 */
+            opacity: 0;
+            -webkit-appearance: none;
+            appearance: none;
+            border: none;
+            outline: none;
+            background: transparent;
+            font-family: inherit;
+            font-size: 15px;
+            color: #1a1a2e;
+            border-radius: 50%;
+            transition:
+                opacity 0.2s ease,
+                border-radius 0.25s ease,
+                width 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+                height 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+                background 0.25s ease,
+                box-shadow 0.25s ease,
+                padding 0.25s ease;
+            /* 关键：让select在size=1时完全不可见，但保持可交互 */
+        }
+
+        /* ========== SELECT 展开状态（通过JS添加类名触发） ========== */
+        #translate.select-expanded {
+            /* div容器在select展开时变为矩形面板 */
+            border-radius: 16px;
+            width: 185px;
+            height: auto;
+            background: transparent;
+            box-shadow: none;
+            cursor: default;
+            transform: none;
+        }
+
+        #translate.select-expanded:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        #translate.select-expanded::before {
+            /* 隐藏地球图标 */
+            opacity: 0;
+            transform: scale(0.5) rotate(-30deg);
+            pointer-events: none;
+        }
+
+        #translate.select-expanded::after {
+            /* 隐藏绿色指示点 */
+            opacity: 0;
+            transform: scale(0);
+        }
+
+        /* select展开时的样式 */
+        #translate.select-expanded select {
+            opacity: 1;
+            border-radius: 16px;
+            width: 185px;
+            height: auto;
+            /* 半透明磨砂背景 */
+            background: rgba(255, 255, 255, 0.78);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            /* 阴影 */
+            box-shadow:
+                0 8px 32px rgba(0, 0, 0, 0.14),
+                0 2px 8px rgba(0, 0, 0, 0.08),
+                inset 0 1px 0 rgba(255, 255, 255, 0.6);
+            padding: 8px 0;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            /* 底部锚点 - 指向按钮位置 */
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            left: auto;
+            top: auto;
+            cursor: pointer;
+            outline: none;
+        }
+
+        /* ========== OPTION 选项样式 ========== */
+        #translate.select-expanded select option {
+            padding: 11px 18px;
+            font-size: 14.5px;
+            font-family: inherit;
+            cursor: pointer;
+            background: transparent;
+            color: #2d2d3a;
+            transition: background 0.15s ease, color 0.15s ease;
+            /* 分割线 */
+            border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+            letter-spacing: 0.3px;
+            white-space: nowrap;
+            /* 确保option之间有明显分隔 */
+            margin: 0;
+            outline: none;
+        }
+
+        /* 最后一个选项没有分割线 */
+        #translate.select-expanded select option:last-child {
+            border-bottom: none;
+        }
+
+        /* option悬停状态 */
+        #translate.select-expanded select option:hover {
+            background: rgba(79, 110, 247, 0.1);
+            color: #1a1a2e;
+        }
+
+        /* option选中状态 */
+        #translate.select-expanded select option:checked {
+            background: rgba(79, 110, 247, 0.13);
+            color: #4f6ef7;
+            font-weight: 600;
+        }
+
+        /* ========== 响应式：小屏幕适配 ========== */
+        @media (max-width: 480px) {
+            #translate {
+                bottom: 20px;
+                right: 20px;
+                width: 48px;
+                height: 48px;
+            }
+
+            #translate::before {
+                font-size: 22px;
+            }
+
+            #translate::after {
+                width: 8px;
+                height: 8px;
+                bottom: 4px;
+                right: 4px;
+            }
+
+            #translate.select-expanded {
+                width: 170px;
+                border-radius: 14px;
+            }
+
+            #translate.select-expanded select {
+                width: 170px;
+                border-radius: 14px;
+                padding: 6px 0;
+            }
+
+            #translate.select-expanded select option {
+                padding: 10px 15px;
+                font-size: 13.5px;
+            }
+
+            #translate {
+                --fab-size: 48px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            #translate {
+                bottom: 16px;
+                right: 16px;
+                width: 42px;
+                height: 42px;
+                --fab-size: 42px;
+            }
+
+            #translate::before {
+                font-size: 20px;
+            }
+
+            #translate.select-expanded {
+                width: 155px;
+                border-radius: 12px;
+            }
+
+            #translate.select-expanded select {
+                width: 155px;
+                border-radius: 12px;
+                padding: 5px 0;
+            }
+
+            #translate.select-expanded select option {
+                padding: 9px 13px;
+                font-size: 13px;
+            }
+        }
+
+        /* ========== 暗色模式适配 ========== */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: #1a1a2e;
+                color: #ddd;
+            }
+
+            .page-content h1 {
+                color: #e8e8f0;
+            }
+
+            .page-content p {
+                color: #bbb;
+            }
+
+            .page-content .card {
+                background: #252540;
+                color: #ccc;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            }
+
+            .page-content .card h3 {
+                color: #e0e0ec;
+            }
+
+            .page-content .card p {
+                color: #aaa;
+            }
+
+            .page-content .card:hover {
+                box-shadow: 0 6px 22px rgba(0, 0, 0, 0.35);
+            }
+
+            #translate.select-expanded select {
+                background: rgba(40, 40, 60, 0.82);
+                backdrop-filter: blur(18px);
+                -webkit-backdrop-filter: blur(18px);
+                border: 1px solid rgba(255, 255, 255, 0.12);
+                box-shadow:
+                    0 8px 32px rgba(0, 0, 0, 0.35),
+                    0 2px 8px rgba(0, 0, 0, 0.2),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+                color: #e0e0ec;
+            }
+
+            #translate.select-expanded select option {
+                color: #d5d5e5;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            }
+
+            #translate.select-expanded select option:hover {
+                background: rgba(120, 140, 250, 0.15);
+            }
+
+            #translate.select-expanded select option:checked {
+                background: rgba(120, 140, 250, 0.2);
+                color: #a0b4ff;
+            }
+
+            #translate::after {
+                border-color: #2d2d45;
+            }
+        }
+
+        /* ========== 减少动画偏好 ========== */
+        @media (prefers-reduced-motion: reduce) {
+            #translate,
+            #translate::before,
+            #translate::after,
+            #translate select,
+            #translate.select-expanded select,
+            #translate.select-expanded select option {
+                transition-duration: 0.01ms !important;
+            }
+        }
 </style>
+	
 </head>
-<body>
-<div class="topbar"><div class="container"><div>TeJieWen / TJW 无人机科技 · 展示型独立站</div><div>农业喷洒 · 垂直起降 · 测绘 · 巡检 · OEM/ODM · 生产线服务</div></div></div>
-<header class="header"><div class="container nav"><a href="#home" class="brand"><img src="assets/tjw-logo.webp" alt="TJW Logo" class="brand-logo"/><div><strong>TJW</strong><span>TeJieWen Drone Technology</span></div></a><button class="menu-btn" id="menuBtn">☰</button><nav class="nav-links" id="navLinks"><a href="#home">首页</a><a href="#products">产品中心</a><a href="#featured">产品图库</a><a href="#applications">应用场景</a><a href="#oem">OEM/ODM</a><a href="#production">生产服务</a><a href="#about" class="nav-cta">关于TJW</a></nav></div></header>
-<section id="home" class="hero"><img class="hero-bg" src="assets/tjw-banner.webp" alt="TJW UAV banner"/><div class="container"><div class="hero-content"><div class="kicker">无人机厂家 · 展示型独立站</div><h1>农业喷洒无人机 + <span>垂直起降无人机解决方案</span></h1><p>TJW / TeJieWen 主要展示农业喷洒无人机、垂直起降无人机、测绘无人机、巡检无人机，以及 OEM/ODM 定制和生产线服务能力，适合海外客户快速了解产品和工厂实力。</p><div class="hero-tags"><span class="hero-tag">农业喷洒无人机</span><span class="hero-tag">垂直起降 VTOL</span><span class="hero-tag">测绘无人机</span><span class="hero-tag">巡检无人机</span><span class="hero-tag">OEM/ODM</span></div></div></div><aside class="hero-side"><h3>主营业务</h3><ul><li><span>核心产品</span><b>农业喷洒无人机</b></li><li><span>飞行平台</span><b>VTOL / 多旋翼</b></li><li><span>应用方向</span><b>测绘 / 巡检</b></li><li><span>服务能力</span><b>OEM/ODM + 生产线</b></li></ul></aside></section>
-<div class="stats"><div class="container stats-grid"><div class="stat"><strong>农业无人机</strong><span>植保、喷洒、施肥、农田作业</span></div><div class="stat"><strong>垂直起降平台</strong><span>长航时、远距离、测绘巡检任务</span></div><div class="stat"><strong>行业解决方案</strong><span>测绘、巡检、安防、公共安全</span></div><div class="stat"><strong>工厂服务能力</strong><span>OEM/ODM 定制与生产线服务</span></div></div></div>
-<section id="products" class="products"><div class="container"><div class="section-head"><span class="section-label">产品中心</span><h2>用现有素材展示核心产品线</h2><p>这一版把仓库里的无人机素材图填入产品区，整体定位是“产品展示型厂家官网”，不是交易型页面。</p></div><div class="product-grid">
-<article class="product-card"><div class="product-img"><img src="images/T2.jpg" alt="农业喷洒无人机"/><span class="product-badge">AGRI UAV</span></div><div class="product-body"><span class="product-type">农业喷洒</span><h3>K3A PRO T10 / 农业喷洒无人机系列</h3><p>适用于农田植保、果园喷洒、小中型田块作业，可作为农业无人机核心产品线展示。</p><div class="specs"><div class="spec"><small>载荷容量</small><b>10L</b></div><div class="spec"><small>飞控系统</small><b>K3A Pro</b></div><div class="spec"><small>喷头数量</small><b>4个喷头</b></div><div class="spec"><small>飞行时间</small><b>10-15分钟</b></div></div></div></article>
-<article class="product-card"><div class="product-img"><img src="images/T1.jpg" alt="垂直起降复合翼无人机"/><span class="product-badge">VTOL</span></div><div class="product-body"><span class="product-type">垂直起降</span><h3>垂直起降复合翼无人机</h3><p>融合多旋翼垂直起降与固定翼长航时优势，适合测绘、巡检、安防和远距离任务。</p><div class="specs"><div class="spec"><small>应用方向</small><b>测绘</b></div><div class="spec"><small>核心特点</small><b>长航时</b></div><div class="spec"><small>起降方式</small><b>垂直起降</b></div><div class="spec"><small>服务支持</small><b>OEM</b></div></div></div></article>
-<article class="product-card"><div class="product-img"><img src="images/T3.jpg" alt="测绘无人机"/><span class="product-badge">MAPPING</span></div><div class="product-body"><span class="product-type">测绘无人机</span><h3>测绘无人机平台</h3><p>适合航测、地形数据采集、土地规划、施工测绘和环境监测等应用场景。</p><div class="specs"><div class="spec"><small>应用场景</small><b>航测</b></div><div class="spec"><small>挂载设备</small><b>相机</b></div><div class="spec"><small>输出内容</small><b>数据</b></div><div class="spec"><small>平台类型</small><b>VTOL</b></div></div></div></article>
-<article class="product-card"><div class="product-img"><img src="images/T4.jpg" alt="工业巡检无人机"/><span class="product-badge">INSPECTION</span></div><div class="product-body"><span class="product-type">工业巡检</span><h3>多旋翼巡检无人机</h3><p>适用于电力巡检、设施巡查、公共安全、应急响应和多载荷工业任务。</p><div class="specs"><div class="spec"><small>平台类型</small><b>多旋翼</b></div><div class="spec"><small>载荷能力</small><b>灵活挂载</b></div><div class="spec"><small>应用场景</small><b>巡检</b></div><div class="spec"><small>结构特点</small><b>模块化</b></div></div></div></article>
-<article class="product-card"><div class="product-img"><img src="images/T2.jpg" alt="OEM ODM 定制服务"/><span class="product-badge">OEM/ODM</span></div><div class="product-body"><span class="product-type">定制服务</span><h3>OEM/ODM 无人机定制</h3><p>支持品牌Logo、颜色、喷洒系统、载荷、飞控配置、机型平台和项目型方案定制。</p><div class="specs"><div class="spec"><small>Logo</small><b>可定制</b></div><div class="spec"><small>颜色</small><b>可定制</b></div><div class="spec"><small>载荷</small><b>可选配</b></div><div class="spec"><small>平台</small><b>可选配</b></div></div></div></article>
-<article class="product-card"><div class="product-img"><img src="images/T1.jpg" alt="无人机生产线服务"/><span class="product-badge">LINE</span></div><div class="product-body"><span class="product-type">生产线服务</span><h3>无人机生产线服务</h3><p>提供装配流程规划、测试流程、设备匹配、人员培训、交付支持等生产线相关服务。</p><div class="specs"><div class="spec"><small>流程</small><b>装配</b></div><div class="spec"><small>测试</small><b>流程支持</b></div><div class="spec"><small>培训</small><b>人员支持</b></div><div class="spec"><small>服务模式</small><b>方案服务</b></div></div></div></article>
-</div></div></section>
-<section id="featured" class="featured"><div class="container featured-wrap"><div class="featured-gallery"><div class="gallery-img large"><img src="images/T1.jpg" alt="TJW VTOL 产品图库"/></div><div class="gallery-img"><img src="images/T2.jpg" alt="TJW 多旋翼产品图库"/></div><div class="gallery-img"><img src="images/T4.jpg" alt="TJW 无人机细节图库"/></div></div><div class="feature-panel"><h2>产品图库 + 能力展示</h2><p>这个板块用于把之前的无人机素材做成“产品视觉展示区”，让首页不是纯文字，而是直接体现你们有无人机产品、有平台、有工厂服务能力。</p><div class="feature-list"><div>✓ 无人机平台展示</div><div>✓ 农业 + 工业产品线</div><div>✓ OEM/ODM 定制能力</div><div>✓ 生产线服务能力</div></div></div></div></section>
-<section id="applications" class="applications"><div class="container"><div class="section-head"><span class="section-label">应用场景</span><h2>展示无人机可以解决哪些行业问题</h2><p>这个区域负责告诉客户：TJW 的产品不仅是单个无人机，也能覆盖农业、测绘、巡检、公共安全等多个应用场景。</p></div><div class="application-grid"><article class="application-card"><div class="num">01</div><h3>智慧农业</h3><p>农田喷洒、果园植保、施肥、播撒、精准农业作业。</p></article><article class="application-card"><div class="num">02</div><h3>测绘航测</h3><p>地形数据采集、三维建模、土地测绘、施工测量、环境监测。</p></article><article class="application-card"><div class="num">03</div><h3>电力巡检</h3><p>电力线路、塔架、管线、设施巡查和工业资产巡检任务。</p></article><article class="application-card"><div class="num">04</div><h3>公共安全</h3><p>应急响应、火情监测、救援辅助、巡逻安防和现场监控。</p></article></div></div></section>
-<section id="oem" class="oem"><div class="container"><div class="section-head"><span class="section-label">OEM/ODM + 工厂服务</span><h2>展示工厂能力，而不是做交易按钮</h2><p>你们的独立站核心是给客户看产品、看能力、看服务范围，所以这里重点展示定制服务和生产线服务。</p></div><div class="oem-grid"><article class="oem-card"><h3>OEM/ODM 定制服务</h3><ul><li>Logo、颜色、外观定制</li><li>喷洒系统和载荷匹配</li><li>飞行平台和飞控配置</li><li>产品资料和经销商支持</li><li>项目型客户无人机方案定制</li></ul></article><article class="oem-card"><h3>生产线服务</h3><ul><li>无人机装配线规划</li><li>测试和校准流程支持</li><li>人员培训和操作指导</li><li>生产设备匹配</li><li>长期技术与售后沟通支持</li></ul></article></div></div></section>
-<section id="production" class="production"><div class="container"><div class="section-head"><span class="section-label">服务流程</span><h2>客户合作流程展示</h2><p>这个流程区让海外客户快速理解如何与你们合作，提升专业度和信任感。</p></div><div class="flow-grid"><div class="flow-step"><b>STEP 01</b><h3>需求确认</h3><p>确认产品类型、载荷、应用场景、续航时间和定制需求。</p></div><div class="flow-step"><b>STEP 02</b><h3>方案配置</h3><p>推荐无人机平台、喷洒系统、相机载荷或巡检配置。</p></div><div class="flow-step"><b>STEP 03</b><h3>生产交付</h3><p>根据项目需求安排样机、生产、装配、检测和包装。</p></div><div class="flow-step"><b>STEP 04</b><h3>后续支持</h3><p>提供资料、操作支持、备件服务以及生产线服务支持。</p></div></div></div></section>
-<section id="about" class="about"><div class="container"><div class="about-card"><div class="about-logo-box"><img src="assets/tjw-logo.webp" alt="TeJieWen TJW Logo"/></div><div><h2>TeJieWen / TJW 无人机科技</h2><p>TJW 独立站定位为展示型无人机品牌官网，主要展示农业喷洒无人机、垂直起降无人机、测绘巡检平台、OEM/ODM 定制和生产线服务。</p><p>整体风格保留厂家型、工业型、展示型，不强调购物车和交易，只强化产品、应用和制造服务能力。</p><div class="about-badges"><span class="about-badge">无人机厂家</span><span class="about-badge">农业无人机</span><span class="about-badge">VTOL平台</span><span class="about-badge">OEM/ODM</span><span class="about-badge">生产线服务</span></div></div></div></div></section>
-<footer class="footer"><div class="container"><span>© TeJieWen TJW 无人机科技</span><span>农业喷洒 · 垂直起降 · 测绘 · 巡检 · OEM/ODM</span></div></footer>
-<script>const btn=document.getElementById('menuBtn');const nav=document.getElementById('navLinks');btn&&btn.addEventListener('click',()=>nav.classList.toggle('open'));document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));</script>
+<body class="font-sans text-textDark">
+
+<!-- Navbar -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-gradient-to-r from-navy to-[#1A4A8A]">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex h-16 items-center justify-between">
+      <a href="index.html" class="flex flex-shrink-0 items-center gap-3" aria-label="TeJieWen 首页">
+        <img src="images/tjw-logo.png" alt="TJW logo" class="h-10 w-10 rounded-full bg-white object-contain p-0.5 shadow-sm"/>
+        <span class="text-lg sm:text-2xl font-bold tracking-[0.12em] text-white">TeJieWen</span>
+      </a>
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="index.html" class="text-sm font-medium text-white/90 hover:text-white transition-colors">首页</a>
+        <a href="#products" class="text-sm font-medium text-white/90 hover:text-white transition-colors">产品</a>
+        <a href="#about" class="text-sm font-medium text-white/90 hover:text-white transition-colors">关于我们</a>
+        <a href="#advantages" class="text-sm font-medium text-white/90 hover:text-white transition-colors">新闻</a>
+        <a href="#contact" class="text-sm font-medium text-white/90 hover:text-white transition-colors">联系我们</a>
+      </div>
+<!--
+      <div class="hidden md:flex items-center space-x-4">
+        <span class="text-sm text-white/80">简体中文</span>
+      </div>
+-->
+<!--
+		<div class="lang-selector hidden md:flex items-center space-x-4 text-white/80">
+    					🌐 语言：
+    		<select id="languageSwitcher text-sm">
+        		<option value="chinese_simplified">中文</option>
+        		<option value="english">English</option>
+        		<option value="japanese">日本語</option>
+    		</select>
+-->
+<!--</div>-->
+      <button id="mobileMenuBtn" type="button" aria-label="打开移动端导航" aria-controls="mobileMenu" class="text-white md:hidden" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </div>
+  <div id="mobileMenu" class="hidden border-t border-white/10 bg-navy md:hidden">
+    <div class="px-4 py-3 space-y-1">
+      <a href="index.html" class="block px-3 py-2 text-sm font-medium text-white/90 hover:bg-white/10 rounded" onclick="document.getElementById('mobileMenu').classList.add('hidden')">首页</a>
+      <a href="#products" class="block px-3 py-2 text-sm font-medium text-white/90 hover:bg-white/10 rounded" onclick="document.getElementById('mobileMenu').classList.add('hidden')">产品</a>
+      <a href="#about" class="block px-3 py-2 text-sm font-medium text-white/90 hover:bg-white/10 rounded" onclick="document.getElementById('mobileMenu').classList.add('hidden')">关于我们</a>
+      <a href="#advantages" class="block px-3 py-2 text-sm font-medium text-white/90 hover:bg-white/10 rounded" onclick="document.getElementById('mobileMenu').classList.add('hidden')">新闻</a>
+      <a href="#contact" class="block px-3 py-2 text-sm font-medium text-white/90 hover:bg-white/10 rounded" onclick="document.getElementById('mobileMenu').classList.add('hidden')">联系我们</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Banner Carousel -->
+<div id="home" class="relative h-[86vh] min-h-[520px] max-h-[760px] overflow-hidden">
+  <div id="carouselTrack" class="flex h-full transition-transform duration-700 ease-in-out">
+    <div class="min-w-full relative h-full">
+      <div class="tjw-hero-bg absolute inset-0"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-white/70 via-white/10 to-transparent"></div>
+      <div class="absolute inset-0 flex items-end">
+        <div class="mx-auto w-full max-w-7xl px-4 pb-20 sm:px-6 sm:pb-24 lg:px-8">
+          <div class="flex justify-center">
+            <h1 class="sr-only">TeJieWen 无人机科技</h1>
+            <div class="flex flex-wrap justify-center gap-3">
+              <a href="#products" class="inline-flex items-center rounded-md bg-white px-6 py-3 text-sm font-semibold text-navy transition-all hover:bg-white/90 hover:shadow-lg">查看产品</a>
+              <a href="#contact" class="inline-flex items-center rounded-md border border-navy/60 bg-white/40 px-6 py-3 text-sm font-semibold text-navy transition-all hover:bg-white/70">联系咨询</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="min-w-full relative h-full">
+      <div class="absolute inset-0 bg-cover bg-center" style="background-image:url('./BgImages/8656FA68EBC1C9DAA45EA7AB0FF08306_w2057h1158.jpg')"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent"></div>
+      <div class="absolute inset-0 flex items-center">
+        <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="max-w-2xl">
+            <h2 class="mb-4 text-3xl sm:text-5xl lg:text-6xl font-bold leading-tight text-white">Advanced Manufacturing</h2>
+            <p class="text-base sm:text-xl text-white/80">High-efficiency production · 12,000 m² facility · Strict quality control</p>
+            <div class="mt-8 flex flex-wrap gap-3">
+              <a href="#products" class="inline-flex items-center rounded-md bg-white px-6 py-3 text-sm font-semibold text-navy transition-all hover:bg-white/90 hover:shadow-lg">View Products</a>
+              <a href="#contact" class="inline-flex items-center rounded-md border border-white/70 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-white/10">Contact Us</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="min-w-full relative h-full">
+      <div class="absolute inset-0 bg-cover bg-center" style="background-image:url('./BgImages/u=110640539,1768127843&fm=253&fmt=auto&app=138&f=JPEG.webp')"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent"></div>
+      <div class="absolute inset-0 flex items-center">
+        <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="max-w-2xl">
+            <h2 class="mb-4 text-3xl sm:text-5xl lg:text-6xl font-bold leading-tight text-white">Industry Applications</h2>
+            <p class="text-base sm:text-xl text-white/80">Public Safety · Power Inspection · Agriculture · Mapping</p>
+            <div class="mt-8 flex flex-wrap gap-3">
+              <a href="#products" class="inline-flex items-center rounded-md bg-white px-6 py-3 text-sm font-semibold text-navy transition-all hover:bg-white/90 hover:shadow-lg">View Products</a>
+              <a href="#contact" class="inline-flex items-center rounded-md border border-white/70 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-white/10">Contact Us</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button type="button" aria-label="上一张轮播图" onclick="carouselPrev()" class="absolute left-4 top-1/2 -translate-y-1/2 z-10 rounded-full bg-black/30 p-2 text-white backdrop-blur-sm hover:bg-black/50 transition-colors">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+  </button>
+  <button type="button" aria-label="下一张轮播图" onclick="carouselNext()" class="absolute right-4 top-1/2 -translate-y-1/2 z-10 rounded-full bg-black/30 p-2 text-white backdrop-blur-sm hover:bg-black/50 transition-colors">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+  </button>
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex space-x-3" id="carouselDots">
+    <button type="button" aria-label="切换到第1张轮播图" onclick="carouselGo(0)" class="h-2.5 w-8 rounded-full bg-white transition-all"></button>
+    <button type="button" aria-label="切换到第2张轮播图" onclick="carouselGo(1)" class="h-2.5 w-2.5 rounded-full bg-white/50 hover:bg-white/70 transition-all"></button>
+    <button type="button" aria-label="切换到第3张轮播图" onclick="carouselGo(2)" class="h-2.5 w-2.5 rounded-full bg-white/50 hover:bg-white/70 transition-all"></button>
+  </div>
+</div>
+
+<!-- Products -->
+<section id="products" class="bg-lightBg py-16 sm:py-24">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="mb-10 sm:mb-14 flex flex-col items-center text-center">
+      <span class="mb-3 inline-block rounded-full bg-navy/10 px-4 py-1 text-xs font-semibold tracking-wider text-navy">无人机产品</span>
+      <h2 class="mb-4 text-2xl sm:text-4xl font-bold text-textDark">工业级无人机产品系列</h2>
+      <p class="max-w-2xl text-sm leading-6 text-textGray">公司专注于工业飞行器设计服务、复合材料飞行平台生产销售和服务，如复合材料无人机机架、PNP、飞行平台、无人机零配件生产制造、定制类无人机产品等</p>
+      <div class="mt-6 flex items-center gap-1.5">
+        <span class="h-1 w-8 rounded-full bg-navy"></span>
+        <span class="h-1 w-2 rounded-full bg-navyLight"></span>
+        <span class="h-1 w-1 rounded-full bg-navyLight/40"></span>
+      </div>
+    </div>
+<!--	  第一个-->
+    <div class="grid grid-cols-2 gap-3 sm:gap-7">
+      <a href="./vtol/index.html" class="group relative overflow-hidden rounded-xl sm:rounded-2xl bg-white shadow-sm hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
+        <div class="relative aspect-square w-full overflow-hidden">
+          <img src="images/T1.jpg" alt="垂直起降复合翼无人机" loading="lazy" decoding="async" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"/>
+          <span class="absolute left-3 top-3 sm:left-4 sm:top-4 rounded-md bg-navy/80 px-2.5 py-1 text-[10px] sm:text-xs font-medium tracking-wider text-white backdrop-blur-sm">VTOL</span>
+        </div>
+        <div class="flex items-center justify-between px-3 py-3 sm:px-5 sm:py-4">
+          <div class="min-w-0 flex-1">
+            <h3 class="truncate text-xs sm:text-base font-semibold text-textDark group-hover:text-navy transition-colors">垂直起降复合翼无人机</h3>
+            <p class="mt-0.5 truncate text-[10px] sm:text-xs text-textGray">融合多旋翼垂直起降与固定翼长航时优势</p>
+          </div>
+          <span class="ml-2 sm:ml-3 flex h-7 w-7 sm:h-8 sm:w-8 flex-shrink-0 items-center justify-center rounded-full bg-navy/5 text-navy transition-all group-hover:bg-navy group-hover:text-white">
+            <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </span>
+        </div>
+      </a>
+      <a href="./vtol/index2.html" class="group relative overflow-hidden rounded-xl sm:rounded-2xl bg-white shadow-sm hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
+        <div class="relative aspect-square w-full overflow-hidden">
+          <img src="images/T2.jpg" alt="六旋翼工业无人机" loading="lazy" decoding="async" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"/>
+          <span class="absolute left-3 top-3 sm:left-4 sm:top-4 rounded-md bg-navy/80 px-2.5 py-1 text-[10px] sm:text-xs font-medium tracking-wider text-white backdrop-blur-sm">HEXACOPTER</span>
+        </div>
+        <div class="flex items-center justify-between px-3 py-3 sm:px-5 sm:py-4">
+          <div class="min-w-0 flex-1">
+            <h3 class="truncate text-xs sm:text-base font-semibold text-textDark group-hover:text-navy transition-colors">六旋翼工业无人机</h3>
+            <p class="mt-0.5 truncate text-[10px] sm:text-xs text-textGray">强大载荷能力与飞行稳定性，多场景适配</p>
+          </div>
+          <span class="ml-2 sm:ml-3 flex h-7 w-7 sm:h-8 sm:w-8 flex-shrink-0 items-center justify-center rounded-full bg-navy/5 text-navy transition-all group-hover:bg-navy group-hover:text-white">
+            <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </span>
+        </div>
+      </a>
+      <a href="./vtol/index3.html" class="group relative overflow-hidden rounded-xl sm:rounded-2xl bg-white shadow-sm hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
+        <div class="relative aspect-square w-full overflow-hidden">
+          <img src="images/T3.jpg" alt="复合翼无人机侧视图" loading="lazy" decoding="async" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"/>
+          <span class="absolute left-3 top-3 sm:left-4 sm:top-4 rounded-md bg-navy/80 px-2.5 py-1 text-[10px] sm:text-xs font-medium tracking-wider text-white backdrop-blur-sm">VTOL-S</span>
+        </div>
+        <div class="flex items-center justify-between px-3 py-3 sm:px-5 sm:py-4">
+          <div class="min-w-0 flex-1">
+            <h3 class="truncate text-xs sm:text-base font-semibold text-textDark group-hover:text-navy transition-colors">复合翼无人机（侧视）</h3>
+            <p class="mt-0.5 truncate text-[10px] sm:text-xs text-textGray">流线型气动布局，复合材料一体成型</p>
+          </div>
+          <span class="ml-2 sm:ml-3 flex h-7 w-7 sm:h-8 sm:w-8 flex-shrink-0 items-center justify-center rounded-full bg-navy/5 text-navy transition-all group-hover:bg-navy group-hover:text-white">
+            <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </span>
+        </div>
+      </a>
+      <a href="./vtol/index4.html" class="group relative overflow-hidden rounded-xl sm:rounded-2xl bg-white shadow-sm hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
+        <div class="relative aspect-square w-full overflow-hidden">
+          <img src="images/T4.jpg" alt="六旋翼无人机详视图" loading="lazy" decoding="async" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"/>
+          <span class="absolute left-3 top-3 sm:left-4 sm:top-4 rounded-md bg-navy/80 px-2.5 py-1 text-[10px] sm:text-xs font-medium tracking-wider text-white backdrop-blur-sm">HEXA-D</span>
+        </div>
+        <div class="flex items-center justify-between px-3 py-3 sm:px-5 sm:py-4">
+          <div class="min-w-0 flex-1">
+            <h3 class="truncate text-xs sm:text-base font-semibold text-textDark group-hover:text-navy transition-colors">六旋翼无人机（详视）</h3>
+            <p class="mt-0.5 truncate text-[10px] sm:text-xs text-textGray">模块化快拆设计，碳纤维复合材料机身</p>
+          </div>
+          <span class="ml-2 sm:ml-3 flex h-7 w-7 sm:h-8 sm:w-8 flex-shrink-0 items-center justify-center rounded-full bg-navy/5 text-navy transition-all group-hover:bg-navy group-hover:text-white">
+            <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </span>
+        </div>
+      </a>
+    </div>
+	  <div data-inspector-line="102" data-inspector-column="8" data-inspector-relative-path="src/components/Products.tsx" class="mt-12 flex justify-center">
+		  <a data-inspector-line="103" data-inspector-column="10" data-inspector-relative-path="src/components/Products.tsx" class="group inline-flex items-center gap-2 rounded-full border-2 border-[#0A2E5C] px-8 py-3 text-sm font-medium text-[#0A2E5C] transition-all hover:bg-[#0A2E5C] hover:text-white hover:shadow-lg" href="more.html">查看更多
+			  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right h-4 w-4 transition-transform group-hover:translate-x-1" data-inspector-line="108" data-inspector-column="12" data-inspector-relative-path="src/components/Products.tsx">
+			  <path d="M5 12h14"></path>
+			  <path d="m12 5 7 7-7 7"></path>
+			  </svg>
+		  </a>
+	  </div>
+  </div>
+</section>
+
+<!-- Company Intro -->
+<section id="about" class="relative overflow-hidden">
+  <div class="absolute inset-0 bg-cover bg-center" style="background-image:url('./BgImages/u=110640539,1768127843&fm=253&fmt=auto&app=138&f=JPEG.webp')"></div>
+  <div class="absolute inset-0 bg-navy/85"></div>
+  <div class="relative max-w-7xl mx-auto px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+    <div class="max-w-2xl">
+      <h2 class="mb-6 text-2xl sm:text-4xl font-bold text-white">一站式无人机制造商</h2>
+      <div class="space-y-4 text-sm leading-7 text-white/80">
+        <p>深圳市TeJieWen技术有限公司2015年成立于深圳，2023年应江西省赣州市南康区政府招商引进，入驻赣州低空经济产业园2栋厂房共12000余平方米，成立TeJieWen（赣州）技术有限公司。</p>
+        <p>公司专注于工业飞行器设计服务、复合材料飞行平台生产销售和服务。是国内规模领先、最具竞争力的工业无人机企业之一，申请相关专利10余件，其中以多旋翼无人机、垂直起降复合翼、固定翼为主。公司始终坚持发扬"诚信、创新、沟通"为企业宗旨，以"技术、服务"为立业之本的团体精神，并形成一套完整的设计、仿真、开模、生产、调试、售后服务全套体系。</p>
+        <p>致力于为客户提供专业化、工具化的工业无人机系统。我司产品被广泛的用于公安、武警、消防、电力、植保、环保、地理勘测等行业。</p>
+        <p>公司与国内外众多知名无人机品牌企业建立了良好、稳固的合作代工关系，逐步形成强大的人才、技术和品牌优势。</p>
+        <p>公司拥有一支朝气蓬勃，平均年龄26岁的技术团队，具有开放性思维且具备专业的研发力量。</p>
+        <p>公司本着以客户三个满意为基本原则："产品质量的满意，技术的满意，售后服务满意"不断加强企业内部的综合竞争力，公司在竞争中求发展，在挑战中谋机遇，相信我司会给您提供最好、最优质的产品和完善的售后服务。</p>
+      </div>
+		
+    </div>
+  </div>
+</section>
+
+<!-- Stats -->
+<section class="bg-gradient-to-r from-navy to-navyLight py-12 sm:py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div id="statsGrid" class="grid grid-cols-2 gap-8 lg:grid-cols-4">
+      <div class="text-center stat-item"><div class="text-3xl sm:text-5xl font-bold text-white" data-target="10" data-suffix="+">0+</div><p class="mt-2 text-sm text-white/70">成立年限</p></div>
+      <div class="text-center stat-item"><div class="text-3xl sm:text-5xl font-bold text-white" data-target="12000" data-suffix="m²" data-format="true">0m²</div><p class="mt-2 text-sm text-white/70">厂房面积</p></div>
+      <div class="text-center stat-item"><div class="text-3xl sm:text-5xl font-bold text-white" data-target="100" data-suffix="+">0+</div><p class="mt-2 text-sm text-white/70">专业团队</p></div>
+      <div class="text-center stat-item"><div class="text-3xl sm:text-5xl font-bold text-white" data-target="1" data-suffix="亿">0亿</div><p class="mt-2 text-sm text-white/70">年营业额</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Advantages -->
+<section id="advantages" class="bg-lightBg py-16 sm:py-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="mb-10 sm:mb-12 text-center">
+      <h2 class="mb-4 text-2xl sm:text-3xl font-bold text-textDark">公司优势</h2>
+      <p class="mx-auto max-w-3xl text-sm text-textGray">我司致力于为客户提供专业化、工具化的工业无人机系统；我司产品被广泛的用于公安、武警、消防、电力、植保、环保、地理勘测等行业</p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+      <div class="flip-card h-[280px]"><div class="flip-card-inner"><div class="flip-card-front flex flex-col items-center justify-center bg-white p-6 shadow-md"><div class="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-navy/10"><svg class="w-8 h-8 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div><span class="mb-2 text-xs font-bold tracking-wider text-navyLight">01</span><h3 class="text-center text-base font-semibold text-textDark">专业的飞行器生产制作经验</h3></div><div class="flip-card-back flex flex-col items-center justify-center bg-gradient-to-br from-navy to-navyLight p-6 shadow-md"><div class="mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-white/20"><svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div><h3 class="mb-3 text-center text-base font-semibold text-white">专业的飞行器生产制作经验</h3><p class="text-center text-sm leading-relaxed text-white/80">拥有多年工业级无人机生产制造经验，从复合材料成型到整机调试，全流程严格把控，确保每一架飞行器达到行业最高标准。</p></div></div></div>
+
+      <div class="flip-card h-[280px]"><div class="flip-card-inner"><div class="flip-card-front flex flex-col items-center justify-center bg-white p-6 shadow-md"><div class="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-navy/10"><svg class="w-8 h-8 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg></div><span class="mb-2 text-xs font-bold tracking-wider text-navyLight">02</span><h3 class="text-center text-base font-semibold text-textDark">高效率生产体系</h3></div><div class="flip-card-back flex flex-col items-center justify-center bg-gradient-to-br from-navy to-navyLight p-6 shadow-md"><div class="mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-white/20"><svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg></div><h3 class="mb-3 text-center text-base font-semibold text-white">高效率生产体系</h3><p class="text-center text-sm leading-relaxed text-white/80">12000㎡现代化厂房配备自动化生产线，年产能覆盖数百架各型无人机，从原材料到成品全链条高效协同，快速响应客户交付需求。</p></div></div></div>
+
+      <div class="flip-card h-[280px]"><div class="flip-card-inner"><div class="flip-card-front flex flex-col items-center justify-center bg-white p-6 shadow-md"><div class="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-navy/10"><svg class="w-8 h-8 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></div><span class="mb-2 text-xs font-bold tracking-wider text-navyLight">03</span><h3 class="text-center text-base font-semibold text-textDark">高效的研发流程</h3></div><div class="flip-card-back flex flex-col items-center justify-center bg-gradient-to-br from-navy to-navyLight p-6 shadow-md"><div class="mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-white/20"><svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></div><h3 class="mb-3 text-center text-base font-semibold text-white">高效的研发流程</h3><p class="text-center text-sm leading-relaxed text-white/80">平均年龄26岁的技术团队具备开放性思维与专业研发力量，建立了从概念设计、仿真验证到试飞定型的敏捷研发流程，持续推动产品迭代。</p></div></div></div>
+
+      <div class="flip-card h-[280px]"><div class="flip-card-inner"><div class="flip-card-front flex flex-col items-center justify-center bg-white p-6 shadow-md"><div class="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-navy/10"><svg class="w-8 h-8 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg></div><span class="mb-2 text-xs font-bold tracking-wider text-navyLight">04</span><h3 class="text-center text-base font-semibold text-textDark">专业的设计团队</h3></div><div class="flip-card-back flex flex-col items-center justify-center bg-gradient-to-br from-navy to-navyLight p-6 shadow-md"><div class="mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-white/20"><svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg></div><h3 class="mb-3 text-center text-base font-semibold text-white">专业的设计团队</h3><p class="text-center text-sm leading-relaxed text-white/80">专业航空航天设计团队，涵盖气动、结构、电气等多学科，申请相关专利10余件，以多旋翼、垂直起降复合翼、固定翼为主打产品线。</p></div></div></div>
+
+      <div class="flip-card h-[280px]"><div class="flip-card-inner"><div class="flip-card-front flex flex-col items-center justify-center bg-white p-6 shadow-md"><div class="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-navy/10"><svg class="w-8 h-8 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div><span class="mb-2 text-xs font-bold tracking-wider text-navyLight">05</span><h3 class="text-center text-base font-semibold text-textDark">定制化解决方案与外包合作</h3></div><div class="flip-card-back flex flex-col items-center justify-center bg-gradient-to-br from-navy to-navyLight p-6 shadow-md"><div class="mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-white/20"><svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div><h3 class="mb-3 text-center text-base font-semibold text-white">定制化解决方案与外包合作</h3><p class="text-center text-sm leading-relaxed text-white/80">与国内外众多知名无人机品牌企业建立了稳固的合作代工关系，可根据客户需求提供从ODM设计到OEM生产的全流程定制化服务。</p></div></div></div>
+
+      <div class="flip-card h-[280px]"><div class="flip-card-inner"><div class="flip-card-front flex flex-col items-center justify-center bg-white p-6 shadow-md"><div class="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-navy/10"><svg class="w-8 h-8 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg></div><span class="mb-2 text-xs font-bold tracking-wider text-navyLight">06</span><h3 class="text-center text-base font-semibold text-textDark">生命周期支持服务</h3></div><div class="flip-card-back flex flex-col items-center justify-center bg-gradient-to-br from-navy to-navyLight p-6 shadow-md"><div class="mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-white/20"><svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg></div><h3 class="mb-3 text-center text-base font-semibold text-white">生命周期支持服务</h3><p class="text-center text-sm leading-relaxed text-white/80">形成完整的设计、仿真、开模、生产、调试、售后服务全套体系，始终以产品质量、技术、售后服务三个满意为基本原则，提供全生命周期保障。</p></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer id="contact" class="bg-dark pt-12 sm:pt-16 pb-8">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid gap-10 lg:grid-cols-3">
+      <div>
+        <div class="mb-4 flex items-center gap-3">
+          <img src="images/tjw-logo.png" alt="TJW logo" class="h-12 w-12 rounded-full bg-white object-contain p-1"/>
+          <span class="block text-lg sm:text-2xl font-bold tracking-[0.12em] text-white">TeJieWen</span>
+        </div>
+        <p class="mb-6 text-sm leading-6 text-white/60">公司专注于工业飞行器设计服务、复合材料飞行平台生产销售和服务</p>
+        <h4 class="mb-4 text-sm font-semibold text-white">快速链接</h4>
+        <ul class="space-y-2">
+          <li><a href="index.html" class="text-sm text-white/50 hover:text-white transition-colors">首页</a></li>
+          <li><a href="#products" class="text-sm text-white/50 hover:text-white transition-colors">产品</a></li>
+          <li><a href="#about" class="text-sm text-white/50 hover:text-white transition-colors">关于我们</a></li>
+          <li><a href="#advantages" class="text-sm text-white/50 hover:text-white transition-colors">新闻</a></li>
+          <li><a href="#contact" class="text-sm text-white/50 hover:text-white transition-colors">联系我们</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="mb-6 text-sm font-semibold text-white">联系我们</h4>
+        <div class="space-y-4 text-sm text-white/60">
+          <div>
+            <p class="font-medium text-white/80">深圳市TeJieWen技术有限公司</p>
+            <p class="mt-1">深圳市光明区鑫瑞科科技园B栋</p>
+          </div>
+          <div>
+            <p class="font-medium text-white/80">TeJieWen（赣州）技术有限公司</p>
+            <p class="mt-1">江西省赣州市南康区龙回镇赣州低空经济产业园129-130栋</p>
+          </div>
+          <p><a href="tel:18824415502" class="hover:text-white transition-colors">18824415502</a></p>
+          <p><a href="mailto:FKJF-888@163.COM" class="hover:text-white transition-colors">FKJF-888@163.COM</a></p>
+        </div>
+      </div>
+      <div>
+        <h4 class="mb-6 text-sm font-semibold text-white">关注我们</h4>
+        <ul class="space-y-2">
+          <li class="text-sm text-white/50">新浪微博</li>
+          <li class="text-sm text-white/50">Youku</li>
+          <li class="text-sm text-white/50">微信公众号</li>
+          <li class="text-sm text-white/50">抖音</li>
+        </ul>
+        <div class="mt-6 flex h-24 w-24 items-center justify-center rounded-lg bg-white/10">
+          <span class="text-xs text-white/50">微信二维码</span>
+        </div>
+      </div>
+    </div>
+    <div class="mt-12 border-t border-white/10 pt-6 text-center text-xs text-white/30">
+      版权所有©2025 TeJieWen（赣州）技术有限公司 粤ICP备17122991号-2 版权所有 网站地图 隐私政策
+    </div>
+  </div>
+</footer>
+	
+	
+	<script src="https://cdn.staticfile.net/translate.js/3.18.66/translate.js"></script>
+
+<script>
+    // 页面加载时，先从 localStorage 读取上次保存的语言
+    let savedLang = localStorage.getItem('my_site_language');
+    if (savedLang && savedLang !== 'chinese_simplified') {
+        // 如果有保存的语言且不是中文，提前设置目标语言（必须在 translate.execute() 之前设置）
+        translate.language.setLanguageTo(savedLang);
+    }
+
+    // 设置网站原始语言为简体中文
+    translate.language.setLocal('chinese_simplified');
+    // 设置翻译服务通道（可选）
+    translate.service.use('client.edge');
+    // 启动翻译，官方会自动在页面上生成下拉菜单
+    translate.execute();
+
+    // 监听官方生成的下拉菜单的 change 事件，以便在用户切换语言时保存选择
+    // 由于 translate.js 生成下拉菜单需要一点时间，所以我们使用 MutationObserver 或 setTimeout 等待元素出现
+    setTimeout(() => {
+        let select = document.getElementById('translate-select');
+        if (select) {
+            // 如果有保存的语言，同步下拉菜单的选中项
+            if (savedLang) {
+                let option = select.querySelector(`option[value="${savedLang}"]`);
+                if (option) option.selected = true;
+            }
+            // 监听 change 事件
+            select.addEventListener('change', function(e) {
+                let selectedLang = e.target.value;
+                localStorage.setItem('my_site_language', selectedLang);
+            });
+        }
+    }, 500); // 延迟 500 毫秒等待元素生成，可根据实际情况调整
+</script>
+	
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+<script>
+// Navbar scroll effect
+window.addEventListener('scroll',function(){
+  var nb=document.getElementById('navbar');
+  if(window.scrollY>20){nb.style.background='rgba(10,46,92,.95)';nb.style.boxShadow='0 4px 20px rgba(0,0,0,.15)';nb.style.backdropFilter='blur(12px)'}
+  else{nb.style.background='linear-gradient(to right,#0A2E5C,#1A4A8A)';nb.style.boxShadow='none';nb.style.backdropFilter='none'}
+});
+
+// Carousel
+var cur=0,total=3,autoTimer;
+var track=document.getElementById('carouselTrack');
+var dots=document.getElementById('carouselDots').children;
+function upd(){track.style.transform='translateX(-'+cur*100+'%)';for(var i=0;i<dots.length;i++){if(i===cur){dots[i].className='h-2.5 w-8 rounded-full bg-white transition-all'}else{dots[i].className='h-2.5 w-2.5 rounded-full bg-white/50 hover:bg-white/70 transition-all'}}}
+function carouselNext(){cur=(cur+1)%total;upd();resetAuto()}
+function carouselPrev(){cur=(cur-1+total)%total;upd();resetAuto()}
+function carouselGo(i){cur=i;upd();resetAuto()}
+function resetAuto(){clearInterval(autoTimer);autoTimer=setInterval(carouselNext,5000)}
+autoTimer=setInterval(carouselNext,5000);
+
+// Touch swipe for carousel
+var touchStartX=0,touchEndX=0;
+track.addEventListener('touchstart',function(e){touchStartX=e.changedTouches[0].screenX},false);
+track.addEventListener('touchend',function(e){touchEndX=e.changedTouches[0].screenX;if(touchStartX-touchEndX>50)carouselNext();if(touchEndX-touchStartX>50)carouselPrev()},false);
+
+// Stats animation
+var statsAnimated=false;
+var statsObs=new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){
+    if(entry.isIntersecting&&!statsAnimated){
+      statsAnimated=true;
+      document.querySelectorAll('#statsGrid [data-target]').forEach(function(el){
+        var target=parseInt(el.dataset.target),suffix=el.dataset.suffix,fmt=el.dataset.format==='true';
+        var dur=2000,steps=60,inc=target/steps,cur=0;
+        var timer=setInterval(function(){
+          cur+=inc;if(cur>=target){cur=target;clearInterval(timer)}
+          el.textContent=(fmt?Math.floor(cur).toLocaleString():Math.floor(cur))+suffix;
+        },dur/steps);
+      });
+    }
+  });
+},{threshold:0.5});
+statsObs.observe(document.getElementById('statsGrid'));
+</script>
+	
 </body>
 </html>
+

@@ -4,20 +4,21 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: {
-    default: 'GLOBAL EAGLE PLUS - 一站式无人机制造商',
-    template: '%s | GLOBAL EAGLE PLUS',
+    default: 'TeJieWen - 一站式无人机制造商',
+    template: '%s | TeJieWen',
   },
   description:
-    '深圳市GLOBAL EAGLE PLUS技术有限公司专注于工业飞行器设计服务、复合材料飞行平台生产销售和服务，是国内规模领先、最具市场竞争力的工业无人机企业之一。',
+    '深圳市TeJieWen技术有限公司专注于工业飞行器设计服务、复合材料飞行平台生产销售和服务，是国内规模领先、最具市场竞争力的工业无人机企业之一。',
   keywords: [
-    'GLOBAL EAGLE PLUS',
+    'TeJieWen',
+    'TJW',
     '无人机',
     '工业无人机',
     '复合材料',
     '飞行平台',
     '垂直起降',
   ],
-  authors: [{ name: 'GLOBAL EAGLE PLUS' }],
+  authors: [{ name: 'TeJieWen' }],
   robots: {
     index: true,
     follow: true,

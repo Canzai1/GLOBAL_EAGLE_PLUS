@@ -1,2 +1,4 @@
-BgImages/
-images/
+BgImages/*
+!BgImages/tjw-home-hero.png
+images/*
+!images/tjw-logo.png

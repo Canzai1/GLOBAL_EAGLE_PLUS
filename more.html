@@ -3,7 +3,18 @@
 	<head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>GLOBAL EAGLE PLUS - 一站式无人机制造商</title>
+<meta name="description" content="浏览TeJieWen工业级无人机产品系列，了解垂直起降复合翼无人机、六旋翼工业无人机与定制化飞行平台。"/>
+<meta name="keywords" content="TeJieWen产品,TJW无人机,工业无人机,复合翼无人机,六旋翼无人机,无人机平台,无人机定制"/>
+<meta name="robots" content="index,follow"/>
+<meta name="theme-color" content="#0A2E5C"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="TeJieWen"/>
+<meta property="og:title" content="TeJieWen - 无人机产品系列"/>
+<meta property="og:description" content="工业级无人机产品与定制化飞行平台，适用于巡检、消防、植保、测绘等行业。"/>
+<meta property="og:image" content="images/tjw-logo.png"/>
+<title>TeJieWen - 工业无人机产品系列</title>
+<link rel="icon" type="image/png" href="images/tjw-logo.png"/>
+<link rel="preload" as="image" href="images/T1.jpg"/>
 <script src="js/css.js"></script>
 <script>
 tailwind.config={theme:{extend:{colors:{navy:'#0A2E5C',navyLight:'#1A5CB0',dark:'#0F1724',textDark:'#1A1A2E',textGray:'#6B7280',lightBg:'#F5F7FA'},fontFamily:{sans:['PingFang SC','Hiragino Sans GB','Microsoft YaHei','ui-sans-serif','system-ui','sans-serif']}}}}
@@ -381,8 +392,9 @@ html{scroll-behavior:smooth}
 <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-gradient-to-r from-navy to-[#1A4A8A]">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex h-16 items-center justify-between">
-      <a href="index.html" class="flex-shrink-0">
-        <span class="text-xl sm:text-2xl font-bold tracking-[0.15em] text-white">GLOBAL EAGLE PLUS</span>
+      <a href="index.html" class="flex flex-shrink-0 items-center gap-3" aria-label="TeJieWen 首页">
+        <img src="images/tjw-logo.png" alt="TJW logo" class="h-10 w-10 rounded-full bg-white object-contain p-0.5 shadow-sm"/>
+        <span class="text-lg sm:text-2xl font-bold tracking-[0.12em] text-white">TeJieWen</span>
       </a>
       <div class="hidden md:flex items-center space-x-8">
         <a href="index.html" class="text-sm font-medium text-white/90 hover:text-white transition-colors">首页</a>
@@ -391,7 +403,7 @@ html{scroll-behavior:smooth}
         <a href="#advantages" class="text-sm font-medium text-white/90 hover:text-white transition-colors">新闻</a>
         <a href="#contact" class="text-sm font-medium text-white/90 hover:text-white transition-colors">联系我们</a>
       </div>
-      <button id="mobileMenuBtn" class="text-white md:hidden" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">
+      <button id="mobileMenuBtn" type="button" aria-label="打开移动端导航" aria-controls="mobileMenu" class="text-white md:hidden" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
       </button>
     </div>
@@ -413,7 +425,7 @@ html{scroll-behavior:smooth}
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="mb-10 sm:mb-14 flex flex-col items-center text-center">
       <span class="mb-3 inline-block rounded-full bg-navy/10 px-4 py-1 text-xs font-semibold tracking-wider text-navy">更多无人机产品</span>
-      <h2 class="mb-4 text-2xl sm:text-4xl font-bold text-textDark">更多无人机产品</h2>
+      <h1 class="mb-4 text-2xl sm:text-4xl font-bold text-textDark">更多无人机产品</h1>
       <p class="max-w-2xl text-sm leading-6 text-textGray">公司专注于工业飞行器设计服务、复合材料飞行平台生产销售和服务，如复合材料无人机机架、PNP、飞行平台、无人机零配件生产制造、定制类无人机产品等</p>
       <div class="mt-6 flex items-center gap-1.5">
         <span class="h-1 w-8 rounded-full bg-navy"></span>
@@ -425,7 +437,7 @@ html{scroll-behavior:smooth}
     <div class="grid grid-cols-2 gap-3 sm:gap-7">
       <a href="./vtol/index.html" class="group relative overflow-hidden rounded-xl sm:rounded-2xl bg-white shadow-sm hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
         <div class="relative aspect-square w-full overflow-hidden">
-          <img src="images/T1.jpg" alt="垂直起降复合翼无人机" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"/>
+          <img src="images/T1.jpg" alt="垂直起降复合翼无人机" loading="lazy" decoding="async" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"/>
           <span class="absolute left-3 top-3 sm:left-4 sm:top-4 rounded-md bg-navy/80 px-2.5 py-1 text-[10px] sm:text-xs font-medium tracking-wider text-white backdrop-blur-sm">VTOL</span>
         </div>
         <div class="flex items-center justify-between px-3 py-3 sm:px-5 sm:py-4">
@@ -440,7 +452,7 @@ html{scroll-behavior:smooth}
       </a>
       <a href="./vtol/index2.html" class="group relative overflow-hidden rounded-xl sm:rounded-2xl bg-white shadow-sm hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
         <div class="relative aspect-square w-full overflow-hidden">
-          <img src="images/T2.jpg" alt=""/>
+          <img src="images/T2.jpg" alt="六旋翼工业无人机" loading="lazy" decoding="async" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"/>
           <span class="absolute left-3 top-3 sm:left-4 sm:top-4 rounded-md bg-navy/80 px-2.5 py-1 text-[10px] sm:text-xs font-medium tracking-wider text-white backdrop-blur-sm">HEXACOPTER</span>
         </div>
         <div class="flex items-center justify-between px-3 py-3 sm:px-5 sm:py-4">
@@ -455,7 +467,7 @@ html{scroll-behavior:smooth}
       </a>
       <a href="./vtol/index3.html" class="group relative overflow-hidden rounded-xl sm:rounded-2xl bg-white shadow-sm hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
         <div class="relative aspect-square w-full overflow-hidden">
-          <img src="images/T3.jpg" alt=""/>
+          <img src="images/T3.jpg" alt="复合翼无人机侧视图" loading="lazy" decoding="async" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"/>
           <span class="absolute left-3 top-3 sm:left-4 sm:top-4 rounded-md bg-navy/80 px-2.5 py-1 text-[10px] sm:text-xs font-medium tracking-wider text-white backdrop-blur-sm">VTOL-S</span>
         </div>
         <div class="flex items-center justify-between px-3 py-3 sm:px-5 sm:py-4">
@@ -470,7 +482,7 @@ html{scroll-behavior:smooth}
       </a>
       <a href="./vtol/index4.html" class="group relative overflow-hidden rounded-xl sm:rounded-2xl bg-white shadow-sm hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
         <div class="relative aspect-square w-full overflow-hidden">
-          <img src="images/T4.jpg" alt=""/>
+          <img src="images/T4.jpg" alt="六旋翼无人机详视图" loading="lazy" decoding="async" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"/>
           <span class="absolute left-3 top-3 sm:left-4 sm:top-4 rounded-md bg-navy/80 px-2.5 py-1 text-[10px] sm:text-xs font-medium tracking-wider text-white backdrop-blur-sm">HEXA-D</span>
         </div>
         <div class="flex items-center justify-between px-3 py-3 sm:px-5 sm:py-4">
@@ -483,126 +495,13 @@ html{scroll-behavior:smooth}
           </span>
         </div>
       </a>
-		<a href="./vtol/index.html" class="group relative overflow-hidden rounded-xl sm:rounded-2xl bg-white shadow-sm hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
-        <div class="relative aspect-square w-full overflow-hidden">
-          <img src="images/T1.jpg" alt="垂直起降复合翼无人机" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"/>
-          <span class="absolute left-3 top-3 sm:left-4 sm:top-4 rounded-md bg-navy/80 px-2.5 py-1 text-[10px] sm:text-xs font-medium tracking-wider text-white backdrop-blur-sm">VTOL</span>
+      <a href="mailto:FKJF-888@163.COM" class="group col-span-2 flex min-h-[160px] flex-col justify-between rounded-xl bg-gradient-to-r from-navy to-navyLight p-6 text-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-xl">
+        <div>
+          <span class="mb-3 inline-block rounded-md bg-white/15 px-3 py-1 text-xs font-semibold tracking-wider">CUSTOM</span>
+          <h3 class="text-lg font-semibold">需要定制化无人机平台？</h3>
+          <p class="mt-2 max-w-2xl text-sm leading-6 text-white/75">可根据行业场景、载荷、续航、材料与交付周期要求，提供ODM/OEM设计制造与整机调试服务。</p>
         </div>
-        <div class="flex items-center justify-between px-3 py-3 sm:px-5 sm:py-4">
-          <div class="min-w-0 flex-1">
-            <h3 class="truncate text-xs sm:text-base font-semibold text-textDark group-hover:text-navy transition-colors">垂直起降复合翼无人机</h3>
-            <p class="mt-0.5 truncate text-[10px] sm:text-xs text-textGray">融合多旋翼垂直起降与固定翼长航时优势</p>
-          </div>
-          <span class="ml-2 sm:ml-3 flex h-7 w-7 sm:h-8 sm:w-8 flex-shrink-0 items-center justify-center rounded-full bg-navy/5 text-navy transition-all group-hover:bg-navy group-hover:text-white">
-            <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-          </span>
-        </div>
-      </a>
-      <a href="./vtol/index2.html" class="group relative overflow-hidden rounded-xl sm:rounded-2xl bg-white shadow-sm hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
-        <div class="relative aspect-square w-full overflow-hidden">
-          <img src="images/T2.jpg" alt=""/>
-          <span class="absolute left-3 top-3 sm:left-4 sm:top-4 rounded-md bg-navy/80 px-2.5 py-1 text-[10px] sm:text-xs font-medium tracking-wider text-white backdrop-blur-sm">HEXACOPTER</span>
-        </div>
-        <div class="flex items-center justify-between px-3 py-3 sm:px-5 sm:py-4">
-          <div class="min-w-0 flex-1">
-            <h3 class="truncate text-xs sm:text-base font-semibold text-textDark group-hover:text-navy transition-colors">六旋翼工业无人机</h3>
-            <p class="mt-0.5 truncate text-[10px] sm:text-xs text-textGray">强大载荷能力与飞行稳定性，多场景适配</p>
-          </div>
-          <span class="ml-2 sm:ml-3 flex h-7 w-7 sm:h-8 sm:w-8 flex-shrink-0 items-center justify-center rounded-full bg-navy/5 text-navy transition-all group-hover:bg-navy group-hover:text-white">
-            <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-          </span>
-        </div>
-      </a>
-      <a href="./vtol/index3.html" class="group relative overflow-hidden rounded-xl sm:rounded-2xl bg-white shadow-sm hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
-        <div class="relative aspect-square w-full overflow-hidden">
-          <img src="images/T3.jpg" alt=""/>
-          <span class="absolute left-3 top-3 sm:left-4 sm:top-4 rounded-md bg-navy/80 px-2.5 py-1 text-[10px] sm:text-xs font-medium tracking-wider text-white backdrop-blur-sm">VTOL-S</span>
-        </div>
-        <div class="flex items-center justify-between px-3 py-3 sm:px-5 sm:py-4">
-          <div class="min-w-0 flex-1">
-            <h3 class="truncate text-xs sm:text-base font-semibold text-textDark group-hover:text-navy transition-colors">复合翼无人机（侧视）</h3>
-            <p class="mt-0.5 truncate text-[10px] sm:text-xs text-textGray">流线型气动布局，复合材料一体成型</p>
-          </div>
-          <span class="ml-2 sm:ml-3 flex h-7 w-7 sm:h-8 sm:w-8 flex-shrink-0 items-center justify-center rounded-full bg-navy/5 text-navy transition-all group-hover:bg-navy group-hover:text-white">
-            <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-          </span>
-        </div>
-      </a>
-      <a href="./vtol/index4.html" class="group relative overflow-hidden rounded-xl sm:rounded-2xl bg-white shadow-sm hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
-        <div class="relative aspect-square w-full overflow-hidden">
-          <img src="images/T4.jpg" alt=""/>
-          <span class="absolute left-3 top-3 sm:left-4 sm:top-4 rounded-md bg-navy/80 px-2.5 py-1 text-[10px] sm:text-xs font-medium tracking-wider text-white backdrop-blur-sm">HEXA-D</span>
-        </div>
-        <div class="flex items-center justify-between px-3 py-3 sm:px-5 sm:py-4">
-          <div class="min-w-0 flex-1">
-            <h3 class="truncate text-xs sm:text-base font-semibold text-textDark group-hover:text-navy transition-colors">六旋翼无人机（详视）</h3>
-            <p class="mt-0.5 truncate text-[10px] sm:text-xs text-textGray">模块化快拆设计，碳纤维复合材料机身</p>
-          </div>
-          <span class="ml-2 sm:ml-3 flex h-7 w-7 sm:h-8 sm:w-8 flex-shrink-0 items-center justify-center rounded-full bg-navy/5 text-navy transition-all group-hover:bg-navy group-hover:text-white">
-            <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-          </span>
-        </div>
-      </a>
-		<a href="./vtol/index.html" class="group relative overflow-hidden rounded-xl sm:rounded-2xl bg-white shadow-sm hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
-        <div class="relative aspect-square w-full overflow-hidden">
-          <img src="images/T1.jpg" alt="垂直起降复合翼无人机" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"/>
-          <span class="absolute left-3 top-3 sm:left-4 sm:top-4 rounded-md bg-navy/80 px-2.5 py-1 text-[10px] sm:text-xs font-medium tracking-wider text-white backdrop-blur-sm">VTOL</span>
-        </div>
-        <div class="flex items-center justify-between px-3 py-3 sm:px-5 sm:py-4">
-          <div class="min-w-0 flex-1">
-            <h3 class="truncate text-xs sm:text-base font-semibold text-textDark group-hover:text-navy transition-colors">垂直起降复合翼无人机</h3>
-            <p class="mt-0.5 truncate text-[10px] sm:text-xs text-textGray">融合多旋翼垂直起降与固定翼长航时优势</p>
-          </div>
-          <span class="ml-2 sm:ml-3 flex h-7 w-7 sm:h-8 sm:w-8 flex-shrink-0 items-center justify-center rounded-full bg-navy/5 text-navy transition-all group-hover:bg-navy group-hover:text-white">
-            <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-          </span>
-        </div>
-      </a>
-      <a href="./vtol/index2.html" class="group relative overflow-hidden rounded-xl sm:rounded-2xl bg-white shadow-sm hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
-        <div class="relative aspect-square w-full overflow-hidden">
-          <img src="images/T2.jpg" alt=""/>
-			
-          <span class="absolute left-3 top-3 sm:left-4 sm:top-4 rounded-md bg-navy/80 px-2.5 py-1 text-[10px] sm:text-xs font-medium tracking-wider text-white backdrop-blur-sm">HEXACOPTER</span>
-        </div>
-        <div class="flex items-center justify-between px-3 py-3 sm:px-5 sm:py-4">
-          <div class="min-w-0 flex-1">
-            <h3 class="truncate text-xs sm:text-base font-semibold text-textDark group-hover:text-navy transition-colors">六旋翼工业无人机</h3>
-            <p class="mt-0.5 truncate text-[10px] sm:text-xs text-textGray">强大载荷能力与飞行稳定性，多场景适配</p>
-          </div>
-          <span class="ml-2 sm:ml-3 flex h-7 w-7 sm:h-8 sm:w-8 flex-shrink-0 items-center justify-center rounded-full bg-navy/5 text-navy transition-all group-hover:bg-navy group-hover:text-white">
-            <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-          </span>
-        </div>
-      </a>
-      <a href="./vtol/index3.html" class="group relative overflow-hidden rounded-xl sm:rounded-2xl bg-white shadow-sm hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
-        <div class="relative aspect-square w-full overflow-hidden">
-          <img src="images/T3.jpg" alt=""/>
-          <span class="absolute left-3 top-3 sm:left-4 sm:top-4 rounded-md bg-navy/80 px-2.5 py-1 text-[10px] sm:text-xs font-medium tracking-wider text-white backdrop-blur-sm">VTOL-S</span>
-        </div>
-        <div class="flex items-center justify-between px-3 py-3 sm:px-5 sm:py-4">
-          <div class="min-w-0 flex-1">
-            <h3 class="truncate text-xs sm:text-base font-semibold text-textDark group-hover:text-navy transition-colors">复合翼无人机（侧视）</h3>
-            <p class="mt-0.5 truncate text-[10px] sm:text-xs text-textGray">流线型气动布局，复合材料一体成型</p>
-          </div>
-          <span class="ml-2 sm:ml-3 flex h-7 w-7 sm:h-8 sm:w-8 flex-shrink-0 items-center justify-center rounded-full bg-navy/5 text-navy transition-all group-hover:bg-navy group-hover:text-white">
-            <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-          </span>
-        </div>
-      </a>
-      <a href="./vtol/index4.html" class="group relative overflow-hidden rounded-xl sm:rounded-2xl bg-white shadow-sm hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
-        <div class="relative aspect-square w-full overflow-hidden">
-          <img src="images/T4.jpg" alt=""/>
-          <span class="absolute left-3 top-3 sm:left-4 sm:top-4 rounded-md bg-navy/80 px-2.5 py-1 text-[10px] sm:text-xs font-medium tracking-wider text-white backdrop-blur-sm">HEXA-D</span>
-        </div>
-        <div class="flex items-center justify-between px-3 py-3 sm:px-5 sm:py-4">
-          <div class="min-w-0 flex-1">
-            <h3 class="truncate text-xs sm:text-base font-semibold text-textDark group-hover:text-navy transition-colors">六旋翼无人机（详视）</h3>
-            <p class="mt-0.5 truncate text-[10px] sm:text-xs text-textGray">模块化快拆设计，碳纤维复合材料机身</p>
-          </div>
-          <span class="ml-2 sm:ml-3 flex h-7 w-7 sm:h-8 sm:w-8 flex-shrink-0 items-center justify-center rounded-full bg-navy/5 text-navy transition-all group-hover:bg-navy group-hover:text-white">
-            <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-          </span>
-        </div>
+        <span class="mt-6 inline-flex w-fit items-center rounded-md bg-white px-5 py-2 text-sm font-semibold text-navy transition-all group-hover:bg-white/90">发送需求</span>
       </a>
     </div>
 
@@ -614,7 +513,10 @@ html{scroll-behavior:smooth}
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid gap-10 lg:grid-cols-3">
       <div>
-        <span class="mb-4 block text-lg sm:text-2xl font-bold tracking-[0.15em] text-white">GLOBAL EAGLE PLUS</span>
+        <div class="mb-4 flex items-center gap-3">
+          <img src="images/tjw-logo.png" alt="TJW logo" class="h-12 w-12 rounded-full bg-white object-contain p-1"/>
+          <span class="block text-lg sm:text-2xl font-bold tracking-[0.12em] text-white">TeJieWen</span>
+        </div>
         <p class="mb-6 text-sm leading-6 text-white/60">公司专注于工业飞行器设计服务、复合材料飞行平台生产销售和服务</p>
         <h4 class="mb-4 text-sm font-semibold text-white">快速链接</h4>
         <ul class="space-y-2">
@@ -629,15 +531,15 @@ html{scroll-behavior:smooth}
         <h4 class="mb-6 text-sm font-semibold text-white">联系我们</h4>
         <div class="space-y-4 text-sm text-white/60">
           <div>
-            <p class="font-medium text-white/80">深圳市GLOBAL EAGLE PLUS技术有限公司</p>
+            <p class="font-medium text-white/80">深圳市TeJieWen技术有限公司</p>
             <p class="mt-1">深圳市光明区鑫瑞科科技园B栋</p>
           </div>
           <div>
-            <p class="font-medium text-white/80">GLOBAL EAGLE PLUS（赣州）技术有限公司</p>
+            <p class="font-medium text-white/80">TeJieWen（赣州）技术有限公司</p>
             <p class="mt-1">江西省赣州市南康区龙回镇赣州低空经济产业园129-130栋</p>
           </div>
-          <p>18824415502</p>
-          <p>FKJF-888@163.COM</p>
+          <p><a href="tel:18824415502" class="hover:text-white transition-colors">18824415502</a></p>
+          <p><a href="mailto:FKJF-888@163.COM" class="hover:text-white transition-colors">FKJF-888@163.COM</a></p>
         </div>
       </div>
       <div>
@@ -654,7 +556,7 @@ html{scroll-behavior:smooth}
       </div>
     </div>
     <div class="mt-12 border-t border-white/10 pt-6 text-center text-xs text-white/30">
-      版权所有©2025 GLOBAL EAGLE PLUS（赣州）技术有限公司 粤ICP备17122991号-2 版权所有 网站地图 隐私政策
+      版权所有©2025 TeJieWen（赣州）技术有限公司 粤ICP备17122991号-2 版权所有 网站地图 隐私政策
     </div>
   </div>
 </footer>
@@ -715,18 +617,21 @@ window.addEventListener('scroll',function(){
 // Carousel
 var cur=0,total=3,autoTimer;
 var track=document.getElementById('carouselTrack');
-var dots=document.getElementById('carouselDots').children;
-function upd(){track.style.transform='translateX(-'+cur*100+'%)';for(var i=0;i<dots.length;i++){if(i===cur){dots[i].className='h-2.5 w-8 rounded-full bg-white transition-all'}else{dots[i].className='h-2.5 w-2.5 rounded-full bg-white/50 hover:bg-white/70 transition-all'}}}
-function carouselNext(){cur=(cur+1)%total;upd();resetAuto()}
-function carouselPrev(){cur=(cur-1+total)%total;upd();resetAuto()}
-function carouselGo(i){cur=i;upd();resetAuto()}
-function resetAuto(){clearInterval(autoTimer);autoTimer=setInterval(carouselNext,5000)}
-autoTimer=setInterval(carouselNext,5000);
+var dotsWrap=document.getElementById('carouselDots');
+if(track&&dotsWrap){
+  var dots=dotsWrap.children;
+  function upd(){track.style.transform='translateX(-'+cur*100+'%)';for(var i=0;i<dots.length;i++){if(i===cur){dots[i].className='h-2.5 w-8 rounded-full bg-white transition-all'}else{dots[i].className='h-2.5 w-2.5 rounded-full bg-white/50 hover:bg-white/70 transition-all'}}}
+  function carouselNext(){cur=(cur+1)%total;upd();resetAuto()}
+  function carouselPrev(){cur=(cur-1+total)%total;upd();resetAuto()}
+  function carouselGo(i){cur=i;upd();resetAuto()}
+  function resetAuto(){clearInterval(autoTimer);autoTimer=setInterval(carouselNext,5000)}
+  autoTimer=setInterval(carouselNext,5000);
 
-// Touch swipe for carousel
-var touchStartX=0,touchEndX=0;
-track.addEventListener('touchstart',function(e){touchStartX=e.changedTouches[0].screenX},false);
-track.addEventListener('touchend',function(e){touchEndX=e.changedTouches[0].screenX;if(touchStartX-touchEndX>50)carouselNext();if(touchEndX-touchStartX>50)carouselPrev()},false);
+  // Touch swipe for carousel
+  var touchStartX=0,touchEndX=0;
+  track.addEventListener('touchstart',function(e){touchStartX=e.changedTouches[0].screenX},false);
+  track.addEventListener('touchend',function(e){touchEndX=e.changedTouches[0].screenX;if(touchStartX-touchEndX>50)carouselNext();if(touchEndX-touchStartX>50)carouselPrev()},false);
+}
 
 // Stats animation
 var statsAnimated=false;
@@ -745,7 +650,9 @@ var statsObs=new IntersectionObserver(function(entries){
     }
   });
 },{threshold:0.5});
-statsObs.observe(document.getElementById('statsGrid'));
+var statsGrid=document.getElementById('statsGrid');
+if(statsGrid){statsObs.observe(statsGrid)}
 </script>
 </body>
 </html>
+
