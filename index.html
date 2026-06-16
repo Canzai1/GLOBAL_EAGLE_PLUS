@@ -1,772 +1,152 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-	<head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>GLOBAL EAGLE PLUS - 一站式无人机制造商</title>
-<script src="js/css.js"></script>
-<script>
-tailwind.config={theme:{extend:{colors:{navy:'#0A2E5C',navyLight:'#1A5CB0',dark:'#0F1724',textDark:'#1A1A2E',textGray:'#6B7280',lightBg:'#F5F7FA'},fontFamily:{sans:['PingFang SC','Hiragino Sans GB','Microsoft YaHei','ui-sans-serif','system-ui','sans-serif']}}}}
-</script>
-<!--		<script src="https://cdn.staticfile.net/translate.js/3.18.66/translate.js"></script>-->
-
-
-<style>
-html{scroll-behavior:smooth}
-.flip-card{perspective:1000px}
-.flip-card-inner{position:relative;width:100%;height:100%;transition:transform .6s ease-in-out;transform-style:preserve-3d}
-.flip-card:hover .flip-card-inner{transform:rotateY(180deg)}
-.flip-card-front,.flip-card-back{position:absolute;inset:0;backface-visibility:hidden;border-radius:12px}
-.flip-card-back{transform:rotateY(180deg)}
-@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-.animate-fade-up{animation:fadeUp .6s ease forwards}
-	:root {
-            --fab-size: 54px;
-            --fab-bg: linear-gradient(135deg, #4f6ef7, #6c5ce7);
-            --fab-shadow: 0 6px 20px rgba(76, 90, 220, 0.4);
-            --fab-shadow-hover: 0 10px 28px rgba(76, 90, 220, 0.55);
-            --transition-speed: 0.25s;
-        }
-	 /* ========== 悬浮按钮容器 DIV ========== */
-        #translate {
-/*			*/
-            position: fixed;
-            bottom: 32px;
-            right: 32px;
-            z-index: 9999;
-            width: var(--fab-size);
-            height: var(--fab-size);
-            border-radius: 50%;
-            background: var(--fab-bg);
-            box-shadow: var(--fab-shadow);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition:
-                transform var(--transition-speed) cubic-bezier(0.34, 1.56, 0.64, 1),
-                box-shadow var(--transition-speed) ease,
-                border-radius var(--transition-speed) ease;
-            -webkit-tap-highlight-color: transparent;
-            user-select: none;
-            /* 伪元素：地球图标 */
-            /* 当select展开时，div也扩展为面板容器 */
-        }
-
-        /* 地球图标 - 使用伪元素 */
-        #translate::before {
-            content: '🌐';
-            font-size: 26px;
-            line-height: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            pointer-events: none;
-            z-index: 1;
-            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
-                opacity 0.2s ease;
-            filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.15));
-        }
-
-        /* 按钮右下角小圆点指示器 - 使用伪元素 */
-        #translate::after {
-            content: '';
-            position: absolute;
-            bottom: 6px;
-            right: 6px;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: #2ed573;
-            border: 2px solid #fff;
-            z-index: 2;
-            pointer-events: none;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease, opacity 0.25s ease;
-        }
-
-        /* hover效果 */
-        #translate:hover {
-            transform: scale(1.08);
-            box-shadow: var(--fab-shadow-hover);
-        }
-
-        #translate:hover::before {
-            transform: rotate(-15deg) scale(1.05);
-        }
-
-        /* 点击时的缩放反馈 */
-        #translate:active {
-            transform: scale(0.94);
-            transition: transform 0.12s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        /* ========== SELECT 元素样式 ========== */
-        #translate select {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 3;
-            cursor: pointer;
-            /* 默认状态：透明覆盖在圆形按钮上 */
-            opacity: 0;
-            -webkit-appearance: none;
-            appearance: none;
-            border: none;
-            outline: none;
-            background: transparent;
-            font-family: inherit;
-            font-size: 15px;
-            color: #1a1a2e;
-            border-radius: 50%;
-            transition:
-                opacity 0.2s ease,
-                border-radius 0.25s ease,
-                width 0.25s cubic-bezier(0.4, 0, 0.2, 1),
-                height 0.25s cubic-bezier(0.4, 0, 0.2, 1),
-                background 0.25s ease,
-                box-shadow 0.25s ease,
-                padding 0.25s ease;
-            /* 关键：让select在size=1时完全不可见，但保持可交互 */
-        }
-
-        /* ========== SELECT 展开状态（通过JS添加类名触发） ========== */
-        #translate.select-expanded {
-            /* div容器在select展开时变为矩形面板 */
-            border-radius: 16px;
-            width: 185px;
-            height: auto;
-            background: transparent;
-            box-shadow: none;
-            cursor: default;
-            transform: none;
-        }
-
-        #translate.select-expanded:hover {
-            transform: none;
-            box-shadow: none;
-        }
-
-        #translate.select-expanded::before {
-            /* 隐藏地球图标 */
-            opacity: 0;
-            transform: scale(0.5) rotate(-30deg);
-            pointer-events: none;
-        }
-
-        #translate.select-expanded::after {
-            /* 隐藏绿色指示点 */
-            opacity: 0;
-            transform: scale(0);
-        }
-
-        /* select展开时的样式 */
-        #translate.select-expanded select {
-            opacity: 1;
-            border-radius: 16px;
-            width: 185px;
-            height: auto;
-            /* 半透明磨砂背景 */
-            background: rgba(255, 255, 255, 0.78);
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-            /* 阴影 */
-            box-shadow:
-                0 8px 32px rgba(0, 0, 0, 0.14),
-                0 2px 8px rgba(0, 0, 0, 0.08),
-                inset 0 1px 0 rgba(255, 255, 255, 0.6);
-            padding: 8px 0;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            /* 底部锚点 - 指向按钮位置 */
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            left: auto;
-            top: auto;
-            cursor: pointer;
-            outline: none;
-        }
-
-        /* ========== OPTION 选项样式 ========== */
-        #translate.select-expanded select option {
-            padding: 11px 18px;
-            font-size: 14.5px;
-            font-family: inherit;
-            cursor: pointer;
-            background: transparent;
-            color: #2d2d3a;
-            transition: background 0.15s ease, color 0.15s ease;
-            /* 分割线 */
-            border-bottom: 1px solid rgba(0, 0, 0, 0.07);
-            letter-spacing: 0.3px;
-            white-space: nowrap;
-            /* 确保option之间有明显分隔 */
-            margin: 0;
-            outline: none;
-        }
-
-        /* 最后一个选项没有分割线 */
-        #translate.select-expanded select option:last-child {
-            border-bottom: none;
-        }
-
-        /* option悬停状态 */
-        #translate.select-expanded select option:hover {
-            background: rgba(79, 110, 247, 0.1);
-            color: #1a1a2e;
-        }
-
-        /* option选中状态 */
-        #translate.select-expanded select option:checked {
-            background: rgba(79, 110, 247, 0.13);
-            color: #4f6ef7;
-            font-weight: 600;
-        }
-
-        /* ========== 响应式：小屏幕适配 ========== */
-        @media (max-width: 480px) {
-            #translate {
-                bottom: 20px;
-                right: 20px;
-                width: 48px;
-                height: 48px;
-            }
-
-            #translate::before {
-                font-size: 22px;
-            }
-
-            #translate::after {
-                width: 8px;
-                height: 8px;
-                bottom: 4px;
-                right: 4px;
-            }
-
-            #translate.select-expanded {
-                width: 170px;
-                border-radius: 14px;
-            }
-
-            #translate.select-expanded select {
-                width: 170px;
-                border-radius: 14px;
-                padding: 6px 0;
-            }
-
-            #translate.select-expanded select option {
-                padding: 10px 15px;
-                font-size: 13.5px;
-            }
-
-            #translate {
-                --fab-size: 48px;
-            }
-        }
-
-        @media (max-width: 360px) {
-            #translate {
-                bottom: 16px;
-                right: 16px;
-                width: 42px;
-                height: 42px;
-                --fab-size: 42px;
-            }
-
-            #translate::before {
-                font-size: 20px;
-            }
-
-            #translate.select-expanded {
-                width: 155px;
-                border-radius: 12px;
-            }
-
-            #translate.select-expanded select {
-                width: 155px;
-                border-radius: 12px;
-                padding: 5px 0;
-            }
-
-            #translate.select-expanded select option {
-                padding: 9px 13px;
-                font-size: 13px;
-            }
-        }
-
-        /* ========== 暗色模式适配 ========== */
-        @media (prefers-color-scheme: dark) {
-            body {
-                background: #1a1a2e;
-                color: #ddd;
-            }
-
-            .page-content h1 {
-                color: #e8e8f0;
-            }
-
-            .page-content p {
-                color: #bbb;
-            }
-
-            .page-content .card {
-                background: #252540;
-                color: #ccc;
-                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            }
-
-            .page-content .card h3 {
-                color: #e0e0ec;
-            }
-
-            .page-content .card p {
-                color: #aaa;
-            }
-
-            .page-content .card:hover {
-                box-shadow: 0 6px 22px rgba(0, 0, 0, 0.35);
-            }
-
-            #translate.select-expanded select {
-                background: rgba(40, 40, 60, 0.82);
-                backdrop-filter: blur(18px);
-                -webkit-backdrop-filter: blur(18px);
-                border: 1px solid rgba(255, 255, 255, 0.12);
-                box-shadow:
-                    0 8px 32px rgba(0, 0, 0, 0.35),
-                    0 2px 8px rgba(0, 0, 0, 0.2),
-                    inset 0 1px 0 rgba(255, 255, 255, 0.08);
-                color: #e0e0ec;
-            }
-
-            #translate.select-expanded select option {
-                color: #d5d5e5;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            }
-
-            #translate.select-expanded select option:hover {
-                background: rgba(120, 140, 250, 0.15);
-            }
-
-            #translate.select-expanded select option:checked {
-                background: rgba(120, 140, 250, 0.2);
-                color: #a0b4ff;
-            }
-
-            #translate::after {
-                border-color: #2d2d45;
-            }
-        }
-
-        /* ========== 减少动画偏好 ========== */
-        @media (prefers-reduced-motion: reduce) {
-            #translate,
-            #translate::before,
-            #translate::after,
-            #translate select,
-            #translate.select-expanded select,
-            #translate.select-expanded select option {
-                transition-duration: 0.01ms !important;
-            }
-        }
-</style>
-	
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TeJieWen TJW Drone Technology | Professional UAV Solutions</title>
+  <meta name="description" content="TeJieWen, abbreviated as TJW, provides professional UAV solutions for aerial imaging, inspection, mapping, agriculture, public safety and industrial applications." />
+  <meta name="keywords" content="TJW Drone, TeJieWen, UAV manufacturer, drone solutions, aerial imaging drone, inspection drone, mapping drone, agricultural drone" />
+  <style>
+    :root{--navy:#063b82;--blue:#0877e8;--cyan:#39d5ff;--dark:#111827;--text:#253044;--muted:#64748b;--light:#f5f8fc;--card:#fff;--line:#dbe7f5;--shadow:0 24px 60px rgba(15,40,80,.12)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,Arial,"Helvetica Neue",sans-serif;color:var(--text);background:#fff}a{text-decoration:none;color:inherit}img{max-width:100%;display:block}.container{width:min(1180px,calc(100% - 32px));margin:0 auto}.btn{display:inline-flex;align-items:center;gap:10px;border-radius:999px;padding:14px 24px;font-weight:700;transition:.25s}.btn-primary{background:linear-gradient(135deg,var(--blue),#003b90);color:#fff;box-shadow:0 14px 34px rgba(8,119,232,.28)}.btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 40px rgba(8,119,232,.36)}.btn-ghost{border:1px solid rgba(255,255,255,.5);color:#fff;background:rgba(255,255,255,.12);backdrop-filter:blur(10px)}.btn-ghost:hover{background:rgba(255,255,255,.22);transform:translateY(-2px)}
+    .nav{position:fixed;z-index:50;top:0;left:0;right:0;background:rgba(255,255,255,.84);backdrop-filter:blur(18px);border-bottom:1px solid rgba(219,231,245,.78)}.nav-inner{height:76px;display:flex;align-items:center;justify-content:space-between}.brand{display:flex;align-items:center;gap:12px}.brand-logo{width:54px;height:54px;border-radius:16px;object-fit:contain;box-shadow:0 10px 25px rgba(0,59,144,.13)}.brand-text strong{display:block;font-size:21px;letter-spacing:.13em;color:var(--navy);line-height:1}.brand-text span{display:block;margin-top:5px;font-size:12px;letter-spacing:.22em;color:var(--muted);text-transform:uppercase}.nav-links{display:flex;align-items:center;gap:28px;font-size:14px;font-weight:700;color:#334155}.nav-links a:hover{color:var(--blue)}.nav-cta{padding:10px 18px;border-radius:999px;background:var(--navy);color:#fff}.menu-btn{display:none;border:0;background:transparent;font-size:28px;color:var(--navy)}
+    .hero{position:relative;min-height:760px;padding-top:76px;overflow:hidden;background:linear-gradient(120deg,#f9fcff,#eaf5ff 48%,#fff)}.hero-bg{position:absolute;inset:76px 0 auto auto;width:100%;height:calc(100% - 76px);object-fit:cover;object-position:center;opacity:.76}.hero::after{content:"";position:absolute;inset:76px 0 0;background:linear-gradient(90deg,rgba(255,255,255,.96) 0%,rgba(255,255,255,.78) 39%,rgba(255,255,255,.18) 70%,rgba(255,255,255,.04) 100%)}.hero-content{position:relative;z-index:2;min-height:684px;display:flex;align-items:center}.hero-copy{max-width:650px;padding:70px 0}.eyebrow{display:inline-flex;align-items:center;gap:8px;margin-bottom:22px;border:1px solid rgba(8,119,232,.18);border-radius:999px;background:rgba(255,255,255,.74);padding:8px 14px;color:var(--navy);font-size:13px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}.eyebrow i{width:9px;height:9px;border-radius:50%;background:var(--cyan);box-shadow:0 0 18px var(--cyan)}.hero h1{margin:0 0 18px;font-size:clamp(42px,6vw,74px);line-height:.98;letter-spacing:-.055em;color:#0b1f42}.hero h1 span{display:block;background:linear-gradient(110deg,var(--navy),var(--blue));-webkit-background-clip:text;background-clip:text;color:transparent}.hero p{margin:0 0 30px;max-width:570px;font-size:18px;line-height:1.75;color:#475569}.hero-actions{display:flex;gap:14px;flex-wrap:wrap}.hero-actions .btn-ghost{color:var(--navy);border-color:#c8ddf7;background:rgba(255,255,255,.8)}.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;position:relative;z-index:3;margin-top:-58px}.stat{padding:24px 18px;border-radius:22px;background:rgba(255,255,255,.92);box-shadow:var(--shadow);border:1px solid rgba(219,231,245,.82);text-align:center}.stat strong{display:block;font-size:30px;color:var(--navy)}.stat span{display:block;margin-top:6px;font-size:13px;color:var(--muted);font-weight:700}
+    section{padding:92px 0}.section-head{text-align:center;margin-bottom:46px}.section-kicker{display:inline-block;margin-bottom:12px;color:var(--blue);font-size:13px;font-weight:900;letter-spacing:.16em;text-transform:uppercase}.section-head h2{margin:0;color:var(--dark);font-size:clamp(30px,4vw,44px);letter-spacing:-.035em}.section-head p{margin:16px auto 0;max-width:720px;color:var(--muted);font-size:16px;line-height:1.75}.solutions{background:var(--light)}.solution-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}.solution-card{position:relative;min-height:230px;padding:28px;border-radius:24px;background:#fff;border:1px solid var(--line);box-shadow:0 12px 30px rgba(15,40,80,.06);overflow:hidden;transition:.25s}.solution-card::before{content:"";position:absolute;right:-42px;top:-42px;width:130px;height:130px;border-radius:50%;background:linear-gradient(135deg,rgba(8,119,232,.14),rgba(57,213,255,.1))}.solution-card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}.icon{width:58px;height:58px;border-radius:18px;background:linear-gradient(135deg,#e9f5ff,#fff);display:flex;align-items:center;justify-content:center;color:var(--blue);font-size:28px;margin-bottom:24px}.solution-card h3{margin:0 0 10px;font-size:20px;color:var(--dark)}.solution-card p{margin:0;color:var(--muted);line-height:1.65;font-size:14px}.products-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}.product{border-radius:26px;background:#fff;border:1px solid var(--line);overflow:hidden;box-shadow:0 12px 34px rgba(15,40,80,.07);transition:.25s}.product:hover{transform:translateY(-6px);box-shadow:var(--shadow)}.product-img{height:210px;background:linear-gradient(135deg,#eaf5ff,#f8fbff);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}.product-img::before{content:"TJW";font-size:74px;font-weight:900;letter-spacing:.08em;color:rgba(6,59,130,.08)}.product-body{padding:24px}.tag{display:inline-block;margin-bottom:12px;border-radius:999px;background:#eaf5ff;color:var(--navy);padding:6px 12px;font-size:12px;font-weight:900;letter-spacing:.08em}.product h3{margin:0 0 10px;color:var(--dark);font-size:21px}.product p{margin:0;color:var(--muted);line-height:1.7;font-size:14px}.about{position:relative;background:linear-gradient(135deg,#062a5e,#0855b8);color:#fff;overflow:hidden}.about::before{content:"";position:absolute;inset:-20% -10% auto auto;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle,rgba(57,213,255,.28),transparent 68%)}.about-wrap{position:relative;display:grid;grid-template-columns:420px 1fr;gap:62px;align-items:center}.about-logo{background:rgba(255,255,255,.94);border-radius:34px;padding:34px;box-shadow:0 30px 70px rgba(0,0,0,.18)}.about h2{margin:0 0 18px;font-size:42px;line-height:1.08;letter-spacing:-.04em}.about p{margin:0 0 18px;color:rgba(255,255,255,.82);font-size:16px;line-height:1.85}.feature-list{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:26px}.feature{padding:16px;border-radius:18px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.16);font-weight:800}.process{background:#fff}.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.step{padding:26px 22px;border-left:4px solid var(--blue);border-radius:20px;background:var(--light)}.step b{display:block;color:var(--blue);font-size:13px;letter-spacing:.12em;margin-bottom:10px}.step h3{margin:0 0 10px;color:var(--dark)}.step p{margin:0;color:var(--muted);line-height:1.65;font-size:14px}.contact{background:#071f42;color:#fff}.contact-card{display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center;padding:46px;border-radius:30px;background:linear-gradient(135deg,rgba(8,119,232,.26),rgba(255,255,255,.06));border:1px solid rgba(255,255,255,.12)}.contact h2{margin:0 0 14px;font-size:40px;letter-spacing:-.035em}.contact p{margin:0;color:rgba(255,255,255,.78);line-height:1.8}.contact-box{background:#fff;color:var(--text);border-radius:24px;padding:26px}.contact-row{padding:14px 0;border-bottom:1px solid #e5edf8}.contact-row:last-child{border-bottom:0}.contact-row b{display:block;color:var(--navy);margin-bottom:5px}.footer{padding:26px 0;background:#06162e;color:rgba(255,255,255,.68);font-size:14px}.footer .container{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+    @media(max-width:900px){.nav-links{display:none}.menu-btn{display:block}.nav-links.open{display:flex;position:absolute;left:16px;right:16px;top:82px;flex-direction:column;align-items:flex-start;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);border-radius:22px;padding:22px}.hero{min-height:auto}.hero-content{min-height:620px}.hero-bg{opacity:.44}.hero::after{background:linear-gradient(180deg,rgba(255,255,255,.95),rgba(255,255,255,.78))}.hero-stats,.solution-grid,.products-grid,.process-grid{grid-template-columns:repeat(2,1fr)}.about-wrap,.contact-card{grid-template-columns:1fr}.about-logo{max-width:420px}.hero h1{font-size:46px}}@media(max-width:580px){.container{width:min(100% - 24px,1180px)}.brand-logo{width:46px;height:46px}.brand-text strong{font-size:18px}.brand-text span{font-size:10px}.hero-copy{padding:52px 0}.hero-stats,.solution-grid,.products-grid,.process-grid,.feature-list{grid-template-columns:1fr}.hero-actions{display:grid}.btn{justify-content:center}.stat{padding:20px}.contact-card{padding:28px}section{padding:70px 0}}
+  </style>
 </head>
-<body class="font-sans text-textDark">
-
-<!-- Navbar -->
-<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-gradient-to-r from-navy [#1A4A8A]">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex h-16 items-center justify-between">
-      <a href="index.html" class="flex-shrink-0">
-        <span class="text-xl sm:text-2xl font-bold tracking-[0.15em] text-white">GLOBAL EAGLE PLUS</span>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="#home" class="brand" aria-label="TeJieWen TJW Home">
+        <img class="brand-logo" src="data:image/webp;base64,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" alt="TJW Logo" />
+        <span class="brand-text"><strong>TJW</strong><span>TeJieWen</span></span>
       </a>
-      <div class="hidden md:flex items-center space-x-8">
-        <a href="index.html" class="text-sm font-medium text-white/90 hover:text-white transition-colors">首页</a>
-        <a href="#products" class="text-sm font-medium text-white/90 hover:text-white transition-colors">产品</a>
-        <a href="#about" class="text-sm font-medium text-white/90 hover:text-white transition-colors">关于我们</a>
-        <a href="#advantages" class="text-sm font-medium text-white/90 hover:text-white transition-colors">新闻</a>
-        <a href="#contact" class="text-sm font-medium text-white/90 hover:text-white transition-colors">联系我们</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+      <div class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#solutions">Solutions</a>
+        <a href="#products">Products</a>
+        <a href="#about">About</a>
+        <a href="#process">Service</a>
+        <a href="#contact" class="nav-cta">Contact Us</a>
       </div>
-<!--
-      <div class="hidden md:flex items-center space-x-4">
-        <span class="text-sm text-white/80">简体中文</span>
-      </div>
--->
-<!--
-		<div class="lang-selector hidden md:flex items-center space-x-4 text-white/80">
-    					🌐 语言：
-    		<select id="languageSwitcher text-sm">
-        		<option value="chinese_simplified">中文</option>
-        		<option value="english">English</option>
-        		<option value="japanese">日本語</option>
-    		</select>
--->
-<!--</div>-->
-      <button id="mobileMenuBtn" class="text-white md:hidden" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-      </button>
     </div>
-  </div>
-  <div id="mobileMenu" class="hidden border-t border-white/10 bg-navy md:hidden">
-    <div class="px-4 py-3 space-y-1">
-      <a href="index.html" class="block px-3 py-2 text-sm font-medium text-white/90 hover:bg-white/10 rounded" onclick="document.getElementById('mobileMenu').classList.add('hidden')">首页</a>
-      <a href="#products" class="block px-3 py-2 text-sm font-medium text-white/90 hover:bg-white/10 rounded" onclick="document.getElementById('mobileMenu').classList.add('hidden')">产品</a>
-      <a href="#about" class="block px-3 py-2 text-sm font-medium text-white/90 hover:bg-white/10 rounded" onclick="document.getElementById('mobileMenu').classList.add('hidden')">关于我们</a>
-      <a href="#advantages" class="block px-3 py-2 text-sm font-medium text-white/90 hover:bg-white/10 rounded" onclick="document.getElementById('mobileMenu').classList.add('hidden')">新闻</a>
-      <a href="#contact" class="block px-3 py-2 text-sm font-medium text-white/90 hover:bg-white/10 rounded" onclick="document.getElementById('mobileMenu').classList.add('hidden')">联系我们</a>
-    </div>
-  </div>
-</nav>
+  </nav>
 
-<!-- Banner Carousel -->
-<div id="home" class="relative h-[100vh] min-h-[600px] overflow-hidden">
-  <div id="carouselTrack" class="flex h-full transition-transform duration-700 ease-in-out">
-    <div class="min-w-full relative h-full">
-      <div class="absolute inset-0 bg-cover bg-center" style="background-image:url('./BgImages/092717466212.jpg')"></div>
-      <div class="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent"></div>
-      <div class="absolute inset-0 flex items-center">
-        <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div class="max-w-2xl">
-            <h1 class="mb-4 text-3xl sm:text-5xl lg:text-6xl font-bold leading-tight text-white">工业级无人机解决方案</h1>
-            <p class="text-base sm:text-xl text-white/80">专业飞行器设计 · 复合材料平台 · 全套服务体系</p>
-          </div>
+  <header id="home" class="hero">
+    <img class="hero-bg" src="data:image/webp;base64,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" alt="TJW Drone Technology Banner" />
+    <div class="container hero-content">
+      <div class="hero-copy">
+        <span class="eyebrow"><i></i> Professional UAV Solutions</span>
+        <h1>TeJieWen <span>Drone Technology</span></h1>
+        <p>TJW delivers reliable UAV platforms and application solutions for aerial imaging, inspection, mapping, agriculture and customized industrial missions.</p>
+        <div class="hero-actions">
+          <a href="#products" class="btn btn-primary">Explore Products →</a>
+          <a href="#contact" class="btn btn-ghost">Request Quotation</a>
         </div>
       </div>
     </div>
-    <div class="min-w-full relative h-full">
-      <div class="absolute inset-0 bg-cover bg-center" style="background-image:url('./BgImages/8656FA68EBC1C9DAA45EA7AB0FF08306_w2057h1158.jpg')"></div>
-      <div class="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent"></div>
-      <div class="absolute inset-0 flex items-center">
-        <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div class="max-w-2xl">
-            <h1 class="mb-4 text-3xl sm:text-5xl lg:text-6xl font-bold leading-tight text-white">先进制造工艺</h1>
-            <p class="text-base sm:text-xl text-white/80">高效率生产体系 · 12000㎡厂房 · 严格品控标准</p>
-          </div>
-        </div>
+  </header>
+
+  <div class="container hero-stats" aria-label="TJW advantages">
+    <div class="stat"><strong>4+</strong><span>Application Fields</span></div>
+    <div class="stat"><strong>OEM</strong><span>Custom Service</span></div>
+    <div class="stat"><strong>UAV</strong><span>System Solutions</span></div>
+    <div class="stat"><strong>Global</strong><span>B2B Supply</span></div>
+  </div>
+
+  <section id="solutions" class="solutions">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-kicker">TJW Solutions</span>
+        <h2>UAV Solutions Built for Real Work</h2>
+        <p>From flight platforms to mission payload integration, TJW focuses on practical drone solutions that help customers improve efficiency, safety and data collection quality.</p>
+      </div>
+      <div class="solution-grid">
+        <article class="solution-card"><div class="icon">◉</div><h3>Aerial Imaging</h3><p>Stable drone platforms for photography, video capture, surveying and digital content production.</p></article>
+        <article class="solution-card"><div class="icon">▣</div><h3>Inspection</h3><p>Industrial UAV systems for power lines, facilities, public safety, emergency response and patrol tasks.</p></article>
+        <article class="solution-card"><div class="icon">⌖</div><h3>Mapping</h3><p>Efficient aerial data acquisition for terrain mapping, land survey, construction and environmental monitoring.</p></article>
+        <article class="solution-card"><div class="icon">✦</div><h3>UAV Solutions</h3><p>OEM/ODM drone platforms, components, payload matching and customized application development.</p></article>
       </div>
     </div>
-    <div class="min-w-full relative h-full">
-      <div class="absolute inset-0 bg-cover bg-center" style="background-image:url('./BgImages/u=110640539,1768127843&fm=253&fmt=auto&app=138&f=JPEG.webp')"></div>
-      <div class="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent"></div>
-      <div class="absolute inset-0 flex items-center">
-        <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div class="max-w-2xl">
-            <h1 class="mb-4 text-3xl sm:text-5xl lg:text-6xl font-bold leading-tight text-white">多场景行业应用</h1>
-            <p class="text-base sm:text-xl text-white/80">公安消防 · 电力巡检 · 植保环保 · 地理勘测</p>
-          </div>
-        </div>
+  </section>
+
+  <section id="products">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-kicker">Product Center</span>
+        <h2>Professional Drone Product Lines</h2>
+        <p>Optimized product structure for cross-border B2B buyers, with clear categories and direct inquiry guidance.</p>
+      </div>
+      <div class="products-grid">
+        <article class="product"><div class="product-img"></div><div class="product-body"><span class="tag">AGRICULTURE</span><h3>Agricultural Spraying Drone</h3><p>Payload platforms for crop spraying, orchard protection and precision agriculture applications.</p></div></article>
+        <article class="product"><div class="product-img"></div><div class="product-body"><span class="tag">VTOL</span><h3>VTOL Fixed-Wing UAV</h3><p>Long-endurance UAV platform combining vertical takeoff convenience with fixed-wing flight efficiency.</p></div></article>
+        <article class="product"><div class="product-img"></div><div class="product-body"><span class="tag">MULTI-ROTOR</span><h3>Industrial Multi-Rotor Drone</h3><p>Reliable multi-rotor systems for inspection, mapping, emergency response and special payload missions.</p></div></article>
       </div>
     </div>
-  </div>
-  <button onclick="carouselPrev()" class="absolute left-4 top-1/2 -translate-y-1/2 z-10 rounded-full bg-black/30 p-2 text-white backdrop-blur-sm hover:bg-black/50 transition-colors">
-    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-  </button>
-  <button onclick="carouselNext()" class="absolute right-4 top-1/2 -translate-y-1/2 z-10 rounded-full bg-black/30 p-2 text-white backdrop-blur-sm hover:bg-black/50 transition-colors">
-    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-  </button>
-  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex space-x-3" id="carouselDots">
-    <button onclick="carouselGo(0)" class="h-2.5 w-8 rounded-full bg-white transition-all"></button>
-    <button onclick="carouselGo(1)" class="h-2.5 w-2.5 rounded-full bg-white/50 hover:bg-white/70 transition-all"></button>
-    <button onclick="carouselGo(2)" class="h-2.5 w-2.5 rounded-full bg-white/50 hover:bg-white/70 transition-all"></button>
-  </div>
-</div>
+  </section>
 
-<!-- Products -->
-<section id="products" class="bg-lightBg py-16 sm:py-24">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="mb-10 sm:mb-14 flex flex-col items-center text-center">
-      <span class="mb-3 inline-block rounded-full bg-navy/10 px-4 py-1 text-xs font-semibold tracking-wider text-navy">无人机产品</span>
-      <h2 class="mb-4 text-2xl sm:text-4xl font-bold text-textDark">工业级无人机产品系列</h2>
-      <p class="max-w-2xl text-sm leading-6 text-textGray">公司专注于工业飞行器设计服务、复合材料飞行平台生产销售和服务，如复合材料无人机机架、PNP、飞行平台、无人机零配件生产制造、定制类无人机产品等</p>
-      <div class="mt-6 flex items-center gap-1.5">
-        <span class="h-1 w-8 rounded-full bg-navy"></span>
-        <span class="h-1 w-2 rounded-full bg-navyLight"></span>
-        <span class="h-1 w-1 rounded-full bg-navyLight/40"></span>
-      </div>
-    </div>
-<!--	  第一个-->
-    <div class="grid grid-cols-2 gap-3 sm:gap-7">
-      <a href="./vtol/index.html" class="group relative overflow-hidden rounded-xl sm:rounded-2xl bg-white shadow-sm hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
-        <div class="relative aspect-square w-full overflow-hidden">
-          <img src="images/T1.jpg" alt="垂直起降复合翼无人机" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"/>
-          <span class="absolute left-3 top-3 sm:left-4 sm:top-4 rounded-md bg-navy/80 px-2.5 py-1 text-[10px] sm:text-xs font-medium tracking-wider text-white backdrop-blur-sm">VTOL</span>
-        </div>
-        <div class="flex items-center justify-between px-3 py-3 sm:px-5 sm:py-4">
-          <div class="min-w-0 flex-1">
-            <h3 class="truncate text-xs sm:text-base font-semibold text-textDark group-hover:text-navy transition-colors">垂直起降复合翼无人机</h3>
-            <p class="mt-0.5 truncate text-[10px] sm:text-xs text-textGray">融合多旋翼垂直起降与固定翼长航时优势</p>
-          </div>
-          <span class="ml-2 sm:ml-3 flex h-7 w-7 sm:h-8 sm:w-8 flex-shrink-0 items-center justify-center rounded-full bg-navy/5 text-navy transition-all group-hover:bg-navy group-hover:text-white">
-            <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-          </span>
-        </div>
-      </a>
-      <a href="./vtol/index2.html" class="group relative overflow-hidden rounded-xl sm:rounded-2xl bg-white shadow-sm hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
-        <div class="relative aspect-square w-full overflow-hidden">
-          <img src="images/T2.jpg" alt=""/>
-          <span class="absolute left-3 top-3 sm:left-4 sm:top-4 rounded-md bg-navy/80 px-2.5 py-1 text-[10px] sm:text-xs font-medium tracking-wider text-white backdrop-blur-sm">HEXACOPTER</span>
-        </div>
-        <div class="flex items-center justify-between px-3 py-3 sm:px-5 sm:py-4">
-          <div class="min-w-0 flex-1">
-            <h3 class="truncate text-xs sm:text-base font-semibold text-textDark group-hover:text-navy transition-colors">六旋翼工业无人机</h3>
-            <p class="mt-0.5 truncate text-[10px] sm:text-xs text-textGray">强大载荷能力与飞行稳定性，多场景适配</p>
-          </div>
-          <span class="ml-2 sm:ml-3 flex h-7 w-7 sm:h-8 sm:w-8 flex-shrink-0 items-center justify-center rounded-full bg-navy/5 text-navy transition-all group-hover:bg-navy group-hover:text-white">
-            <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-          </span>
-        </div>
-      </a>
-      <a href="./vtol/index3.html" class="group relative overflow-hidden rounded-xl sm:rounded-2xl bg-white shadow-sm hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
-        <div class="relative aspect-square w-full overflow-hidden">
-          <img src="images/T3.jpg" alt=""/>
-          <span class="absolute left-3 top-3 sm:left-4 sm:top-4 rounded-md bg-navy/80 px-2.5 py-1 text-[10px] sm:text-xs font-medium tracking-wider text-white backdrop-blur-sm">VTOL-S</span>
-        </div>
-        <div class="flex items-center justify-between px-3 py-3 sm:px-5 sm:py-4">
-          <div class="min-w-0 flex-1">
-            <h3 class="truncate text-xs sm:text-base font-semibold text-textDark group-hover:text-navy transition-colors">复合翼无人机（侧视）</h3>
-            <p class="mt-0.5 truncate text-[10px] sm:text-xs text-textGray">流线型气动布局，复合材料一体成型</p>
-          </div>
-          <span class="ml-2 sm:ml-3 flex h-7 w-7 sm:h-8 sm:w-8 flex-shrink-0 items-center justify-center rounded-full bg-navy/5 text-navy transition-all group-hover:bg-navy group-hover:text-white">
-            <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-          </span>
-        </div>
-      </a>
-      <a href="./vtol/index4.html" class="group relative overflow-hidden rounded-xl sm:rounded-2xl bg-white shadow-sm hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
-        <div class="relative aspect-square w-full overflow-hidden">
-          <img src="images/T4.jpg" alt=""/>
-          <span class="absolute left-3 top-3 sm:left-4 sm:top-4 rounded-md bg-navy/80 px-2.5 py-1 text-[10px] sm:text-xs font-medium tracking-wider text-white backdrop-blur-sm">HEXA-D</span>
-        </div>
-        <div class="flex items-center justify-between px-3 py-3 sm:px-5 sm:py-4">
-          <div class="min-w-0 flex-1">
-            <h3 class="truncate text-xs sm:text-base font-semibold text-textDark group-hover:text-navy transition-colors">六旋翼无人机（详视）</h3>
-            <p class="mt-0.5 truncate text-[10px] sm:text-xs text-textGray">模块化快拆设计，碳纤维复合材料机身</p>
-          </div>
-          <span class="ml-2 sm:ml-3 flex h-7 w-7 sm:h-8 sm:w-8 flex-shrink-0 items-center justify-center rounded-full bg-navy/5 text-navy transition-all group-hover:bg-navy group-hover:text-white">
-            <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-          </span>
-        </div>
-      </a>
-    </div>
-	  <div data-inspector-line="102" data-inspector-column="8" data-inspector-relative-path="src/components/Products.tsx" class="mt-12 flex justify-center">
-		  <a data-inspector-line="103" data-inspector-column="10" data-inspector-relative-path="src/components/Products.tsx" class="group inline-flex items-center gap-2 rounded-full border-2 border-[#0A2E5C] px-8 py-3 text-sm font-medium text-[#0A2E5C] transition-all hover:bg-[#0A2E5C] hover:text-white hover:shadow-lg" href="more.html">查看更多
-			  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right h-4 w-4 transition-transform group-hover:translate-x-1" data-inspector-line="108" data-inspector-column="12" data-inspector-relative-path="src/components/Products.tsx">
-			  <path d="M5 12h14"></path>
-			  <path d="m12 5 7 7-7 7"></path>
-			  </svg>
-		  </a>
-	  </div>
-  </div>
-</section>
-
-<!-- Company Intro -->
-<section id="about" class="relative overflow-hidden">
-  <div class="absolute inset-0 bg-cover bg-center" style="background-image:url('./BgImages/u=110640539,1768127843&fm=253&fmt=auto&app=138&f=JPEG.webp')"></div>
-  <div class="absolute inset-0 bg-navy/85"></div>
-  <div class="relative max-w-7xl mx-auto px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
-    <div class="max-w-2xl">
-      <h2 class="mb-6 text-2xl sm:text-4xl font-bold text-white">一站式无人机制造商</h2>
-      <div class="space-y-4 text-sm leading-7 text-white/80">
-        <p>深圳市GLOBAL EAGLE PLUS技术有限公司2015年成立于深圳，2023年应江西省赣州市南康区政府招商引进，入驻赣州低空经济产业园2栋厂房共12000余平方米，成立GLOBAL EAGLE PLUS（赣州）技术有限公司。</p>
-        <p>公司专注于工业飞行器设计服务、复合材料飞行平台生产销售和服务。是国内规模领先、最具竞争力的工业无人机企业之一，申请相关专利10余件，其中以多旋翼无人机、垂直起降复合翼、固定翼为主。公司始终坚持发扬"诚信、创新、沟通"为企业宗旨，以"技术、服务"为立业之本的团体精神，并形成一套完整的设计、仿真、开模、生产、调试、售后服务全套体系。</p>
-        <p>致力于为客户提供专业化、工具化的工业无人机系统。我司产品被广泛的用于公安、武警、消防、电力、植保、环保、地理勘测等行业。</p>
-        <p>公司与国内外众多知名无人机品牌企业建立了良好、稳固的合作代工关系，逐步形成强大的人才、技术和品牌优势。</p>
-        <p>公司拥有一支朝气蓬勃，平均年龄26岁的技术团队，具有开放性思维且具备专业的研发力量。</p>
-        <p>公司本着以客户三个满意为基本原则："产品质量的满意，技术的满意，售后服务满意"不断加强企业内部的综合竞争力，公司在竞争中求发展，在挑战中谋机遇，相信我司会给您提供最好、最优质的产品和完善的售后服务。</p>
-      </div>
-		
-    </div>
-  </div>
-</section>
-
-<!-- Stats -->
-<section class="bg-gradient-to-r from-navy to-navyLight py-12 sm:py-16">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div id="statsGrid" class="grid grid-cols-2 gap-8 lg:grid-cols-4">
-      <div class="text-center stat-item"><div class="text-3xl sm:text-5xl font-bold text-white" data-target="10" data-suffix="+">0+</div><p class="mt-2 text-sm text-white/70">成立年限</p></div>
-      <div class="text-center stat-item"><div class="text-3xl sm:text-5xl font-bold text-white" data-target="120000" data-suffix="m²" data-format="true">0m²</div><p class="mt-2 text-sm text-white/70">厂房面积</p></div>
-      <div class="text-center stat-item"><div class="text-3xl sm:text-5xl font-bold text-white" data-target="100" data-suffix="+">0+</div><p class="mt-2 text-sm text-white/70">专业团队</p></div>
-      <div class="text-center stat-item"><div class="text-3xl sm:text-5xl font-bold text-white" data-target="1" data-suffix="亿">0亿</div><p class="mt-2 text-sm text-white/70">年营业额</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- Advantages -->
-<section id="advantages" class="bg-lightBg py-16 sm:py-20">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="mb-10 sm:mb-12 text-center">
-      <h2 class="mb-4 text-2xl sm:text-3xl font-bold text-textDark">公司优势</h2>
-      <p class="mx-auto max-w-3xl text-sm text-textGray">我司致力于为客户提供专业化、工具化的工业无人机系统；我司产品被广泛的用于公安、武警、消防、电力、植保、环保、地理勘测等行业</p>
-    </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-      <div class="flip-card h-[280px]"><div class="flip-card-inner"><div class="flip-card-front flex flex-col items-center justify-center bg-white p-6 shadow-md"><div class="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-navy/10"><svg class="w-8 h-8 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div><span class="mb-2 text-xs font-bold tracking-wider text-navyLight">01</span><h3 class="text-center text-base font-semibold text-textDark">专业的飞行器生产制作经验</h3></div><div class="flip-card-back flex flex-col items-center justify-center bg-gradient-to-br from-navy to-navyLight p-6 shadow-md"><div class="mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-white/20"><svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div><h3 class="mb-3 text-center text-base font-semibold text-white">专业的飞行器生产制作经验</h3><p class="text-center text-sm leading-relaxed text-white/80">拥有多年工业级无人机生产制造经验，从复合材料成型到整机调试，全流程严格把控，确保每一架飞行器达到行业最高标准。</p></div></div></div>
-
-      <div class="flip-card h-[280px]"><div class="flip-card-inner"><div class="flip-card-front flex flex-col items-center justify-center bg-white p-6 shadow-md"><div class="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-navy/10"><svg class="w-8 h-8 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg></div><span class="mb-2 text-xs font-bold tracking-wider text-navyLight">02</span><h3 class="text-center text-base font-semibold text-textDark">高效率生产体系</h3></div><div class="flip-card-back flex flex-col items-center justify-center bg-gradient-to-br from-navy to-navyLight p-6 shadow-md"><div class="mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-white/20"><svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg></div><h3 class="mb-3 text-center text-base font-semibold text-white">高效率生产体系</h3><p class="text-center text-sm leading-relaxed text-white/80">12000㎡现代化厂房配备自动化生产线，年产能覆盖数百架各型无人机，从原材料到成品全链条高效协同，快速响应客户交付需求。</p></div></div></div>
-
-      <div class="flip-card h-[280px]"><div class="flip-card-inner"><div class="flip-card-front flex flex-col items-center justify-center bg-white p-6 shadow-md"><div class="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-navy/10"><svg class="w-8 h-8 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></div><span class="mb-2 text-xs font-bold tracking-wider text-navyLight">03</span><h3 class="text-center text-base font-semibold text-textDark">高效的研发流程</h3></div><div class="flip-card-back flex flex-col items-center justify-center bg-gradient-to-br from-navy to-navyLight p-6 shadow-md"><div class="mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-white/20"><svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></div><h3 class="mb-3 text-center text-base font-semibold text-white">高效的研发流程</h3><p class="text-center text-sm leading-relaxed text-white/80">平均年龄26岁的技术团队具备开放性思维与专业研发力量，建立了从概念设计、仿真验证到试飞定型的敏捷研发流程，持续推动产品迭代。</p></div></div></div>
-
-      <div class="flip-card h-[280px]"><div class="flip-card-inner"><div class="flip-card-front flex flex-col items-center justify-center bg-white p-6 shadow-md"><div class="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-navy/10"><svg class="w-8 h-8 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg></div><span class="mb-2 text-xs font-bold tracking-wider text-navyLight">04</span><h3 class="text-center text-base font-semibold text-textDark">专业的设计团队</h3></div><div class="flip-card-back flex flex-col items-center justify-center bg-gradient-to-br from-navy to-navyLight p-6 shadow-md"><div class="mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-white/20"><svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg></div><h3 class="mb-3 text-center text-base font-semibold text-white">专业的设计团队</h3><p class="text-center text-sm leading-relaxed text-white/80">专业航空航天设计团队，涵盖气动、结构、电气等多学科，申请相关专利10余件，以多旋翼、垂直起降复合翼、固定翼为主打产品线。</p></div></div></div>
-
-      <div class="flip-card h-[280px]"><div class="flip-card-inner"><div class="flip-card-front flex flex-col items-center justify-center bg-white p-6 shadow-md"><div class="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-navy/10"><svg class="w-8 h-8 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div><span class="mb-2 text-xs font-bold tracking-wider text-navyLight">05</span><h3 class="text-center text-base font-semibold text-textDark">定制化解决方案与外包合作</h3></div><div class="flip-card-back flex flex-col items-center justify-center bg-gradient-to-br from-navy to-navyLight p-6 shadow-md"><div class="mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-white/20"><svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div><h3 class="mb-3 text-center text-base font-semibold text-white">定制化解决方案与外包合作</h3><p class="text-center text-sm leading-relaxed text-white/80">与国内外众多知名无人机品牌企业建立了稳固的合作代工关系，可根据客户需求提供从ODM设计到OEM生产的全流程定制化服务。</p></div></div></div>
-
-      <div class="flip-card h-[280px]"><div class="flip-card-inner"><div class="flip-card-front flex flex-col items-center justify-center bg-white p-6 shadow-md"><div class="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-navy/10"><svg class="w-8 h-8 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg></div><span class="mb-2 text-xs font-bold tracking-wider text-navyLight">06</span><h3 class="text-center text-base font-semibold text-textDark">生命周期支持服务</h3></div><div class="flip-card-back flex flex-col items-center justify-center bg-gradient-to-br from-navy to-navyLight p-6 shadow-md"><div class="mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-white/20"><svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg></div><h3 class="mb-3 text-center text-base font-semibold text-white">生命周期支持服务</h3><p class="text-center text-sm leading-relaxed text-white/80">形成完整的设计、仿真、开模、生产、调试、售后服务全套体系，始终以产品质量、技术、售后服务三个满意为基本原则，提供全生命周期保障。</p></div></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- Footer -->
-<footer id="contact" class="bg-dark pt-12 sm:pt-16 pb-8">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid gap-10 lg:grid-cols-3">
+  <section id="about" class="about">
+    <div class="container about-wrap">
+      <div class="about-logo"><img src="data:image/webp;base64,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" alt="TJW Logo" /></div>
       <div>
-        <span class="mb-4 block text-lg sm:text-2xl font-bold tracking-[0.15em] text-white">GLOBAL EAGLE PLUS</span>
-        <p class="mb-6 text-sm leading-6 text-white/60">公司专注于工业飞行器设计服务、复合材料飞行平台生产销售和服务</p>
-        <h4 class="mb-4 text-sm font-semibold text-white">快速链接</h4>
-        <ul class="space-y-2">
-          <li><a href="index.html" class="text-sm text-white/50 hover:text-white transition-colors">首页</a></li>
-          <li><a href="#products" class="text-sm text-white/50 hover:text-white transition-colors">产品</a></li>
-          <li><a href="#about" class="text-sm text-white/50 hover:text-white transition-colors">关于我们</a></li>
-          <li><a href="#advantages" class="text-sm text-white/50 hover:text-white transition-colors">新闻</a></li>
-          <li><a href="#contact" class="text-sm text-white/50 hover:text-white transition-colors">联系我们</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="mb-6 text-sm font-semibold text-white">联系我们</h4>
-        <div class="space-y-4 text-sm text-white/60">
-          <div>
-            <p class="font-medium text-white/80">深圳市GLOBAL EAGLE PLUS技术有限公司</p>
-            <p class="mt-1">深圳市光明区鑫瑞科科技园B栋</p>
-          </div>
-          <div>
-            <p class="font-medium text-white/80">GLOBAL EAGLE PLUS（赣州）技术有限公司</p>
-            <p class="mt-1">江西省赣州市南康区龙回镇赣州低空经济产业园129-130栋</p>
-          </div>
-          <p>18824415502</p>
-          <p>FKJF-888@163.COM</p>
-        </div>
-      </div>
-      <div>
-        <h4 class="mb-6 text-sm font-semibold text-white">关注我们</h4>
-        <ul class="space-y-2">
-          <li class="text-sm text-white/50">新浪微博</li>
-          <li class="text-sm text-white/50">Youku</li>
-          <li class="text-sm text-white/50">微信公众号</li>
-          <li class="text-sm text-white/50">抖音</li>
-        </ul>
-        <div class="mt-6 flex h-24 w-24 items-center justify-center rounded-lg bg-white/10">
-          <span class="text-xs text-white/50">微信二维码</span>
+        <span class="section-kicker" style="color:#7ddcff">About TeJieWen</span>
+        <h2>TJW means focused UAV technology and dependable B2B service.</h2>
+        <p>TeJieWen, abbreviated as TJW, is positioned as a professional UAV solution brand serving international customers. The website has been updated to make the brand identity clearer, strengthen buyer trust and guide visitors toward product inquiry.</p>
+        <p>We support application-oriented drone selection, product configuration, OEM customization and after-sales communication for industrial users and distributors.</p>
+        <div class="feature-list">
+          <div class="feature">✓ Clear Brand Identity</div>
+          <div class="feature">✓ International B2B Style</div>
+          <div class="feature">✓ Fast Inquiry Path</div>
+          <div class="feature">✓ Mobile Responsive</div>
         </div>
       </div>
     </div>
-    <div class="mt-12 border-t border-white/10 pt-6 text-center text-xs text-white/30">
-      版权所有©2025 GLOBAL EAGLE PLUS（赣州）技术有限公司 粤ICP备17122991号-2 版权所有 网站地图 隐私政策
+  </section>
+
+  <section id="process" class="process">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-kicker">Service Flow</span>
+        <h2>From Requirement to Delivery</h2>
+        <p>A simpler service flow helps overseas buyers quickly understand how to work with TJW.</p>
+      </div>
+      <div class="process-grid">
+        <div class="step"><b>01</b><h3>Requirement</h3><p>Confirm mission scenario, payload, flight time, distance and working environment.</p></div>
+        <div class="step"><b>02</b><h3>Configuration</h3><p>Recommend suitable UAV platform, control system, payload and accessory options.</p></div>
+        <div class="step"><b>03</b><h3>Customization</h3><p>Provide OEM appearance, functional integration and application-specific adjustments.</p></div>
+        <div class="step"><b>04</b><h3>Support</h3><p>Offer product documents, operation guidance and long-term communication support.</p></div>
+      </div>
     </div>
-  </div>
-</footer>
-	
-	
-	<script src="https://cdn.staticfile.net/translate.js/3.18.66/translate.js"></script>
+  </section>
 
-<script>
-    // 页面加载时，先从 localStorage 读取上次保存的语言
-    let savedLang = localStorage.getItem('my_site_language');
-    if (savedLang && savedLang !== 'chinese_simplified') {
-        // 如果有保存的语言且不是中文，提前设置目标语言（必须在 translate.execute() 之前设置）
-        translate.language.setLanguageTo(savedLang);
-    }
+  <section id="contact" class="contact">
+    <div class="container contact-card">
+      <div>
+        <span class="section-kicker" style="color:#7ddcff">Contact TJW</span>
+        <h2>Ready to build your drone project?</h2>
+        <p>Send your drone model, payload requirement, purchase quantity or target application. TJW will help match the right solution and quotation.</p>
+      </div>
+      <div class="contact-box">
+        <div class="contact-row"><b>Brand</b>TeJieWen / TJW Drone Technology</div>
+        <div class="contact-row"><b>Main Business</b>UAV platforms, drone solutions, OEM/ODM</div>
+        <div class="contact-row"><b>Application</b>Aerial imaging · Inspection · Mapping · Agriculture</div>
+        <div class="contact-row"><b>Inquiry Tip</b>Add WhatsApp / Email / Product form here</div>
+      </div>
+    </div>
+  </section>
 
-    // 设置网站原始语言为简体中文
-    translate.language.setLocal('chinese_simplified');
-    // 设置翻译服务通道（可选）
-    translate.service.use('client.edge');
-    // 启动翻译，官方会自动在页面上生成下拉菜单
-    translate.execute();
+  <footer class="footer">
+    <div class="container"><span>© <span id="year"></span> TeJieWen TJW Drone Technology. All rights reserved.</span><span>Professional UAV Solutions</span></div>
+  </footer>
 
-    // 监听官方生成的下拉菜单的 change 事件，以便在用户切换语言时保存选择
-    // 由于 translate.js 生成下拉菜单需要一点时间，所以我们使用 MutationObserver 或 setTimeout 等待元素出现
-    setTimeout(() => {
-        let select = document.getElementById('translate-select');
-        if (select) {
-            // 如果有保存的语言，同步下拉菜单的选中项
-            if (savedLang) {
-                let option = select.querySelector(`option[value="${savedLang}"]`);
-                if (option) option.selected = true;
-            }
-            // 监听 change 事件
-            select.addEventListener('change', function(e) {
-                let selectedLang = e.target.value;
-                localStorage.setItem('my_site_language', selectedLang);
-            });
-        }
-    }, 500); // 延迟 500 毫秒等待元素生成，可根据实际情况调整
-</script>
-	
-
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
-
-<script>
-// Navbar scroll effect
-window.addEventListener('scroll',function(){
-  var nb=document.getElementById('navbar');
-  if(window.scrollY>20){nb.style.background='rgba(10,46,92,.95)';nb.style.boxShadow='0 4px 20px rgba(0,0,0,.15)';nb.style.backdropFilter='blur(12px)'}
-  else{nb.style.background='linear-gradient(to right,#0A2E5C,#1A4A8A)';nb.style.boxShadow='none';nb.style.backdropFilter='none'}
-});
-
-// Carousel
-var cur=0,total=3,autoTimer;
-var track=document.getElementById('carouselTrack');
-var dots=document.getElementById('carouselDots').children;
-function upd(){track.style.transform='translateX(-'+cur*100+'%)';for(var i=0;i<dots.length;i++){if(i===cur){dots[i].className='h-2.5 w-8 rounded-full bg-white transition-all'}else{dots[i].className='h-2.5 w-2.5 rounded-full bg-white/50 hover:bg-white/70 transition-all'}}}
-function carouselNext(){cur=(cur+1)%total;upd();resetAuto()}
-function carouselPrev(){cur=(cur-1+total)%total;upd();resetAuto()}
-function carouselGo(i){cur=i;upd();resetAuto()}
-function resetAuto(){clearInterval(autoTimer);autoTimer=setInterval(carouselNext,5000)}
-autoTimer=setInterval(carouselNext,5000);
-
-// Touch swipe for carousel
-var touchStartX=0,touchEndX=0;
-track.addEventListener('touchstart',function(e){touchStartX=e.changedTouches[0].screenX},false);
-track.addEventListener('touchend',function(e){touchEndX=e.changedTouches[0].screenX;if(touchStartX-touchEndX>50)carouselNext();if(touchEndX-touchStartX>50)carouselPrev()},false);
-
-// Stats animation
-var statsAnimated=false;
-var statsObs=new IntersectionObserver(function(entries){
-  entries.forEach(function(entry){
-    if(entry.isIntersecting&&!statsAnimated){
-      statsAnimated=true;
-      document.querySelectorAll('#statsGrid [data-target]').forEach(function(el){
-        var target=parseInt(el.dataset.target),suffix=el.dataset.suffix,fmt=el.dataset.format==='true';
-        var dur=2000,steps=60,inc=target/steps,cur=0;
-        var timer=setInterval(function(){
-          cur+=inc;if(cur>=target){cur=target;clearInterval(timer)}
-          el.textContent=(fmt?Math.floor(cur).toLocaleString():Math.floor(cur))+suffix;
-        },dur/steps);
-      });
-    }
-  });
-},{threshold:0.5});
-statsObs.observe(document.getElementById('statsGrid'));
-</script>
-	
+  <script>
+    const menuBtn=document.getElementById('menuBtn');
+    const navLinks=document.getElementById('navLinks');
+    menuBtn&&menuBtn.addEventListener('click',()=>navLinks.classList.toggle('open'));
+    document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
+    document.getElementById('year').textContent=new Date().getFullYear();
+  </script>
 </body>
 </html>
