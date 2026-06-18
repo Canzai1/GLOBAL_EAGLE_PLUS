@@ -103,7 +103,7 @@ section{padding:92px 0}
 
 
 .video-tabs-section{background:#fff}
-.video-tabs-wrap{display:grid;grid-template-columns:260px 1fr;gap:42px;align-items:stretch}
+.video-tabs-wrap{display:grid;grid-template-columns:260px 1fr;gap:42px;align-items:start}
 .video-tab-nav{position:relative;padding:8px 0}
 .video-tab-nav:before{content:"";position:absolute;right:18px;top:0;bottom:0;width:1px;background:#C8D6E5}
 .video-tab-btn{position:relative;width:100%;display:flex;align-items:center;gap:18px;padding:22px 28px 22px 0;border:0;background:transparent;color:#123047;font-size:20px;font-weight:900;text-align:left;cursor:pointer;transition:.25s}
@@ -111,10 +111,9 @@ section{padding:92px 0}
 .video-tab-btn.active{color:#0B66C3}
 .video-tab-btn.active .tab-icon{background:#EAF5FF;border-color:#A9D5FF}
 .video-tab-btn.active:after{content:"";position:absolute;right:9px;top:50%;width:18px;height:18px;border-radius:50%;background:#123047;transform:translateY(-50%);box-shadow:0 0 0 6px #fff}
-.video-content-area{display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:start}
-.video-main-card,.video-side-card{border-radius:26px;overflow:hidden;background:#F5F8FC;box-shadow:0 12px 34px rgba(14,42,84,.08);border:1px solid #DDE8F5}
+.video-content-area{display:grid;grid-template-columns:1fr;gap:28px;align-items:start;max-width:900px}
+.video-main-card{border-radius:26px;overflow:hidden;background:#F5F8FC;box-shadow:0 12px 34px rgba(14,42,84,.08);border:1px solid #DDE8F5}
 .video-main-card{min-height:520px}
-.video-side-stack{display:grid;gap:24px}
 .video-player-box{position:relative;height:360px;background:linear-gradient(135deg,#061A38,#0B66C3);overflow:hidden}
 .video-player-box video{width:100%;height:100%;object-fit:cover;display:block;background:#06162E}
 .video-placeholder-panel{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:32px;color:#fff;background:linear-gradient(135deg,rgba(6,22,46,.88),rgba(11,102,195,.72))}
@@ -124,18 +123,8 @@ section{padding:92px 0}
 .video-card-text{padding:24px 28px}
 .video-card-text h3{margin:0 0 10px;color:#111827;font-size:24px}
 .video-card-text p{margin:0;color:#64748B;line-height:1.75}
-.video-upload-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:18px}
-.video-upload-row label{display:inline-flex;align-items:center;justify-content:center;padding:11px 18px;border-radius:999px;background:#0B66C3;color:#fff;font-weight:900;cursor:pointer}
-.video-upload-row input{display:none}
-.video-upload-row span{font-size:13px;color:#64748B}
-.video-side-media{height:185px;background:#EAF5FF;position:relative;overflow:hidden}
-.video-side-media:before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(6,22,46,.62),rgba(11,102,195,.20))}
-.video-side-media .play-dot{position:absolute;left:50%;top:50%;width:58px;height:58px;border-radius:50%;background:rgba(255,255,255,.92);transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;color:#0B66C3;font-size:22px;font-weight:900}
-.video-side-card .video-card-text{padding:22px 24px}
-.video-side-card h3{font-size:20px}
 .video-tab-panel{display:none}
 .video-tab-panel.active{display:grid}
-.video-note-line{margin-top:28px;padding:16px 18px;border-radius:18px;background:#F5F8FC;border:1px solid #DDE8F5;color:#64748B;line-height:1.7}
 
 .footer{background:#1F2224;color:rgba(255,255,255,.72);padding:78px 0 24px;margin-top:0}
 .footer-grid{display:grid;grid-template-columns:1.45fr .8fr 1.25fr;gap:70px;align-items:start}
@@ -261,16 +250,9 @@ section{padding:92px 0}
 .oem-card li::before{content:"✓";position:absolute;left:0;color:#8BE7FF;font-weight:900}
 
 
-.oem-image{height:245px;border-radius:24px;overflow:hidden;margin-bottom:24px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.18)}
-.oem-image img{width:100%;height:100%;object-fit:cover;display:block;transition:.35s}
-.oem-card:hover .oem-image img{transform:scale(1.035)}
 .oem-card{overflow:hidden}
-@media(max-width:640px){.oem-image{height:210px}}
 .production{background:#fff}
 
-.flowchart-image{margin-bottom:28px;border-radius:30px;overflow:hidden;background:#F5F8FC;border:1px solid var(--line);box-shadow:0 16px 42px rgba(14,42,84,.10)}
-.flowchart-image img{width:100%;display:block}
-@media(max-width:640px){.flowchart-image{border-radius:20px}}
 .flow-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
 .flow-step{padding:28px 24px;border-radius:24px;background:var(--light);border:1px solid var(--line)}
 .flow-step b{display:inline-block;margin-bottom:14px;color:var(--blue);font-size:13px;letter-spacing:.14em}
@@ -348,8 +330,8 @@ section{padding:92px 0}
       <a href="#products">产品中心</a>
       <a href="#featured">产品视频</a>
       <a href="#applications">应用场景</a>
-      <a href="#production">生产服务</a>
-      <a href="#about" class="nav-cta">关于TJW</a>
+      <a href="#oem">OEM/ODM</a>
+      <a href="#production" class="nav-cta">生产服务</a>
     </nav>
   </div>
 </header>
@@ -466,8 +448,6 @@ section{padding:92px 0}
   <div class="container">
     <div class="section-head">
       <span class="product-main-title">产品视频</span>
-      <h2>按应用场景展示无人机作业视频</h2>
-      <p>按应用类型切换不同视频内容，帮助客户快速了解农业喷洒、垂直起降、测绘航测和工业巡检等典型作业场景。</p>
     </div>
 
     <div class="video-tabs-wrap">
@@ -486,24 +466,15 @@ section{padding:92px 0}
                 <video id="video-agri" controls playsinline preload="none" src="assets/videos/agriculture-spraying.mp4"></video>
                 <div class="video-placeholder-panel hide" id="placeholder-agri">
                   <div>
-                    <h3>农业喷洒无人机作业视频</h3>
-                    <p>展示农田植保、果园喷洒、定量喷洒与自动化作业过程。</p>
+                    <h3>农业无人机实地喷洒展示</h3>
+                    <p>农业无人机实地喷洒展示，稳定高效、雾化均匀、载重足、喷幅宽，全自动飞行省药省力，大田果园通用，适配各类种植基地，支持定制</p>
                   </div>
                 </div>
               </div>
               <div class="video-card-text">
-                <h3>真实喷洒作业展示</h3>
-                <p>通过实拍视频展示 TJW 农业喷洒无人机的飞行稳定性、喷洒覆盖能力、作业效率和农业场景适配能力。</p>
-                <div class="video-upload-row">
-                  <label for="upload-agri">上传农业喷洒视频</label>
-                  <input id="upload-agri" type="file" accept="video/mp4,video/webm,video/ogg,video/quicktime" data-video="video-agri" data-placeholder="placeholder-agri" data-name="name-agri" />
-                  <span id="name-agri">已加载农业喷洒视频</span>
-                </div>
+                <h3>农业无人机实地喷洒展示</h3>
+                <p>农业无人机实地喷洒展示，稳定高效、雾化均匀、载重足、喷幅宽，全自动飞行省药省力，大田果园通用，适配各类种植基地，支持定制</p>
               </div>
-            </div>
-            <div class="video-side-stack">
-              <div class="video-side-card"><div class="video-side-media"><span class="play-dot">▶</span></div><div class="video-card-text"><h3>喷洒覆盖效果</h3><p>展示喷幅、雾化、航线和覆盖范围。</p></div></div>
-              <div class="video-side-card"><div class="video-side-media"><span class="play-dot">▶</span></div><div class="video-card-text"><h3>作业效率说明</h3><p>适合用于首页展示、产品介绍和客户案例。</p></div></div>
             </div>
           </div>
         </div>
@@ -513,21 +484,12 @@ section{padding:92px 0}
             <div class="video-main-card">
               <div class="video-player-box">
                 <video id="video-vtol" controls playsinline preload="none" src="assets/videos/vtol-flight.mp4"></video>
-                <div class="video-placeholder-panel hide" id="placeholder-vtol"><div><h3>垂直起降无人机视频</h3><p>展示垂直起降、长航时巡航、复杂地形适应和远距离任务能力。</p></div></div>
+                <div class="video-placeholder-panel hide" id="placeholder-vtol"><div><h3>垂直起降无人机实拍展示</h3><p>垂直起降无人机实拍，长航时巡航，适配各类复杂地形，高效完成远距离巡检测绘作业</p></div></div>
               </div>
               <div class="video-card-text">
-                <h3>VTOL 起降与巡航展示</h3>
-                <p>突出无需跑道、长航时、大范围覆盖和工业任务适配能力，适合测绘、巡检、安防等场景。</p>
-                <div class="video-upload-row">
-                  <label for="upload-vtol">上传垂直起降视频</label>
-                  <input id="upload-vtol" type="file" accept="video/mp4,video/webm,video/ogg,video/quicktime" data-video="video-vtol" data-placeholder="placeholder-vtol" data-name="name-vtol" />
-                  <span id="name-vtol">已加载垂直起降视频</span>
-                </div>
+                <h3>垂直起降无人机实拍展示</h3>
+                <p>垂直起降无人机实拍，长航时巡航，适配各类复杂地形，高效完成远距离巡检测绘作业</p>
               </div>
-            </div>
-            <div class="video-side-stack">
-              <div class="video-side-card"><div class="video-side-media"><span class="play-dot">▶</span></div><div class="video-card-text"><h3>无需跑道起降</h3><p>适合山地、荒漠、林区等复杂环境。</p></div></div>
-              <div class="video-side-card"><div class="video-side-media"><span class="play-dot">▶</span></div><div class="video-card-text"><h3>远距离任务</h3><p>展示长航时与航线任务能力。</p></div></div>
             </div>
           </div>
         </div>
@@ -537,21 +499,12 @@ section{padding:92px 0}
             <div class="video-main-card">
               <div class="video-player-box">
                 <video id="video-mapping" controls playsinline preload="none" src="assets/videos/mapping-survey.mp4"></video>
-                <div class="video-placeholder-panel hide" id="placeholder-mapping"><div><h3>高精度测绘无人机视频</h3><p>展示航线规划、数据采集、正射影像、三维建模和测绘成果。</p></div></div>
+                <div class="video-placeholder-panel hide" id="placeholder-mapping"><div><h3>高精度测绘无人机实拍展示</h3><p>高精度测绘无人机实拍，自动规划航线、采集数据，快速生成正射影像与三维模型，输出完整测绘成果</p></div></div>
               </div>
               <div class="video-card-text">
-                <h3>航测建模与数据采集</h3>
-                <p>用于展示测绘无人机在土地规划、施工测量、矿山勘探和环境监测中的高精度数据采集能力。</p>
-                <div class="video-upload-row">
-                  <label for="upload-mapping">上传测绘航测视频</label>
-                  <input id="upload-mapping" type="file" accept="video/mp4,video/webm,video/ogg,video/quicktime" data-video="video-mapping" data-placeholder="placeholder-mapping" data-name="name-mapping" />
-                  <span id="name-mapping">已加载测绘航测视频</span>
-                </div>
+                <h3>高精度测绘无人机实拍展示</h3>
+                <p>高精度测绘无人机实拍，自动规划航线、采集数据，快速生成正射影像与三维模型，输出完整测绘成果</p>
               </div>
-            </div>
-            <div class="video-side-stack">
-              <div class="video-side-card"><div class="video-side-media"><span class="play-dot">▶</span></div><div class="video-card-text"><h3>航线规划</h3><p>展示任务规划、自动航线和覆盖范围。</p></div></div>
-              <div class="video-side-card"><div class="video-side-media"><span class="play-dot">▶</span></div><div class="video-card-text"><h3>成果输出</h3><p>适合展示影像、模型、地图和报告。</p></div></div>
             </div>
           </div>
         </div>
@@ -561,27 +514,14 @@ section{padding:92px 0}
             <div class="video-main-card">
               <div class="video-player-box">
                 <video id="video-inspection" controls playsinline preload="none" src="assets/videos/industrial-inspection.mp4"></video>
-                <div class="video-placeholder-panel hide" id="placeholder-inspection"><div><h3>工业巡检无人机视频</h3><p>展示电力线路、园区设施、管线巡查和应急响应等工业巡检场景。</p></div></div>
+                <div class="video-placeholder-panel hide" id="placeholder-inspection"><div><h3>工业巡检无人机实拍展示</h3><p>工业巡检无人机实拍，适用于电力、园区、管线巡查，快速出动，高效完成各类应急巡检作业</p></div></div>
               </div>
               <div class="video-card-text">
-                <h3>工业场景巡检展示</h3>
-                <p>突出高清巡检、红外热成像、异常抓拍、自动航线和复杂环境作业能力。</p>
-                <div class="video-upload-row">
-                  <label for="upload-inspection">上传工业巡检视频</label>
-                  <input id="upload-inspection" type="file" accept="video/mp4,video/webm,video/ogg,video/quicktime" data-video="video-inspection" data-placeholder="placeholder-inspection" data-name="name-inspection" />
-                  <span id="name-inspection">已加载工业巡检视频</span>
-                </div>
+                <h3>工业巡检无人机实拍展示</h3>
+                <p>工业巡检无人机实拍，适用于电力、园区、管线巡查，快速出动，高效完成各类应急巡检作业</p>
               </div>
             </div>
-            <div class="video-side-stack">
-              <div class="video-side-card"><div class="video-side-media"><span class="play-dot">▶</span></div><div class="video-card-text"><h3>高清巡检</h3><p>适合电力、园区、管线和设施巡查。</p></div></div>
-              <div class="video-side-card"><div class="video-side-media"><span class="play-dot">▶</span></div><div class="video-card-text"><h3>全天候作业</h3><p>支持多载荷、夜视、热成像等扩展能力。</p></div></div>
-            </div>
           </div>
-        </div>
-
-        <div class="video-note-line">
-          视频素材可按产品分类持续更新，用于展示 TJW 无人机在不同作业场景下的实际应用效果。
         </div>
       </div>
     </div>
@@ -594,8 +534,6 @@ section{padding:92px 0}
   <div class="container">
     <div class="section-head">
       <span class="product-main-title">应用场景</span>
-      <h2>展示无人机可以解决哪些行业问题</h2>
-      <p>通过真实应用场景图，让客户更直观地理解 TJW 无人机在农业、测绘、巡检、公共安全等行业中的实际应用价值。</p>
     </div>
     <div class="application-grid">
       <article class="application-card">
@@ -634,39 +572,46 @@ section{padding:92px 0}
   </div>
 </section>
 
+<section id="oem" class="oem">
+  <div class="container">
+    <div class="section-head">
+      <span class="product-main-title">OEM/ODM + 工厂服务</span>
+    </div>
+    <div class="oem-grid">
+      <article class="oem-card">
+        <h3>OEM/ODM 定制服务</h3>
+        <ul>
+          <li>Logo、颜色、外观定制</li>
+          <li>喷洒系统和载荷匹配</li>
+          <li>飞行平台和飞控配置</li>
+          <li>产品资料和经销商支持</li>
+          <li>项目型客户无人机方案定制</li>
+        </ul>
+      </article>
+      <article class="oem-card">
+        <h3>生产线服务</h3>
+        <ul>
+          <li>无人机装配线规划</li>
+          <li>测试和校准流程支持</li>
+          <li>人员培训和操作指导</li>
+          <li>生产设备匹配</li>
+          <li>长期技术与售后沟通支持</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
 <section id="production" class="production">
   <div class="container">
     <div class="section-head">
       <span class="product-main-title">服务流程</span>
-      <h2>客户合作流程展示</h2>
-      <p>这个流程区让海外客户快速理解如何与你们合作，提升专业度和信任感。</p>
     </div>
-    <div class="flowchart-image"><img src="assets/optimized/cooperation-flow-1200.webp" srcset="assets/optimized/cooperation-flow-760.webp 760w, assets/optimized/cooperation-flow-1200.webp 1200w" sizes="(max-width: 640px) calc(100vw - 32px), 1200px" alt="TJW 客户合作流程图" loading="lazy" decoding="async" width="1200" height="549"/></div>
     <div class="flow-grid">
       <div class="flow-step"><b>STEP 01</b><h3>需求确认</h3><p>确认产品类型、载荷、应用场景、续航时间和定制需求。</p></div>
       <div class="flow-step"><b>STEP 02</b><h3>方案配置</h3><p>推荐无人机平台、喷洒系统、相机载荷或巡检配置。</p></div>
       <div class="flow-step"><b>STEP 03</b><h3>生产交付</h3><p>根据项目需求安排样机、生产、装配、检测和包装。</p></div>
       <div class="flow-step"><b>STEP 04</b><h3>后续支持</h3><p>提供资料、操作支持、备件服务以及生产线服务支持。</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="about" class="about">
-  <div class="container">
-    <div class="about-card">
-      <div class="about-logo-box"><img src="assets/tjw-logo.webp" alt="TeJieWen TJW Logo"/></div>
-      <div>
-        <h2>TeJieWen / TJW 无人机科技</h2>
-        <p>TJW 独立站定位为展示型无人机品牌官网，主要展示农业喷洒无人机、垂直起降无人机、测绘巡检平台、OEM/ODM 定制和生产线服务。</p>
-        <p>整体风格保留厂家型、工业型、展示型，不强调购物车和交易，只强化产品、应用和制造服务能力。</p>
-        <div class="about-badges">
-          <span class="about-badge">无人机厂家</span>
-          <span class="about-badge">农业无人机</span>
-          <span class="about-badge">VTOL平台</span>
-          <span class="about-badge">OEM/ODM</span>
-          <span class="about-badge">生产线服务</span>
-        </div>
-      </div>
     </div>
   </div>
 </section>
@@ -692,6 +637,7 @@ section{padding:92px 0}
           <li><a href="#products">产品中心</a></li>
           <li><a href="#featured">产品视频</a></li>
           <li><a href="#applications">应用场景</a></li>
+          <li><a href="#oem">OEM/ODM</a></li>
           <li><a href="#production">服务流程</a></li>
         </ul>
       </div>
