@@ -1,4 +1,6 @@
 BgImages/*
 !BgImages/tjw-home-hero.png
+!BgImages/tjw-home-hero-desktop.webp
+!BgImages/tjw-home-hero-mobile.webp
 images/*
 !images/tjw-logo.png

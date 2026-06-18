@@ -2,6 +2,9 @@
   const SOURCE_LANG='chinese_simplified';
   const LANG_KEY='tjw_site_language';
   const POS_KEY='tjw_translate_widget_position';
+  const TRANSLATE_SRC='https://cdn.staticfile.net/translate.js/3.18.66/translate.js';
+  let translateLoadPromise=null;
+  let translateConfigured=false;
   const LANGUAGES=[
     ['chinese_simplified','中文原文'],
     ['english','English'],
@@ -64,13 +67,6 @@
     ].join('');
     document.body.appendChild(widget);
 
-    if(!document.getElementById('translate')){
-      const hidden=document.createElement('div');
-      hidden.id='translate';
-      hidden.setAttribute('aria-hidden','true');
-      document.body.appendChild(hidden);
-    }
-
     const select=widget.querySelector('#languageSwitcher');
     LANGUAGES.forEach(([value,label])=>{
       const option=document.createElement('option');
@@ -105,36 +101,19 @@
     const select=widget.querySelector('#languageSwitcher');
     const saved=localStorage.getItem(LANG_KEY)||SOURCE_LANG;
     if(select.querySelector('option[value="'+saved+'"]')) select.value=saved;
-
-    const waitForTranslate=(triesLeft)=>{
-      if(window.translate){
-        try{
-          translate.language.setLocal(SOURCE_LANG);
-          translate.service.use('client.edge');
-          if(saved!==SOURCE_LANG){
-            translate.changeLanguage(saved);
-            setStatus(widget,'当前语言：'+select.options[select.selectedIndex].text);
-          }else{
-            setStatus(widget,'请选择目标语言');
-          }
-        }catch(error){
-          setStatus(widget,'翻译服务初始化失败，请刷新页面重试。',true);
-        }
-        return;
-      }
-      if(triesLeft<=0){
-        setStatus(widget,'翻译服务暂时加载失败，请检查网络或刷新页面。',true);
-        return;
-      }
-      window.setTimeout(()=>waitForTranslate(triesLeft-1),300);
-    };
-    waitForTranslate(30);
+    setStatus(widget,saved===SOURCE_LANG ? '请选择目标语言' : '正在准备上次选择的语言...');
 
     select.addEventListener('change',()=>applyLanguage(widget,select.value));
     widget.querySelector('#tjwTranslateReset').addEventListener('click',()=>applyLanguage(widget,SOURCE_LANG));
     widget.querySelectorAll('#tjwTranslateQuick button').forEach(button=>{
       button.addEventListener('click',()=>applyLanguage(widget,button.dataset.lang));
     });
+
+    if(saved!==SOURCE_LANG){
+      runWhenIdle(()=>{
+        if((localStorage.getItem(LANG_KEY)||SOURCE_LANG)===saved) applyLanguage(widget,saved);
+      },900);
+    }
   }
 
   function applyLanguage(widget,lang){
@@ -142,14 +121,21 @@
     if(select.querySelector('option[value="'+lang+'"]')) select.value=lang;
     localStorage.setItem(LANG_KEY,lang);
 
-    if(!window.translate){
-      setStatus(widget,'翻译服务仍在加载，请稍后再试。',true);
+    if(lang===SOURCE_LANG && !hasTranslateApi()){
+      setStatus(widget,'已显示中文原文');
+      return;
+    }
+
+    if(!hasTranslateApi()){
+      setStatus(widget,'翻译服务加载中...');
+      loadTranslate()
+        .then(()=>applyLanguage(widget,lang))
+        .catch(()=>setStatus(widget,'翻译服务加载失败，请检查网络后重试。',true));
       return;
     }
 
     try{
-      translate.language.setLocal(SOURCE_LANG);
-      translate.service.use('client.edge');
+      configureTranslate();
       if(lang===SOURCE_LANG){
         if(typeof translate.reset==='function') translate.reset({selectLanguageRefreshRender:false});
         translate.to=SOURCE_LANG;
@@ -165,6 +151,60 @@
     }
   }
 
+  function loadTranslate(){
+    if(hasTranslateApi()){
+      configureTranslate();
+      return Promise.resolve();
+    }
+    if(translateLoadPromise) return translateLoadPromise;
+    translateLoadPromise=new Promise((resolve,reject)=>{
+      const existing=document.querySelector('script[data-tjw-translate-lib]');
+      if(existing){
+        existing.addEventListener('load',()=>{configureTranslate();resolve();},{once:true});
+        existing.addEventListener('error',reject,{once:true});
+        return;
+      }
+      const script=document.createElement('script');
+      script.src=TRANSLATE_SRC;
+      script.async=true;
+      script.dataset.tjwTranslateLib='true';
+      script.onload=()=>{
+        try{
+          configureTranslate();
+          resolve();
+        }catch(error){
+          reject(error);
+        }
+      };
+      script.onerror=reject;
+      document.head.appendChild(script);
+    });
+    return translateLoadPromise;
+  }
+
+  function configureTranslate(){
+    if(!hasTranslateApi() || translateConfigured) return;
+    translate.language.setLocal(SOURCE_LANG);
+    translate.service.use('client.edge');
+    translateConfigured=true;
+  }
+
+  function hasTranslateApi(){
+    return !!(
+      window.translate &&
+      window.translate.language &&
+      typeof window.translate.changeLanguage==='function'
+    );
+  }
+
+  function runWhenIdle(callback,timeout){
+    if('requestIdleCallback' in window){
+      window.requestIdleCallback(callback,{timeout:timeout||1000});
+      return;
+    }
+    window.setTimeout(callback,timeout||600);
+  }
+
   function bindPanel(widget){
     const toggle=widget.querySelector('#tjwTranslateToggle');
     const close=widget.querySelector('#tjwTranslateClose');
@@ -175,6 +215,9 @@
       }
       widget.classList.toggle('is-open');
       updateAlignment(widget);
+      if(widget.classList.contains('is-open')){
+        loadTranslate().catch(()=>setStatus(widget,'翻译服务加载失败，请检查网络后重试。',true));
+      }
     });
     close.addEventListener('click',()=>widget.classList.remove('is-open'));
     document.addEventListener('keydown',(event)=>{
