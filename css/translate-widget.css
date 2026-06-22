@@ -39,6 +39,7 @@
   letter-spacing:-.04em;
 }
 .tjw-translate-panel{
+  display:none;
   position:absolute;
   right:0;
   bottom:72px;
@@ -55,6 +56,7 @@
   transition:opacity .18s ease,transform .18s ease;
 }
 .tjw-translate-widget.is-open .tjw-translate-panel{
+  display:block;
   opacity:1;
   pointer-events:auto;
   transform:translateY(0) scale(1);
