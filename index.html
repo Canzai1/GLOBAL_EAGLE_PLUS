@@ -112,7 +112,8 @@ section{padding:92px 0}
 .video-tab-btn.active{color:#0B66C3}
 .video-tab-btn.active .tab-icon{background:#EAF5FF;border-color:#A9D5FF}
 .video-tab-btn.active:after{content:"";position:absolute;right:9px;top:50%;width:18px;height:18px;border-radius:50%;background:#123047;transform:translateY(-50%);box-shadow:0 0 0 6px #fff}
-.video-content-area{display:grid;grid-template-columns:1fr;gap:28px;align-items:start;max-width:900px}
+.video-panels{width:100%;min-width:0}
+.video-content-area{display:grid;grid-template-columns:1fr;gap:28px;align-items:start;max-width:900px;width:100%}
 .video-main-card,.video-side-card{border-radius:26px;overflow:hidden;background:#F5F8FC;box-shadow:0 12px 34px rgba(14,42,84,.08);border:1px solid #DDE8F5}
 .video-main-card{min-height:520px}
 
@@ -135,7 +136,7 @@ section{padding:92px 0}
 
 
 .video-tab-panel{display:none}
-.video-tab-panel.active{display:grid}
+.video-tab-panel.active{display:block}
 .video-note-line{margin-top:28px;padding:16px 18px;border-radius:18px;background:#F5F8FC;border:1px solid #DDE8F5;color:#64748B;line-height:1.7}
 
 .footer{background:#1F2224;color:rgba(255,255,255,.72);padding:78px 0 24px;margin-top:0}
@@ -515,7 +516,7 @@ section{padding:92px 0}
         <button class="video-tab-btn" data-tab="inspection"><span class="tab-icon">04</span><span>工业巡检</span></button>
       </div>
 
-      <div>
+      <div class="video-panels">
         <div class="video-tab-panel active" id="tab-agri">
           <div class="video-content-area">
             <div class="video-main-card">
@@ -530,8 +531,6 @@ section{padding:92px 0}
 
             </div>
           </div>
-        </div>
-
         <div class="video-tab-panel" id="tab-vtol">
           <div class="video-content-area">
             <div class="video-main-card">
@@ -546,8 +545,6 @@ section{padding:92px 0}
 
             </div>
           </div>
-        </div>
-
         <div class="video-tab-panel" id="tab-mapping">
           <div class="video-content-area">
             <div class="video-main-card">
@@ -562,8 +559,6 @@ section{padding:92px 0}
 
             </div>
           </div>
-        </div>
-
         <div class="video-tab-panel" id="tab-inspection">
           <div class="video-content-area">
             <div class="video-main-card">
@@ -578,7 +573,6 @@ section{padding:92px 0}
 
             </div>
           </div>
-        </div>
       </div>
     </div>
   </div>
