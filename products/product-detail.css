@@ -23,8 +23,8 @@ img{display:block;max-width:100%}
 .brand-logo{width:58px;height:58px;border-radius:16px;border:1px solid var(--line);background:#fff;object-fit:contain}
 .brand strong{display:block;color:var(--navy);font-size:26px;letter-spacing:.12em;line-height:1}
 .brand span{display:block;margin-top:6px;color:var(--muted);font-size:12px;letter-spacing:.12em;text-transform:uppercase}
-.nav-links{display:flex;align-items:center;gap:24px;color:#334155;font-size:14px;font-weight:800}
-.nav-links a{transition:.2s;white-space:nowrap}
+.nav-links{display:flex;align-items:center;gap:10px;color:#334155;font-size:14px;font-weight:800}
+.nav-links a{padding:0;border-radius:0;background:transparent!important;box-shadow:none!important;transition:.2s;letter-spacing:.01em;white-space:nowrap}
 .nav-links a:hover{color:var(--blue)}
 .nav-cta{padding:11px 18px;border-radius:999px;background:var(--navy);color:#fff!important}
 .menu-btn{display:none;border:0;background:none;font-size:30px;color:var(--navy);cursor:pointer}
@@ -114,6 +114,7 @@ img{display:block;max-width:100%}
 .footer-brand span{display:block;margin-top:4px;color:rgba(255,255,255,.58);font-size:12px;text-transform:uppercase;letter-spacing:.1em}
 .footer-bottom{display:flex;justify-content:space-between;gap:18px;margin-top:32px;padding-top:18px;border-top:1px solid rgba(255,255,255,.12);font-size:13px}
 
+@media(max-width:1180px){.nav-links{gap:22px;font-size:13px}.brand span{letter-spacing:.08em}}
 @media(max-width:1050px){
   .nav-links{display:none}
   .menu-btn{display:block}
