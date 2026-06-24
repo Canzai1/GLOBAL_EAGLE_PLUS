@@ -76,11 +76,14 @@ section{padding:92px 0}
 
 .products{background:var(--light)}
 .product-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.product-card-link{display:block;color:inherit;text-decoration:none;outline:none}
+.product-card-link:focus-visible .product-card{box-shadow:0 0 0 4px rgba(11,102,195,.22),var(--shadow)}
+.product-card-link .product-card{height:100%}
 .product-card{background:#fff;border:1px solid var(--line);border-radius:26px;overflow:hidden;box-shadow:0 12px 30px rgba(14,42,84,.07);transition:.25s;display:flex;flex-direction:column}
-.product-card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.product-card-link:hover .product-card,.product-card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
 .product-img{height:340px;background:#EAF5FF;overflow:hidden;position:relative}
 .product-img img{width:100%;height:100%;object-fit:contain;transition:.45s;background:#fff;padding:10px}
-.product-card:hover .product-img img{transform:scale(1.05)}
+.product-card-link:hover .product-img img,.product-card:hover .product-img img{transform:scale(1.05)}
 
 .product-body{padding:26px;display:flex;flex-direction:column;flex:1}
 .product-type{display:inline-block;margin-bottom:12px;padding:6px 12px;border-radius:999px;background:#EAF5FF;color:var(--blue);font-size:12px;font-weight:900;letter-spacing:.08em}
@@ -90,6 +93,9 @@ section{padding:92px 0}
 .spec{padding:10px;border-radius:14px;background:#F5F8FC;border:1px solid #E7EEF7}
 .spec small{display:block;color:#7C8BA0;font-size:11px}
 .spec b{display:block;margin-top:4px;color:var(--navy);font-size:13px}
+.product-detail-cta{display:inline-flex;align-items:center;gap:8px;margin-top:18px;color:var(--blue);font-size:14px;font-weight:900}
+.product-detail-cta::after{content:"";width:26px;height:2px;background:currentColor;transition:.2s}
+.product-card-link:hover .product-detail-cta::after{width:38px}
 
 .featured{background:#fff}
 .featured-wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:38px;align-items:center}
@@ -439,65 +445,77 @@ section{padding:92px 0}
     </div>
 
     <div class="product-grid">
-      <article class="product-card">
-        <div class="product-img"><img src="assets/step49/product-agriculture.jpg" alt="Agricultural spraying drone"/></div>
-        <div class="product-body">
-          <span class="product-type">Agricultural Plant Protection</span>
-          <h3>Agricultural Spraying Drone</h3>
-          <p>Designed for crop protection, orchard spraying, fertilizing, and spreading tasks, with configurable payloads and spraying systems.</p>
-          <div class="specs">
-            <div class="spec"><small>Application</small><b>Crop Protection</b></div>
-            <div class="spec"><small>Core Function</small><b>Precision Spraying</b></div>
-            <div class="spec"><small>Payload Options</small><b>Configurable</b></div>
-            <div class="spec"><small>Service Support</small><b>OEM/ODM</b></div>
+      <a class="product-card-link" href="products/agricultural-spraying-drone.html" aria-label="View details for Agricultural Spraying Drone">
+        <article class="product-card">
+          <div class="product-img"><img src="assets/step49/product-agriculture.jpg" alt="Agricultural spraying drone"/></div>
+          <div class="product-body">
+            <span class="product-type">Agricultural Plant Protection</span>
+            <h3>Agricultural Spraying Drone</h3>
+            <p>Designed for crop protection, orchard spraying, fertilizing, and spreading tasks, with configurable payloads and spraying systems.</p>
+            <div class="specs">
+              <div class="spec"><small>Application</small><b>Crop Protection</b></div>
+              <div class="spec"><small>Core Function</small><b>Precision Spraying</b></div>
+              <div class="spec"><small>Payload Options</small><b>Configurable</b></div>
+              <div class="spec"><small>Service Support</small><b>OEM/ODM</b></div>
+            </div>
+            <span class="product-detail-cta">View Details</span>
           </div>
-        </div>
-      </article>
+        </article>
+      </a>
 
-      <article class="product-card">
-        <div class="product-img"><img src="assets/step49/product-vtol.jpg" alt="VTOL drone"/></div>
-        <div class="product-body">
-          <span class="product-type">VTOL Platform</span>
-          <h3>VTOL Drone</h3>
-          <p>Combines multirotor vertical takeoff and landing with fixed-wing endurance for large-area mapping, inspection, security, and long-distance missions.</p>
-          <div class="specs">
-            <div class="spec"><small>Takeoff Mode</small><b>VTOL</b></div>
-            <div class="spec"><small>Key Advantage</small><b>Long Endurance</b></div>
-            <div class="spec"><small>Mission Type</small><b>Mapping / Inspection</b></div>
-            <div class="spec"><small>Platform Service</small><b>Customizable</b></div>
+      <a class="product-card-link" href="products/vtol-drone.html" aria-label="View details for VTOL Drone">
+        <article class="product-card">
+          <div class="product-img"><img src="assets/step49/product-vtol.jpg" alt="VTOL drone"/></div>
+          <div class="product-body">
+            <span class="product-type">VTOL Platform</span>
+            <h3>VTOL Drone</h3>
+            <p>Combines multirotor vertical takeoff and landing with fixed-wing endurance for large-area mapping, inspection, security, and long-distance missions.</p>
+            <div class="specs">
+              <div class="spec"><small>Takeoff Mode</small><b>VTOL</b></div>
+              <div class="spec"><small>Key Advantage</small><b>Long Endurance</b></div>
+              <div class="spec"><small>Mission Type</small><b>Mapping / Inspection</b></div>
+              <div class="spec"><small>Platform Service</small><b>Customizable</b></div>
+            </div>
+            <span class="product-detail-cta">View Details</span>
           </div>
-        </div>
-      </article>
+        </article>
+      </a>
 
-      <article class="product-card">
-        <div class="product-img"><img src="assets/step49/product-mapping.jpg" alt="High-precision mapping drone"/></div>
-        <div class="product-body">
-          <span class="product-type">Geographic Mapping</span>
-          <h3>High-Precision Mapping Drone</h3>
-          <p>Built for aerial surveying, orthophotos, 3D modeling, land planning, construction measurement, environmental monitoring, and data acquisition.</p>
-          <div class="specs">
-            <div class="spec"><small>Application</small><b>Aerial Mapping</b></div>
-            <div class="spec"><small>Data Output</small><b>Images / Models</b></div>
-            <div class="spec"><small>Payload Device</small><b>Camera / Payload</b></div>
-            <div class="spec"><small>Platform Type</small><b>VTOL / Multirotor</b></div>
+      <a class="product-card-link" href="products/high-precision-mapping-drone.html" aria-label="View details for High-Precision Mapping Drone">
+        <article class="product-card">
+          <div class="product-img"><img src="assets/step49/product-mapping.jpg" alt="High-precision mapping drone"/></div>
+          <div class="product-body">
+            <span class="product-type">Geographic Mapping</span>
+            <h3>High-Precision Mapping Drone</h3>
+            <p>Built for aerial surveying, orthophotos, 3D modeling, land planning, construction measurement, environmental monitoring, and data acquisition.</p>
+            <div class="specs">
+              <div class="spec"><small>Application</small><b>Aerial Mapping</b></div>
+              <div class="spec"><small>Data Output</small><b>Images / Models</b></div>
+              <div class="spec"><small>Payload Device</small><b>Camera / Payload</b></div>
+              <div class="spec"><small>Platform Type</small><b>VTOL / Multirotor</b></div>
+            </div>
+            <span class="product-detail-cta">View Details</span>
           </div>
-        </div>
-      </article>
+        </article>
+      </a>
 
-      <article class="product-card">
-        <div class="product-img"><img src="assets/step49/product-inspection.jpg" alt="Industrial inspection drone"/></div>
-        <div class="product-body">
-          <span class="product-type">Industrial Inspection</span>
-          <h3>Industrial Inspection Drone</h3>
-          <p>Designed for power lines, industrial parks, pipeline patrols, emergency response, public safety, and industrial inspection scenarios.</p>
-          <div class="specs">
-            <div class="spec"><small>Application</small><b>Inspection / Security</b></div>
-            <div class="spec"><small>Payload Capability</small><b>Flexible Mounting</b></div>
-            <div class="spec"><small>Operation Mode</small><b>Real-Time Monitoring</b></div>
-            <div class="spec"><small>Structure</small><b>Modular</b></div>
+      <a class="product-card-link" href="products/industrial-inspection-drone.html" aria-label="View details for Industrial Inspection Drone">
+        <article class="product-card">
+          <div class="product-img"><img src="assets/step49/product-inspection.jpg" alt="Industrial inspection drone"/></div>
+          <div class="product-body">
+            <span class="product-type">Industrial Inspection</span>
+            <h3>Industrial Inspection Drone</h3>
+            <p>Designed for power lines, industrial parks, pipeline patrols, emergency response, public safety, and industrial inspection scenarios.</p>
+            <div class="specs">
+              <div class="spec"><small>Application</small><b>Inspection / Security</b></div>
+              <div class="spec"><small>Payload Capability</small><b>Flexible Mounting</b></div>
+              <div class="spec"><small>Operation Mode</small><b>Real-Time Monitoring</b></div>
+              <div class="spec"><small>Structure</small><b>Modular</b></div>
+            </div>
+            <span class="product-detail-cta">View Details</span>
           </div>
-        </div>
-      </article>
+        </article>
+      </a>
     </div>
   </div>
 </section>
