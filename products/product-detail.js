@@ -10,6 +10,15 @@
         type: 'image/webp',
         alt: 'Agricultural spraying drone product image'
       },
+      carousel: {
+        caption: 'Product white-background views, field spraying, orchard operation, and fertilizing scenes.',
+        images: [
+          '../assets/carousel/agriculture/agriculture-carousel-1.jpg',
+          '../assets/carousel/agriculture/agriculture-carousel-2.jpg',
+          '../assets/carousel/agriculture/agriculture-carousel-3.jpg',
+          '../assets/carousel/agriculture/agriculture-carousel-4.jpg'
+        ]
+      },
       metrics: [
         ['Application', 'Crop Protection'],
         ['Core Function', 'Precision Spraying'],
@@ -58,6 +67,16 @@
         srcset: '../assets/optimized/product-vtol-480.webp 480w, ../assets/optimized/product-vtol-820.webp 820w',
         type: 'image/webp',
         alt: 'VTOL drone product image'
+      },
+      carousel: {
+        caption: 'White-background product views, flight scenes, indoor setup, and ground deployment angles.',
+        images: [
+          '../assets/carousel/vtol/vtol-carousel-1.jpg',
+          '../assets/carousel/vtol/vtol-carousel-2.jpg',
+          '../assets/carousel/vtol/vtol-carousel-3.jpg',
+          '../assets/carousel/vtol/vtol-carousel-4.jpg',
+          '../assets/carousel/vtol/vtol-carousel-5.jpg'
+        ]
       },
       metrics: [
         ['Takeoff Mode', 'VTOL'],
@@ -108,6 +127,16 @@
         type: 'image/webp',
         alt: 'High-precision mapping drone product image'
       },
+      carousel: {
+        caption: 'White-background product views, aerial mapping, construction survey, environmental monitoring, and inspection data collection scenes.',
+        images: [
+          '../assets/carousel/mapping/mapping-carousel-1.jpg',
+          '../assets/carousel/mapping/mapping-carousel-2.jpg',
+          '../assets/carousel/mapping/mapping-carousel-3.jpg',
+          '../assets/carousel/mapping/mapping-carousel-4.jpg',
+          '../assets/carousel/mapping/mapping-carousel-5.jpg'
+        ]
+      },
       metrics: [
         ['Application', 'Aerial Mapping'],
         ['Data Output', 'Images / Models'],
@@ -156,6 +185,15 @@
         srcset: '../assets/optimized/product-inspection-480.webp 480w, ../assets/optimized/product-inspection-820.webp 820w',
         type: 'image/webp',
         alt: 'Industrial inspection drone product image'
+      },
+      carousel: {
+        caption: 'White-background product views, flight inspection, power facility inspection, and substation operation scenes.',
+        images: [
+          '../assets/carousel/inspection/inspection-carousel-1.jpg',
+          '../assets/carousel/inspection/inspection-carousel-2.jpg',
+          '../assets/carousel/inspection/inspection-carousel-3.jpg',
+          '../assets/carousel/inspection/inspection-carousel-4.jpg'
+        ]
       },
       metrics: [
         ['Application', 'Inspection / Security'],
@@ -208,6 +246,35 @@
     return '<picture>' + source + '<img src="' + image.src + '" alt="' + image.alt + '" loading="' + loading + '"></picture>';
   }
 
+  function heroCarousel(product){
+    const images = product.carousel && product.carousel.images && product.carousel.images.length ? product.carousel.images : [product.image.src];
+    const slides = images.map(function(src, index){
+      const active = index === 0 ? ' active' : '';
+      const imageAttrs = index === 0 ? 'src="' + src + '" loading="eager"' : 'data-src="' + src + '" loading="lazy"';
+      return [
+        '<div class="carousel-slide' + active + '">',
+        '  <img ' + imageAttrs + ' alt="' + product.title + ' carousel image ' + (index + 1) + '" decoding="async">',
+        '</div>'
+      ].join('');
+    }).join('');
+    const dots = images.map(function(src, index){
+      const active = index === 0 ? ' active' : '';
+      return '<button class="carousel-dot' + active + '" type="button" data-slide="' + index + '" aria-label="Show image ' + (index + 1) + '"></button>';
+    }).join('');
+
+    return [
+      '<div class="hero-product-card product-carousel-card" data-carousel>',
+      '  <div class="product-carousel">',
+      slides,
+      '    <button class="carousel-arrow carousel-prev" type="button" aria-label="Previous image">&lsaquo;</button>',
+      '    <button class="carousel-arrow carousel-next" type="button" aria-label="Next image">&rsaquo;</button>',
+      '    <div class="carousel-dots">' + dots + '</div>',
+      '  </div>',
+      '  <div class="hero-card-caption"><strong>TeJieWen (TJW) ' + product.title + '</strong><span>' + product.carousel.caption + '</span></div>',
+      '</div>'
+    ].join('');
+  }
+
   function metricCards(items){
     return items.map(function(item){
       return '<div class="metric"><small>' + item[0] + '</small><b>' + item[1] + '</b></div>';
@@ -247,10 +314,7 @@
       '      </div>',
       '      <div class="detail-metrics">' + metricCards(product.metrics) + '</div>',
       '    </div>',
-      '    <div class="hero-product-card">',
-      '      ' + picture(product.image, '(max-width: 640px) 92vw, 470px', 'eager'),
-      '      <div class="hero-card-caption"><strong>TeJieWen (TJW) ' + product.title + '</strong><span>Source factory product platform with OEM/ODM project support.</span></div>',
-      '    </div>',
+      '    ' + heroCarousel(product),
       '  </div>',
       '</section>',
       '<section class="detail-section">',
@@ -351,6 +415,62 @@
     });
   }
 
+  function initCarousels(){
+    document.querySelectorAll('[data-carousel]').forEach(function(carousel){
+      const slides = Array.from(carousel.querySelectorAll('.carousel-slide'));
+      const dots = Array.from(carousel.querySelectorAll('.carousel-dot'));
+      const prev = carousel.querySelector('.carousel-prev');
+      const next = carousel.querySelector('.carousel-next');
+      if(!slides.length) return;
+
+      let index = 0;
+      let timer = null;
+      const reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      function loadSlide(i){
+        const img = slides[i] && slides[i].querySelector('img[data-src]');
+        if(img){
+          img.src = img.dataset.src;
+          img.removeAttribute('data-src');
+        }
+      }
+
+      function show(i){
+        index = (i + slides.length) % slides.length;
+        loadSlide(index);
+        loadSlide((index + 1) % slides.length);
+        slides.forEach(function(slide, n){ slide.classList.toggle('active', n === index); });
+        dots.forEach(function(dot, n){ dot.classList.toggle('active', n === index); });
+      }
+
+      function stop(){
+        if(timer) clearInterval(timer);
+        timer = null;
+      }
+
+      function start(){
+        stop();
+        if(!reducedMotion && slides.length > 1) timer = setInterval(function(){ show(index + 1); }, 4200);
+      }
+
+      loadSlide(0);
+      loadSlide(1);
+      prev && prev.addEventListener('click', function(){ show(index - 1); start(); });
+      next && next.addEventListener('click', function(){ show(index + 1); start(); });
+      dots.forEach(function(dot){
+        dot.addEventListener('click', function(){
+          show(Number(dot.dataset.slide || 0));
+          start();
+        });
+      });
+      carousel.addEventListener('mouseenter', stop);
+      carousel.addEventListener('mouseleave', start);
+      carousel.addEventListener('focusin', stop);
+      carousel.addEventListener('focusout', start);
+      start();
+    });
+  }
+
   ready(function(){
     bindMenu();
     const root = document.getElementById('productDetailRoot');
@@ -358,5 +478,6 @@
     const key = document.body.dataset.product || 'agriculture';
     const product = PRODUCTS[key] || PRODUCTS.agriculture;
     root.innerHTML = renderProduct(product);
+    initCarousels();
   });
 })();
