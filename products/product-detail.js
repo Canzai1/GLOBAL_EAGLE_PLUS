@@ -130,11 +130,10 @@
       carousel: {
         caption: 'White-background product views, aerial mapping, construction survey, environmental monitoring, and inspection data collection scenes.',
         images: [
-          '../assets/carousel/mapping/mapping-carousel-1.jpg',
-          '../assets/carousel/mapping/mapping-carousel-2.jpg',
-          '../assets/carousel/mapping/mapping-carousel-3.jpg',
-          '../assets/carousel/mapping/mapping-carousel-4.jpg',
-          '../assets/carousel/mapping/mapping-carousel-5.jpg'
+          '../assets/carousel/mapping/mapping-carousel-1.jpg?v=20260625c',
+          '../assets/carousel/mapping/mapping-carousel-2.jpg?v=20260625c',
+          '../assets/carousel/mapping/mapping-carousel-3.jpg?v=20260625c',
+          '../assets/carousel/mapping/mapping-carousel-4.jpg?v=20260625c'
         ]
       },
       metrics: [
@@ -189,10 +188,10 @@
       carousel: {
         caption: 'White-background product views, flight inspection, power facility inspection, and substation operation scenes.',
         images: [
-          '../assets/carousel/inspection/inspection-carousel-1.jpg',
-          '../assets/carousel/inspection/inspection-carousel-2.jpg',
-          '../assets/carousel/inspection/inspection-carousel-3.jpg',
-          '../assets/carousel/inspection/inspection-carousel-4.jpg'
+          '../assets/carousel/inspection/inspection-carousel-1.jpg?v=20260625c',
+          '../assets/carousel/inspection/inspection-carousel-2.jpg?v=20260625c',
+          '../assets/carousel/inspection/inspection-carousel-3.jpg?v=20260625c',
+          '../assets/carousel/inspection/inspection-carousel-4.jpg?v=20260625c'
         ]
       },
       metrics: [
