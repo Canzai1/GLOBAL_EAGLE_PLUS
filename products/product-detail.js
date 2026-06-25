@@ -13,10 +13,10 @@
       carousel: {
         caption: 'Product white-background views, field spraying, orchard operation, and fertilizing scenes.',
         images: [
-          '../assets/carousel/agriculture/agriculture-carousel-1.jpg',
-          '../assets/carousel/agriculture/agriculture-carousel-2.jpg',
-          '../assets/carousel/agriculture/agriculture-carousel-3.jpg',
-          '../assets/carousel/agriculture/agriculture-carousel-4.jpg'
+          '../assets/carousel/agriculture/agriculture-carousel-1.jpg?v=20260625b',
+          '../assets/carousel/agriculture/agriculture-carousel-2.jpg?v=20260625b',
+          '../assets/carousel/agriculture/agriculture-carousel-3.jpg?v=20260625b',
+          '../assets/carousel/agriculture/agriculture-carousel-4.jpg?v=20260625b'
         ]
       },
       metrics: [
@@ -71,11 +71,11 @@
       carousel: {
         caption: 'White-background product views, flight scenes, indoor setup, and ground deployment angles.',
         images: [
-          '../assets/carousel/vtol/vtol-carousel-1.jpg',
-          '../assets/carousel/vtol/vtol-carousel-2.jpg',
-          '../assets/carousel/vtol/vtol-carousel-3.jpg',
-          '../assets/carousel/vtol/vtol-carousel-4.jpg',
-          '../assets/carousel/vtol/vtol-carousel-5.jpg'
+          '../assets/carousel/vtol/vtol-carousel-1.jpg?v=20260625b',
+          '../assets/carousel/vtol/vtol-carousel-2.jpg?v=20260625b',
+          '../assets/carousel/vtol/vtol-carousel-3.jpg?v=20260625b',
+          '../assets/carousel/vtol/vtol-carousel-4.jpg?v=20260625b',
+          '../assets/carousel/vtol/vtol-carousel-5.jpg?v=20260625b'
         ]
       },
       metrics: [
