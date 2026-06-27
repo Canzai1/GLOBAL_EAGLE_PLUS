@@ -22,7 +22,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png?v=tjw-20260620"/>
 <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png?v=tjw-20260620"/>
 <link rel="manifest" href="site.webmanifest?v=tjw-20260620"/>
-<link rel="preload" as="image" href="assets/tjw-banner-clear.png?v=20260622" type="image/png"/>
+<link rel="preload" as="image" href="BgImages/tjw-home-hero-desktop.webp?v=20260627" type="image/webp" fetchpriority="high"/>
 <link rel="stylesheet" href="css/translate-widget.css?v=20260622b"/>
 <meta name="theme-color" content="#082A5A"/>
 <script type="application/ld+json">
@@ -119,6 +119,7 @@ img{display:block;max-width:100%}
 
 .hero{position:relative;min-height:730px;display:flex;align-items:center;overflow:hidden;background:#071F42}
 .hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center}
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(3,20,45,.78),rgba(3,20,45,.54) 45%,rgba(3,20,45,.14) 78%,rgba(3,20,45,.04)),linear-gradient(180deg,rgba(0,0,0,.04),rgba(0,0,0,.12))}
 .hero-content{position:relative;z-index:2;max-width:820px;padding:90px 0 118px}
 .kicker{display:inline-flex;align-items:center;gap:10px;color:#8BE7FF;font-size:13px;font-weight:900;letter-spacing:.12em;text-transform:uppercase}
@@ -477,7 +478,11 @@ section{padding:92px 0}
 </header>
 
 <section id="home" class="hero">
-  <img class="hero-bg" src="assets/tjw-banner-clear.png?v=20260622" alt="TJW UAV banner" width="2033" height="774" fetchpriority="high" decoding="async"/>
+  <picture class="hero-bg">
+    <source srcset="BgImages/tjw-home-hero-mobile.webp?v=20260627" media="(max-width: 640px)" type="image/webp"/>
+    <source srcset="BgImages/tjw-home-hero-desktop.webp?v=20260627" type="image/webp"/>
+    <img src="assets/tjw-banner-clear.png?v=20260622" alt="TJW UAV banner" width="2033" height="774" fetchpriority="high" decoding="async"/>
+  </picture>
   <div class="container">
     <div class="hero-content">
       <h1>Agricultural Spraying Drones + <span>VTOL Drone Solutions</span></h1>
@@ -520,7 +525,7 @@ section{padding:92px 0}
     <div class="product-grid">
       <a class="product-card-link" href="products/agricultural-spraying-drone.html" aria-label="View details for Agricultural Spraying Drone">
         <article class="product-card">
-          <div class="product-img"><img src="assets/step49/product-agriculture.jpg" alt="Agricultural spraying drone"/></div>
+          <div class="product-img"><img src="assets/step49/product-agriculture.jpg" alt="Agricultural spraying drone" loading="lazy" decoding="async"/></div>
           <div class="product-body">
             <span class="product-type">Agricultural Plant Protection</span>
             <h3>Agricultural Spraying Drone</h3>
@@ -538,7 +543,7 @@ section{padding:92px 0}
 
       <a class="product-card-link" href="products/vtol-drone.html" aria-label="View details for VTOL Drone">
         <article class="product-card">
-          <div class="product-img"><img src="assets/step49/product-vtol.jpg" alt="VTOL drone"/></div>
+          <div class="product-img"><img src="assets/step49/product-vtol.jpg" alt="VTOL drone" loading="lazy" decoding="async"/></div>
           <div class="product-body">
             <span class="product-type">VTOL Platform</span>
             <h3>VTOL Drone</h3>
@@ -556,7 +561,7 @@ section{padding:92px 0}
 
       <a class="product-card-link" href="products/high-precision-mapping-drone.html" aria-label="View details for High-Precision Mapping Drone">
         <article class="product-card">
-          <div class="product-img"><img src="assets/step49/product-mapping.jpg" alt="High-precision mapping drone"/></div>
+          <div class="product-img"><img src="assets/step49/product-mapping.jpg" alt="High-precision mapping drone" loading="lazy" decoding="async"/></div>
           <div class="product-body">
             <span class="product-type">Geographic Mapping</span>
             <h3>High-Precision Mapping Drone</h3>
@@ -574,7 +579,7 @@ section{padding:92px 0}
 
       <a class="product-card-link" href="products/industrial-inspection-drone.html" aria-label="View details for Industrial Inspection Drone">
         <article class="product-card">
-          <div class="product-img"><img src="assets/step49/product-inspection.jpg" alt="Industrial inspection drone"/></div>
+          <div class="product-img"><img src="assets/step49/product-inspection.jpg" alt="Industrial inspection drone" loading="lazy" decoding="async"/></div>
           <div class="product-body">
             <span class="product-type">Industrial Inspection</span>
             <h3>Industrial Inspection Drone</h3>
@@ -675,7 +680,7 @@ section{padding:92px 0}
     </div>
     <div class="application-grid">
       <article class="application-card">
-        <div class="application-image"><img src="assets/step49/application-agriculture.jpg" alt="Agricultural spraying drone application"/></div>
+        <div class="application-image"><img src="assets/step49/application-agriculture.jpg" alt="Agricultural spraying drone application" loading="lazy" decoding="async"/></div>
         <div class="application-card-body">
           <div class="num">01</div>
           <h3>Smart Agriculture</h3>
@@ -683,7 +688,7 @@ section{padding:92px 0}
         </div>
       </article>
       <article class="application-card">
-        <div class="application-image"><img src="assets/step49/application-mapping.jpg" alt="Mapping drone application"/></div>
+        <div class="application-image"><img src="assets/step49/application-mapping.jpg" alt="Mapping drone application" loading="lazy" decoding="async"/></div>
         <div class="application-card-body">
           <div class="num">02</div>
           <h3>Mapping Survey</h3>
@@ -691,7 +696,7 @@ section{padding:92px 0}
         </div>
       </article>
       <article class="application-card">
-        <div class="application-image"><img src="assets/step49/application-power-inspection.jpg" alt="Power inspection drone application"/></div>
+        <div class="application-image"><img src="assets/step49/application-power-inspection.jpg" alt="Power inspection drone application" loading="lazy" decoding="async"/></div>
         <div class="application-card-body">
           <div class="num">03</div>
           <h3>Power Inspection</h3>
@@ -699,7 +704,7 @@ section{padding:92px 0}
         </div>
       </article>
       <article class="application-card">
-        <div class="application-image"><img src="assets/step49/application-public-safety.jpg" alt="Public safety drone application"/></div>
+        <div class="application-image"><img src="assets/step49/application-public-safety.jpg" alt="Public safety drone application" loading="lazy" decoding="async"/></div>
         <div class="application-card-body">
           <div class="num">04</div>
           <h3>Public Safety</h3>
@@ -758,7 +763,7 @@ section{padding:92px 0}
   <div class="container">
     <div class="footer-grid">
       <div id="about">
-        <img class="footer-brand-logo" src="assets/tjw-logo.webp" alt="TJW TeJieWen Logo">
+        <img class="footer-brand-logo" src="assets/tjw-logo.webp" alt="TJW TeJieWen Logo" loading="lazy" decoding="async">
         <div class="footer-brand-name">TeJieWen (TJW) Drone Technology</div>
         <p>TeJieWen (TJW) is a source manufacturer focused on industrial UAV research and production, serving agricultural plant protection, geographic mapping, industrial inspection, and VTOL drone markets with OEM/ODM customization and production line technology support.</p>
         <div class="footer-social">

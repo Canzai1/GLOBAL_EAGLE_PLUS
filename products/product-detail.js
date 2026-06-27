@@ -242,7 +242,7 @@
 
   function picture(image, sizes, loading){
     const source = image.srcset ? '<source srcset="' + image.srcset + '" sizes="' + sizes + '" type="' + image.type + '">' : '';
-    return '<picture>' + source + '<img src="' + image.src + '" alt="' + image.alt + '" loading="' + loading + '"></picture>';
+    return '<picture>' + source + '<img src="' + image.src + '" alt="' + image.alt + '" loading="' + loading + '" decoding="async"></picture>';
   }
 
   function heroCarousel(product){
@@ -358,7 +358,7 @@
       '  <div class="container">',
       '    <div class="footer-grid">',
       '      <div>',
-      '        <div class="footer-brand"><img src="../assets/tjw-logo.webp" alt="TJW Logo"><div><strong>TeJieWen (TJW)</strong><span>Drone Technology</span></div></div>',
+      '        <div class="footer-brand"><img src="../assets/tjw-logo.webp" alt="TJW Logo" loading="lazy" decoding="async"><div><strong>TeJieWen (TJW)</strong><span>Drone Technology</span></div></div>',
       '        <p>Source manufacturer focused on industrial UAV research and production, serving agricultural plant protection, mapping, inspection, VTOL, and OEM/ODM project needs.</p>',
       '      </div>',
       '      <div>',
