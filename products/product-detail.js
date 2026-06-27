@@ -235,9 +235,98 @@
     }
   };
 
+  const PRODUCT_URLS = {
+    agriculture: 'agricultural-spraying-drone.html',
+    vtol: 'vtol-drone.html',
+    mapping: 'high-precision-mapping-drone.html',
+    inspection: 'industrial-inspection-drone.html'
+  };
+
+  const PRODUCT_FAQS = {
+    agriculture: [
+      {
+        question: 'What crops and fields is this agricultural spraying drone suitable for?',
+        answer: 'It is designed for crop protection, orchard spraying, fertilizing, spreading, and field service operations where stable low-altitude payload work is required.'
+      },
+      {
+        question: 'Can TJW customize the tank, nozzle, payload, logo, and color?',
+        answer: 'Yes. TeJieWen supports OEM/ODM configuration for spraying tanks, nozzle systems, spreading modules, brand logo, color, packaging, and project delivery needs.'
+      },
+      {
+        question: 'What information should buyers send for a crop protection drone project?',
+        answer: 'Useful details include crop type, field area, required payload, terrain, quantity, target market, branding requirements, and any local service or spare parts needs.'
+      }
+    ],
+    vtol: [
+      {
+        question: 'When should customers choose a VTOL drone instead of a multirotor platform?',
+        answer: 'A VTOL drone is a strong choice for runway-free takeoff, longer range, wide-area mapping, line patrol, security, and missions that need fixed-wing cruising efficiency.'
+      },
+      {
+        question: 'Can the VTOL platform carry mapping or inspection payloads?',
+        answer: 'Yes. The platform can be configured with cameras, mapping payloads, inspection sensors, and project-specific modules according to mission requirements.'
+      },
+      {
+        question: 'Does TJW support OEM/ODM VTOL drone configuration?',
+        answer: 'TJW can support airframe configuration, payload bay adaptation, color, logo, mission equipment, production service, and technical handover for integrators and dealers.'
+      }
+    ],
+    mapping: [
+      {
+        question: 'What mapping tasks can this high-precision mapping drone support?',
+        answer: 'It supports aerial surveying, orthophoto capture, 3D modeling, land planning, construction measurement, route operation, and geographic data acquisition projects.'
+      },
+      {
+        question: 'Can the mapping payload be configured for project requirements?',
+        answer: 'Yes. Buyers can discuss camera payloads, survey sensors, platform type, data workflow, branding, and delivery configuration based on the project scenario.'
+      },
+      {
+        question: 'Who typically uses TJW mapping drone solutions?',
+        answer: 'Typical users include survey teams, mapping companies, construction projects, land planning teams, engineering contractors, and UAV solution integrators.'
+      }
+    ],
+    inspection: [
+      {
+        question: 'Which inspection scenarios is this industrial inspection drone designed for?',
+        answer: 'It is designed for power line inspection, substation patrol, pipeline routes, industrial facility monitoring, security patrol, public safety, and emergency response.'
+      },
+      {
+        question: 'Can the inspection payload and camera system be customized?',
+        answer: 'Yes. TJW can help configure visual cameras, inspection sensors, payload mounts, mission packages, logo, color, and OEM/ODM production requirements.'
+      },
+      {
+        question: 'How does TJW support industrial inspection projects?',
+        answer: 'Support can include project configuration, modular platform adaptation, batch production, documentation, technical handover, spare parts planning, and factory service coordination.'
+      }
+    ]
+  };
+
+  const RELATED_PRODUCTS = {
+    agriculture: ['vtol', 'mapping', 'inspection'],
+    vtol: ['mapping', 'inspection', 'agriculture'],
+    mapping: ['vtol', 'inspection', 'agriculture'],
+    inspection: ['vtol', 'mapping', 'agriculture']
+  };
+
   function ready(fn){
     if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fn);
     else fn();
+  }
+
+  function productUrl(key){
+    return PRODUCT_URLS[key] || PRODUCT_URLS.agriculture;
+  }
+
+  function breadcrumb(product){
+    return [
+      '<nav class="breadcrumb" aria-label="Breadcrumb">',
+      '  <a href="../index.html#home">Home</a>',
+      '  <span class="breadcrumb-separator">/</span>',
+      '  <a href="../index.html#products">Products</a>',
+      '  <span class="breadcrumb-separator">/</span>',
+      '  <span class="breadcrumb-current" aria-current="page">' + product.title + '</span>',
+      '</nav>'
+    ].join('');
   }
 
   function picture(image, sizes, loading){
@@ -298,12 +387,39 @@
     }).join('');
   }
 
-  function renderProduct(product){
+  function faqCards(key){
+    const items = PRODUCT_FAQS[key] || [];
+    return items.map(function(item){
+      return [
+        '<article class="faq-card">',
+        '  <h3>' + item.question + '</h3>',
+        '  <p>' + item.answer + '</p>',
+        '</article>'
+      ].join('');
+    }).join('');
+  }
+
+  function relatedCards(key){
+    const items = RELATED_PRODUCTS[key] || [];
+    return items.map(function(relatedKey){
+      const item = PRODUCTS[relatedKey];
+      if(!item) return '';
+      return [
+        '<a class="related-link" href="' + productUrl(relatedKey) + '">',
+        '  <small>' + item.category + '</small>',
+        '  <strong>' + item.title + '</strong>',
+        '  <span>' + item.summary + '</span>',
+        '</a>'
+      ].join('');
+    }).join('');
+  }
+
+  function renderProduct(product, key){
     return [
       '<section class="detail-hero">',
       '  <div class="container detail-hero-grid">',
       '    <div class="detail-copy">',
-      '      <a class="back-link" href="../index.html#products"><span>&lt;</span> Back to Products</a>',
+      '      ' + breadcrumb(product),
       '      <div class="detail-kicker">' + product.category + '</div>',
       '      <h1>' + product.title + '</h1>',
       '      <p>' + product.summary + '</p>',
@@ -335,6 +451,25 @@
       '      <p>Use these core details as a starting point for customer inquiries, product selection, and OEM/ODM discussion.</p>',
       '    </div>',
       '    <div class="spec-grid">' + specCards(product.specs) + '</div>',
+      '  </div>',
+      '</section>',
+      '<section class="detail-section alt seo-section">',
+      '  <div class="container">',
+      '    <div class="section-head">',
+      '      <span class="section-label">Buyer Guidance</span>',
+      '      <h2>Common buyer questions</h2>',
+      '      <p>Clear answers help customers compare application fit, customization options, and project requirements before contacting TJW.</p>',
+      '    </div>',
+      '    <div class="faq-grid">' + faqCards(key) + '</div>',
+      '    <div class="related-products">',
+      '      <div class="related-heading">',
+      '        <div>',
+      '          <span class="section-label">Related Products</span>',
+      '          <h2>Compare other TJW UAV solutions</h2>',
+      '        </div>',
+      '      </div>',
+      '      <div class="related-grid">' + relatedCards(key) + '</div>',
+      '    </div>',
       '  </div>',
       '</section>',
       '<section class="detail-section" id="product-video">',
@@ -461,7 +596,7 @@
     if(!root) return;
     const key = document.body.dataset.product || 'agriculture';
     const product = PRODUCTS[key] || PRODUCTS.agriculture;
-    root.innerHTML = renderProduct(product);
+    root.innerHTML = renderProduct(product, key);
     initCarousels();
   });
 })();
