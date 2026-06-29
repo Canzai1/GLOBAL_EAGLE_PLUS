@@ -476,7 +476,7 @@
       '  <div class="container">',
       '    <div class="video-card">',
       '      <div class="video-wrap">',
-      '        <video controls preload="metadata" playsinline poster="' + product.image.src + '">',
+      '        <video controls preload="none" playsinline poster="' + product.image.src + '">',
       '          <source src="' + product.video.src + '" type="video/mp4">',
       '        </video>',
       '      </div>',

@@ -454,6 +454,53 @@ section{padding:92px 0}
   .about-card{padding:28px}
 }
 
+@media(max-width:640px){
+  .container{width:min(100% - 28px,1200px)}
+  .nav{height:68px;gap:12px}
+  .brand{min-width:0;gap:10px}
+  .brand-logo{width:44px;height:44px;border-radius:12px;flex:0 0 44px}
+  .brand strong{font-size:20px;letter-spacing:.06em}
+  .brand span{max-width:205px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:10px;letter-spacing:0}
+  .menu-btn{font-size:28px;line-height:1}
+  .nav-links.open{top:68px;left:14px;right:14px;max-height:calc(100vh - 86px);overflow:auto}
+  .hero{display:block;min-height:auto}
+  .hero::after{background:linear-gradient(90deg,rgba(3,20,45,.84),rgba(3,20,45,.64) 58%,rgba(3,20,45,.25)),linear-gradient(180deg,rgba(0,0,0,.04),rgba(0,0,0,.18))}
+  .hero-bg img{object-position:60% center}
+  .hero-content{max-width:none;padding:56px 0 66px}
+  .hero h1{font-size:34px;line-height:1.14;letter-spacing:0;margin-bottom:18px}
+  .hero p{max-width:none;font-size:15px;line-height:1.68}
+  .hero-tags{gap:8px;margin-top:24px}
+  .hero-tag{padding:9px 12px;font-size:12px}
+  .stats{margin-top:0;padding-top:26px}
+  .stat{padding:18px 16px;border-radius:18px}
+  .stat strong{font-size:19px;line-height:1.25}
+  .stat span{font-size:14px;line-height:1.55}
+  section{padding:64px 0}
+  .section-head{margin-bottom:30px}
+  .section-head h2{font-size:30px;letter-spacing:0;line-height:1.15}
+  .product-main-title{font-size:34px;letter-spacing:.04em;line-height:1}
+  .product-img{height:240px}
+  .product-body{padding:20px}
+  .product-body h3{font-size:22px;line-height:1.25}
+  .product-body p{min-height:0;font-size:15px;line-height:1.65}
+  .specs{grid-template-columns:1fr;gap:10px}
+  .video-tabs-wrap{gap:22px}
+  .video-tab-nav{grid-template-columns:1fr 1fr;gap:8px}
+  .video-tab-btn{min-width:0;gap:8px;padding:12px 10px;border-radius:16px;font-size:14px;line-height:1.2}
+  .video-tab-btn .tab-icon{width:32px;height:32px;flex:0 0 32px;border-radius:12px;font-size:13px}
+  .video-player-box{height:220px}
+  .video-card-text{padding:20px}
+  .video-card-text h3{font-size:20px;line-height:1.28}
+  .video-card-text p{font-size:14px;line-height:1.65}
+  .application-body,.service-card,.flow-card{padding:20px}
+  .footer-bottom{display:block}
+}
+
+@media(hover:none){
+  .product-card-link:hover .product-card,.product-card:hover{transform:none}
+  .product-card-link:hover .product-img img,.product-card:hover .product-img img{transform:none}
+}
+
 </style>
 </head>
 
@@ -617,7 +664,7 @@ section{padding:92px 0}
           <div class="video-content-area">
             <div class="video-main-card">
               <div class="video-player-box">
-                <video id="video-agri" controls playsinline preload="metadata" src="assets/videos/agriculture-spraying.mp4"></video>
+                <video id="video-agri" controls playsinline preload="none" poster="assets/step49/application-agriculture.jpg" src="assets/videos/agriculture-spraying.mp4"></video>
               </div>
               <div class="video-card-text">
                 <h3>Agricultural Drone Field Spraying Demo</h3>
@@ -631,7 +678,7 @@ section{padding:92px 0}
           <div class="video-content-area">
             <div class="video-main-card">
               <div class="video-player-box">
-                <video id="video-vtol" controls playsinline preload="metadata" src="assets/videos/vtol-flight.mp4"></video>
+                <video id="video-vtol" controls playsinline preload="none" poster="assets/step49/product-vtol.jpg" src="assets/videos/vtol-flight.mp4"></video>
               </div>
               <div class="video-card-text">
                 <h3>VTOL Drone Flight Demo</h3>
@@ -645,7 +692,7 @@ section{padding:92px 0}
           <div class="video-content-area">
             <div class="video-main-card">
               <div class="video-player-box">
-                <video id="video-mapping" controls playsinline preload="metadata" src="assets/videos/mapping-survey.mp4"></video>
+                <video id="video-mapping" controls playsinline preload="none" poster="assets/step49/application-mapping.jpg" src="assets/videos/mapping-survey.mp4"></video>
               </div>
               <div class="video-card-text">
                 <h3>High-Precision Mapping Drone Demo</h3>
@@ -659,7 +706,7 @@ section{padding:92px 0}
           <div class="video-content-area">
             <div class="video-main-card">
               <div class="video-player-box">
-                <video id="video-inspection" controls playsinline preload="metadata" src="assets/videos/industrial-inspection.mp4"></video>
+                <video id="video-inspection" controls playsinline preload="none" poster="assets/step49/application-power-inspection.jpg" src="assets/videos/industrial-inspection.mp4"></video>
               </div>
               <div class="video-card-text">
                 <h3>Industrial Inspection Drone Demo</h3>
