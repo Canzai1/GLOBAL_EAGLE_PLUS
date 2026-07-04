@@ -525,11 +525,13 @@
     const nav = document.getElementById('navLinks');
     if(!btn || !nav) return;
     btn.addEventListener('click', function(){
-      nav.classList.toggle('open');
+      const isOpen = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', String(isOpen));
     });
     nav.querySelectorAll('a').forEach(function(link){
       link.addEventListener('click', function(){
         nav.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
       });
     });
   }
