@@ -503,6 +503,7 @@
       '          <li><a href="../index.html#products">Products</a></li>',
       '          <li><a href="../index.html#featured">Product Videos</a></li>',
       '          <li><a href="../index.html#applications">Applications</a></li>',
+      '          <li><a href="../news.html">News &amp; Insights</a></li>',
       '        </ul>',
       '      </div>',
       '      <div>',
