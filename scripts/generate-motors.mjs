@@ -20,7 +20,7 @@ const products = [
     dimensions: "42.2 × 31 mm",
     packageWeight: "223 g / 2-piece pack",
     packageSize: "90 × 73 × 48 mm",
-    image: "tyi-3508-brushless-motor.webp",
+    image: "tyi-3508-brushless-motor-studio.webp",
     description: "Compact multirotor brushless motor offered in KV400 and KV590 windings, with published maximum thrust up to 2 kg.",
   },
   {
@@ -35,7 +35,7 @@ const products = [
     dimensions: "50 × 29.67 mm",
     packageWeight: "131.4 g",
     packageSize: "90 × 73 × 48 mm",
-    image: "tyi-4006-brushless-motor.webp",
+    image: "tyi-4006-brushless-motor-studio.webp",
     description: "KV380 multirotor brushless motor with a compact 50 × 29.67 mm body and published maximum thrust up to 1.6 kg.",
   },
   {
@@ -50,7 +50,7 @@ const products = [
     dimensions: "58 × 37.5 mm",
     packageWeight: "193.4 g",
     packageSize: "90 × 73 × 48 mm",
-    image: "tyi-5008-brushless-motor.webp",
+    image: "tyi-5008-brushless-motor-studio.webp",
     description: "Multirotor brushless motor available in KV335 and KV400 windings, with published maximum thrust up to 3.9 kg.",
   },
   {
@@ -65,7 +65,7 @@ const products = [
     dimensions: "58.5 × 38 mm",
     packageWeight: "215 g",
     packageSize: "90 × 73 × 48 mm",
-    image: "tyi-5010-brushless-motor.webp",
+    image: "tyi-5010-brushless-motor-studio.webp",
     description: "First-generation 5010 multirotor brushless motor offered in KV280 and KV340 windings, with published maximum thrust up to 4.5 kg.",
   },
   {
@@ -80,7 +80,7 @@ const products = [
     dimensions: "58.4 × 36 mm",
     packageWeight: "239 g",
     packageSize: "90 × 73 × 48 mm",
-    image: "tyi-5010-ii-brushless-motor.webp",
+    image: "tyi-5010-ii-brushless-motor-studio.webp",
     description: "Second-generation yellow 5010 multirotor motor available in KV280 and KV340 windings, with published maximum thrust up to 4.5 kg.",
   },
   {
@@ -95,7 +95,7 @@ const products = [
     dimensions: "33.9 × 36 mm",
     packageWeight: "72 g",
     packageSize: "63 × 62 × 46 mm",
-    image: "tyi-b2807-fpv-motor.webp",
+    image: "tyi-b2807-fpv-motor-studio.webp",
     description: "Compact KV1300 FPV brushless motor with a 62 g net weight and published maximum thrust up to 2.2 kg.",
   },
   {
@@ -110,7 +110,7 @@ const products = [
     dimensions: "33.9 × 38 mm",
     packageWeight: "81 g",
     packageSize: "63 × 62 × 46 mm",
-    image: "tyi-b2809-fpv-motor.webp",
+    image: "tyi-b2809-fpv-motor-studio.webp",
     description: "KV1250 FPV brushless motor with a compact 33.9 × 38 mm body and published maximum thrust up to 2.4 kg.",
   },
   {
@@ -125,7 +125,7 @@ const products = [
     dimensions: "33.9 × 41 mm",
     packageWeight: "95.5 g",
     packageSize: "63 × 62 × 46 mm",
-    image: "tyi-b2812-fpv-motor.webp",
+    image: "tyi-b2812-fpv-motor-studio.webp",
     description: "KV900 FPV brushless motor with an 85 g net weight and published maximum thrust up to 2.5 kg.",
   },
   {
@@ -140,7 +140,7 @@ const products = [
     dimensions: "37.2 × 38.3 mm",
     packageWeight: "98.3 g",
     packageSize: "63 × 62 × 46 mm",
-    image: "tyi-b3110-fpv-motor.webp",
+    image: "tyi-b3110-fpv-motor-studio.webp",
     description: "KV900 FPV brushless motor with a 79 g net weight and published maximum thrust up to 2.7 kg.",
   },
   {
@@ -155,7 +155,7 @@ const products = [
     dimensions: "37.2 × 45.3 mm",
     packageWeight: "100 g",
     packageSize: "63 × 62 × 46 mm",
-    image: "tyi-b3112-fpv-motor.webp",
+    image: "tyi-b3112-fpv-motor-studio.webp",
     description: "KV900 FPV brushless motor with an 84 g net weight and published maximum thrust up to 3 kg.",
   },
   {
@@ -170,7 +170,7 @@ const products = [
     dimensions: "Confirm at quotation",
     packageWeight: "126.3 g",
     packageSize: "63 × 63 × 49 mm",
-    image: "tyi-b3115-fpv-motor.webp",
+    image: "tyi-b3115-fpv-motor-studio.webp",
     description: "KV900 B3115 FPV brushless motor with published maximum thrust up to 3.6 kg. Final physical specifications are confirmed with the selected configuration.",
   },
   {
@@ -185,7 +185,7 @@ const products = [
     dimensions: "62 × 58 mm",
     packageWeight: "315.4–329.1 g",
     packageSize: "Approx. 115 × 89 × 64 mm",
-    image: "tyi-cf5015-fpv-motor.webp",
+    image: "tyi-cf5015-fpv-motor-studio.webp",
     description: "High-thrust CF5015 FPV brushless motor. KV410 is the confirmed catalog winding; additional windings are available subject to quotation confirmation.",
   },
 ];
@@ -300,7 +300,7 @@ function card(product, index) {
   return `<article class="motor-card" data-motor-family="${product.family}">
       <a class="motor-card__media" href="/products/${product.slug}/" aria-label="View ${product.name}">
         <span>${String(index + 1).padStart(2, "0")}</span>
-        <img src="/assets/motors/${product.image}" alt="${product.name}" loading="lazy" decoding="async" />
+        <img src="/assets/motors/${product.image}" alt="${product.name}" decoding="async" />
       </a>
       <div class="motor-card__copy">
         <p>${product.familyLabel}</p>
@@ -318,7 +318,7 @@ function card(product, index) {
 function categoryPage() {
   const title = "Brushless Drone Motors | FPV & Multirotor Motors | TYI";
   const description = "Explore 12 TYI brushless motors for FPV and multirotor drone platforms, with multiple KV windings, OEM/ODM support and direct manufacturer quotation.";
-  const image = "/assets/motors/tyi-cf5015-fpv-motor.webp";
+  const image = "/assets/motors/tyi-cf5015-fpv-motor-studio.webp";
   const pathName = "/motors/";
   const schema = [
     {
