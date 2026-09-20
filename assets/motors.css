@@ -540,14 +540,14 @@
 }
 
 .motor-form-shell {
-  min-height: 560px;
   padding-left: clamp(30px, 5vw, 72px);
   border-left: 1px solid var(--orange);
 }
 
 .motor-form-shell iframe {
+  display: block;
   width: 100%;
-  min-height: 560px;
+  height: 1100px;
   border: 0;
   background: #fff;
 }
@@ -786,11 +786,6 @@
 
   .motor-contact {
     padding-block: 78px;
-  }
-
-  .motor-form-shell,
-  .motor-form-shell iframe {
-    min-height: 620px;
   }
 
   .motor-footer .footer-top {
