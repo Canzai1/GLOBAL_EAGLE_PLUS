@@ -1,0 +1,24 @@
+# TYI Complete Drone Platforms
+
+TYI is the public brand used by Taozhugong (Hubei) Technology, Industry and Trade Co., Ltd. This English-language website presents complete agricultural, cargo delivery and FPV drone platforms, plus supporting brushless motors. Published specifications are model-specific starting points; final configuration, performance and quotation are confirmed for each application.
+
+## Main product categories
+
+- [Agricultural drones](https://tjwuav.com/agricultural-drones/): Nine complete four-, six- and eight-axis platforms with published 5 L to 30 L capacities for spraying, seeding and field applications.
+- [Delivery drones](https://tjwuav.com/delivery-drones/): Nine cargo platforms with published payload classes from 5 kg to 50 kg.
+- [FPV drones](https://tjwuav.com/fpv-drones/): Six 7-, 10-, 13- and 15-inch platforms with model-specific frame and video-link configurations.
+- [Brushless motors](https://tjwuav.com/motors/): Twelve FPV and multirotor propulsion components.
+
+## Company and support
+
+- [About TYI](https://tjwuav.com/about/): Company identity, complete-aircraft focus and manufacturing/export support.
+- [Contact TYI](https://tjwuav.com/contact/): Email, WhatsApp and Wuhan office information for product inquiries.
+- [Drone FAQ](https://tjwuav.com/faq/): Product, configuration, quotation and performance questions.
+- [Privacy Policy](https://tjwuav.com/privacy-policy/): How inquiry and website information is handled.
+- [XML sitemap](https://tjwuav.com/sitemap.xml): Complete list of indexable pages.
+
+## Contact
+
+- Email: sale06@tjwuav.com
+- Website: https://tjwuav.com/
+- Office: Room 1103, Shanhe Building, No. 50 Xudong Road, Wuchang District, Wuhan, Hubei, China
