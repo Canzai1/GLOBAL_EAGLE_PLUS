@@ -1,0 +1,71 @@
+AGRICULTURAL SPRAYING DRONE RFQ — BLANK BUYER TEMPLATE
+Prepared: 2026-10-11
+
+This is a request template, not a TYI quotation, an order, a package
+specification or a promise of product or service availability.
+Replace brackets with your own requirement. Provide only information
+needed for the purchase discussion; omit confidential or unnecessary data.
+
+SHORT FIRST MESSAGE
+
+Hello, I am interested in an agricultural spraying drone for [application]
+in [country]. My initial requirement is [quantity] aircraft.
+The preferred model/capacity is [model or "selection open"].
+Please advise what configuration information you need for a quotation.
+I am also interested in [requested option, or "no options defined yet"].
+
+DETAILED REQUEST — AFTER INITIAL DISCUSSION
+
+Subject: Agricultural spraying drone RFQ — [model or requirement] — [destination]
+
+RFQ reference/date: [ ]
+Destination country and general delivery location: [ ]
+Crop/application and field conditions: [ ]
+Liquid spraying / spreading requirement: [ ]
+Preferred model or capacity: [or "selection open"]
+Initial purchasing quantity: [ ]
+Requested controller/navigation or other options: [or "not yet defined"]
+Available charging power supply: [or "not yet confirmed"]
+Requested documents and support language: [ ]
+Preferred schedule: [buyer preference, not an agreed delivery date]
+Preferred reply channel: [email or business contact channel]
+
+Please return an itemized quotation identifying the proposed model/version,
+quantities, currency, quotation validity, commercial terms and delivery scope.
+
+For each relevant item, mark one supply status:
+Included / Optional / Buyer-supplied / Excluded / Not confirmed.
+
+Please cover the relevant aircraft, liquid spraying system, controller,
+battery, charger, requested options, spreading equipment, spare parts,
+documentation, training/support, packing/delivery and commercial terms.
+
+For optional items, identify whether they are selected and whether their
+amount is counted in this quotation version. Explain bundled amounts so
+they are not counted twice. State quantities and quotation-line references.
+
+Please identify excluded charges, compatibility questions, documents still
+requiring confirmation and the responsible party for buyer-supplied items.
+State warranty coverage, exclusions, claim process and support terms in writing.
+
+This is a request for scope review and quotation, not an order.
+
+COMPARISON NOTES
+
+- Do not treat a missing item as excluded or its cost as zero.
+- A blank amount with no explicit bundled-price reference is unknown.
+- Record option selection separately from whether an amount is counted in the total.
+- Record separate amounts or an explicit bundle reference to avoid double counting.
+- Compare the same requirement, configuration, quantity and selected options.
+- Keep original quoted currency; record any conversion rate and date separately.
+- Record delivery basis, named place, included/excluded charges and quote revision.
+- An unresolved relevant item means the scope comparison is incomplete.
+- A quotation does not establish permission to import or operate an aircraft.
+- Production-line or technical-services projects require a separate scope.
+- In the CSV Open question column use:
+  Question: [ ]; Owner: [ ]; Evidence needed: [ ]; Affected revision: [ ].
+
+If you choose to contact TYI, the existing website contact page is:
+https://tjwuav.com/contact/
+Email: sale06@tjwuav.com
+Nothing is sent automatically by this file.
