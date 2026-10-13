@@ -1,0 +1,43 @@
+/* Scoped consent UI: retains the site's DM Sans, forest-green and cream palette. */
+.tjw-analytics-banner[hidden], .tjw-analytics-choices[hidden],
+.tjw-analytics-storage[hidden] { display: none !important; }
+#tjw-analytics-banner {
+  position: fixed; left: 24px; bottom: 24px; z-index: 1200;
+  width: min(560px, calc(100vw - 48px)); box-sizing: border-box;
+  padding: 22px; border: 1px solid #bdc6b6; border-radius: 16px;
+  background: #f8f8ef; color: #07352b; box-shadow: 0 12px 36px #07352b26;
+  font-family: "DM Sans", sans-serif; text-align: left;
+  max-height: calc(100dvh - 48px); overflow-y: auto;
+}
+#tjw-analytics-banner h2 {
+  font: 600 18px/1.35 "DM Sans", sans-serif; color: #07352b;
+  margin: 0 0 9px; letter-spacing: 0; text-transform: none;
+}
+#tjw-analytics-banner p { margin: 0 0 16px; font-size: 13px; line-height: 1.6; color: #284a3e; }
+#tjw-analytics-banner a { color: #07352b; text-decoration: underline; text-underline-offset: 3px; }
+#tjw-analytics-banner .tjw-analytics-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+#tjw-analytics-banner button {
+  display: block; min-height: 44px; min-width: 0; padding: 10px 12px;
+  border: 1px solid #07352b; border-radius: 7px; background: transparent;
+  color: #07352b; font: 600 13px/1.35 "DM Sans", sans-serif; cursor: pointer;
+  text-align: center; white-space: normal;
+}
+#tjw-analytics-banner button:hover { background: #e6eadc; }
+#tjw-analytics-banner button:focus-visible, #tjw-analytics-choices:focus-visible {
+  outline: 3px solid #d38d53; outline-offset: 3px;
+}
+#tjw-analytics-banner .tjw-analytics-storage { margin: 12px 0 0; font-size: 12px; }
+#tjw-analytics-choices {
+  position: fixed; left: 16px; bottom: 16px; z-index: 1100;
+  border: 1px solid #bdc6b6; border-radius: 7px; background: #f8f8ef;
+  color: #07352b; padding: 8px 12px; min-height: 36px; cursor: pointer;
+  font: 500 12px/1.35 "DM Sans", sans-serif;
+  box-shadow: 0 2px 8px #07352b12;
+}
+@media (max-width: 600px) {
+  #tjw-analytics-banner { left: 12px; bottom: 12px; width: calc(100vw - 24px); padding: 17px; border-radius: 12px; max-height: calc(100dvh - 24px); }
+  #tjw-analytics-banner h2 { font-size: 16px; }
+  #tjw-analytics-banner p { font-size: 12px; }
+  #tjw-analytics-banner button { padding: 10px 8px; font-size: 12px; }
+  #tjw-analytics-choices { left: 12px; bottom: 12px; }
+}
